@@ -42,3 +42,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[i] = '\0';
 	return (str);
 }
+/*
+int	main()
+{
+	char	s1[] = "ABCD";
+	char	s2[] = "EFG";
+
+	printf("%s\n", ft_strjoin(s1, s2));
+	return (0);
+}
+*/

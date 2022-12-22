@@ -31,3 +31,15 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	}
 	return (0);
 }
+/*
+int main()
+{
+    const void *str = "ABCDEF";
+    int c = 'F';
+    size_t n = 6;
+    char *sn;
+
+    sn = ft_memchr(str, c, n);
+    printf("Result: %s\n", sn);
+    return (0);
+}*/

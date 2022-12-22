@@ -40,3 +40,11 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 	newstr[j] = '\0';
 	return (newstr);
 }
+/*
+int	main()
+{
+	char	*answer;
+
+	answer = ft_substr("ABCDEFG", 3, 2);
+	printf("%s\n", answer);
+}*/

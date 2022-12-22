@@ -42,3 +42,21 @@ char	*ft_strmapi(char const *str, char (*f)(unsigned int, char))
 	newstr[i] = '\0';
 	return (newstr);
 }
+/*
+char f(unsigned int i, char c)
+{
+    if (i + 1)
+    {
+        if (ft_isalpha(c))
+            c = c - 32;
+    }
+    return (c);
+}
+
+int	main()
+{
+    char    *str = "hello world";
+    printf("%s\n", ft_strmapi(str, f));
+    return (0);
+}
+*/

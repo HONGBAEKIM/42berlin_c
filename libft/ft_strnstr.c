@@ -39,3 +39,12 @@ char	*ft_strnstr(const char *str, const char *find, size_t len)
 	}
 	return (0);
 }
+/*
+int main()
+{
+    char    str[] = "Hello world how are you";
+    char    *ptr1 = ft_strnstr(str, "wo", 10);
+    printf("%s\n", ptr1);
+    
+    return (0);
+}*/

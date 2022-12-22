@@ -36,3 +36,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result = ft_substr(s1, start, end - start);
 	return (result);
 }
+/*
+int	main()
+{
+	printf("%s\n", ft_strtrim("ABCD", "A"));
+	printf("%s\n", ft_strtrim("ABCD", "B"));
+	printf("%s\n", ft_strtrim("ABCD", "BC"));
+	printf("%s\n", ft_strtrim("ABCD", "ABCD"));
+	return (0);
+}*/

@@ -42,3 +42,22 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+/*
+int main(void)
+{
+	char    src1[] = "hijklmn";
+	char    dest1[] = "abcdefg";
+	
+	ft_memmove(dest1, src1, 5);
+	printf("%s\n", dest1);
+}
+*/
+/*
+    char    src1[6] = "abcdef";
+    char    *dest1 = src1 + 2;
+
+    ft_memmove(dest1, src1, 1);
+    printf("%s\n", dest1);
+
+*/
+

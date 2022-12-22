@@ -60,3 +60,16 @@ The number of bytes
 Value c (converted to an unsigned char)
 A pointer to the memory area str
 */
+/*
+int main(void)
+{
+    char str[] = "Let's see what happen";
+    int c = 'a';
+
+    printf("%s\n", str);
+    ft_memset(str, c, 5);
+    printf("%s\n", str);
+	memset(str, c, 5);
+    printf("%s\n", str);
+    return (0);
+}*/

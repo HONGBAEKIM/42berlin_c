@@ -95,3 +95,18 @@ char	**ft_split(const char *s, char c)
 	ret[i] = 0;
 	return (ret);
 }
+/*
+int main()
+{
+    char **tab;
+    unsigned int    i;
+
+    i = 0;
+    tab = ft_split(" abc de fg", ' ');
+    while (tab[i])
+    {
+        printf("%s\n", tab[i]);
+        i++;
+    }
+    return (0);
+}*/

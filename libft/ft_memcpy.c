@@ -33,3 +33,25 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+/*
+int main(void)
+{
+    char    src[] = "hijklmn";
+    char    dest[] = "abcdefg";
+
+    memcpy(dest, src, 5);
+    printf("%s", dest);
+    printf("\n");
+    ft_memcpy(dest, src, 5);
+    printf("%s", dest);
+    printf("\n");
+    return (0);
+}
+*/
+/*
+hijklmn
+abcdefg
+
+hijklfg
+
+*/

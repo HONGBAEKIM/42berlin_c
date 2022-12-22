@@ -41,3 +41,16 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 	dest[destlen + i] = '\0';
 	return (destlen + srclen);
 }
+/*
+int main(void)
+{
+    char    dest1[] = "Hell";
+    char    src1[] = "world";
+    int r1;
+
+    r1 = ft_strlcat(dest1, src1, 8);
+    printf("%s\n", dest1);
+    printf("%d\n", r1);
+    //ft_strlcat(dest, src, 8);
+    //printf("%s\n", dest);
+}*/

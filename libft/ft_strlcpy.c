@@ -49,3 +49,20 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		i++;
 	return (i);
 }
+/*
+int main(void)
+{
+    char    dest1[] = "";
+    char    src1[] = "lets see what happen";
+    int r1;
+    //char    dest2[] = "";
+    //char    src2[] = "";
+    //int r2;
+
+    r1 = ft_strlcpy(dest1, src1, 4);
+    printf("%s\n", dest1);
+    printf("%d\n", r1);
+    //r2 = ft_strlcpy(dest2, src2, 0);
+    //printf("%s\n", dest2);
+    //printf("%d\n", r2);
+}*/
