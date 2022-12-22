@@ -8,8 +8,6 @@ ARFLAG = crs
 
 RM = rm -f
 
-INCLUDES = ./libft.h
-
 SRCS = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -64,8 +62,11 @@ all: $(NAME)
 %.o: %.c
 	$(CC) $(CCFLAG) -c $< -o $@
 
-## $< the first prerequiste (usually a source file)
-## $@ name of the target being generated
+## $< the first prerequiste (usually a source file) %.c
+## $@ name of the target being generated %.o
+## -c Compile or assemble the source files, but do not link
+##    The ultimate output is in the form of an object file for each source file
+## -o the object file for source.suffix in source.o
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)
@@ -78,7 +79,8 @@ re: fclean all
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAG) $@ $^
 
-## $^ Full list of target
+## $@ $(NAME)
+## $^ $(OBJS)
 
 bonus: $(OBJS) $(OBJS_BONUS)
 	$(AR) $(ARFLAG) $(NAME) $^
