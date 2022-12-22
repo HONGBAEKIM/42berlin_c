@@ -21,3 +21,9 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
+/*
+int	main()
+{
+	printf("%d", ft_strlen("asd"));
+}
+*/

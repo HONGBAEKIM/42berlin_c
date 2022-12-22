@@ -34,3 +34,11 @@ int	ft_atoi(const char *str)
 	}
 	return (val * neg);
 }
+/*
+int	main()
+{
+	char	a[] = "-+5";
+
+	printf("%d\n", ft_atoi(a));
+	printf("%d\n", atoi(a));
+}*/

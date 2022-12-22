@@ -35,3 +35,28 @@ void	ft_bzero(void *str, size_t n)
 		i++;
 	}
 }
+/*int main(void)
+{
+    char    check[27] = "abcdefghijklmnopqrstuvwxyz";
+    char    ft_check[27] = "abcdefghijklmnopqrstuvwxyz";
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    bzero(check, 20);
+    ft_bzero(ft_check, 20);
+    while (i < 27)
+    {
+        printf("%d", check[i]);
+        i++;
+    }
+    printf("\n");
+    while (j < 27)
+    {
+        printf("%d", ft_check[j]);
+        j++;
+    }
+    printf("\n");
+    return (0);
+} */
