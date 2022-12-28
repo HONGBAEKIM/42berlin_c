@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+/*
+when the c is 'x' then lower case
+when the c is 'X' then upper case
+
+Through recursion funtion -> ft_puthex in ft_puthex
+*/
 int	ft_puthex(int n, char c, int *l)
 {
 	unsigned int	u;
@@ -19,7 +25,12 @@ int	ft_puthex(int n, char c, int *l)
 
 	ret = 0;
 	u = (unsigned int)n;
-	if (u < 16)
+	if (u >= 16)
+	{
+		ft_puthex(u / 16, c, l);
+		ft_puthex(u % 16, c, l);
+	}
+	else
 	{
 		if (c == 'x')
 			ret = ft_putchar("0123456789abcdef"[u % 16], l);
@@ -27,15 +38,6 @@ int	ft_puthex(int n, char c, int *l)
 			ret = ft_putchar("0123456789ABCDEF"[u % 16], l);
 		if (ret < 0)
 			return (ret);
-	}
-	else if (u >= 16)
-	{
-		ft_puthex(u / 16, c, l);
-		if (c == 'x')
-			ret = ft_putchar("0123456789abcdef"[u % 16], l);
-		else
-			ret = ft_putchar("0123456789ABCDEF"[u % 16], l);
-		u = u % 16;
 	}
 	return (ret);
 }

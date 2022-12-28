@@ -5,13 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/21 18:19:03 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/21 18:19:04 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/27 16:55:55 by hongbaki          #+#    #+#             */
+/*   Updated: 2022/12/27 16:55:57 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
+Return with (num divides 10^p)
+everytime l++;
+ret to check error
+*/
 void	put_div(unsigned int num, int p, int *l, int *ret)
 {
 	unsigned int	rest;
@@ -31,6 +36,7 @@ void	put_div(unsigned int num, int p, int *l, int *ret)
 	}
 }
 
+/*power is digit*/
 int	ft_putnbr_u(unsigned int n, int *len)
 {
 	unsigned int	power;

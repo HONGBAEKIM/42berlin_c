@@ -12,6 +12,10 @@
 
 #include "ft_printf.h"
 
+/*
+len++;
+if there is error return -1
+*/
 int	ft_putchar(char c, int *len)
 {
 	*len = *len + 1;

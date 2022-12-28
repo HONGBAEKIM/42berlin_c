@@ -12,6 +12,9 @@
 
 #include "ft_printf.h"
 
+/*
+when Errors occur, return -1
+*/
 int	conditions(const char *per_next, va_list *a, int *len)
 {
 	int	ret;
@@ -34,6 +37,11 @@ int	conditions(const char *per_next, va_list *a, int *len)
 	return (ret);
 }
 
+/*
+if '%' is found, send next text address
+if '%' is not found, len++;
+if error is -1, return error 
+*/
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;

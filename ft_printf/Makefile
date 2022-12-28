@@ -18,12 +18,13 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
-# $@ name of the target being generated
-# $^ Full list of target
+# $@ $(NAME)
+# $^ $(OBJS)
 
 %.o: %.c
 	$(CC) -c $< -o $@
-# $< the first prerequiste (usually a source file)
+# $< %.c
+# $@ %.o
 
 clean:
 	$(RM) $(OBJS)

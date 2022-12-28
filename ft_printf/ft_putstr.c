@@ -12,20 +12,24 @@
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *s, int *len)
+/*
+if there is error, return -1
+if there is no error, return 0; 
+*/
+int	ft_putstr(char *str, int *len)
 {
 	long unsigned int	i;
 	int					ret;
 
 	ret = 0;
 	i = 0;
-	if (s == 0)
+	if (!str)
 		ft_putstr("(null)", len);
 	else
 	{
-		while (s[i])
+		while (str[i])
 		{
-			ret = ft_putchar(s[i], len);
+			ret = ft_putchar(str[i], len);
 			if (ret < 0)
 				return (ret);
 			i++;
