@@ -12,8 +12,10 @@
 
 #include "libft.h"
 
-//Returns the memory address that copied the string
-//(a pointer pointing to the address of the copied string)
+/*
+Returns the memory address that copied the string
+(a pointer pointing to the address of the copied string)
+*/
 char	*ft_strdup(const char *str)
 {
 	int		i;
