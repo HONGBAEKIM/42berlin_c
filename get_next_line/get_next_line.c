@@ -9,11 +9,10 @@
 /*   Updated: 2023/01/05 12:45:31 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
 
 #include "get_next_line.h"
 
-/* char	*read_save_all(int fd, char *static_buffer)
+char	*read_save_all(int fd, char *static_buffer)
 {
 	char	*buffer;
 	int		size;
@@ -79,9 +78,6 @@ char	*fixed_line(char *static_buffer)
 		line[i] = static_buffer[i];
 		i++;
 	}
-	printf("7.i is : %d\n", i);
-	printf("7.line : %s\n", line);
-	printf("7.static_buffer : %s\n", static_buffer);
 	// add '\0' in next line
 	line[i] = '\0';
 	printf("8.i is : %d\n", i);
@@ -150,7 +146,7 @@ int	main(void)
 
 	linenumber = 1;
 	fd = open("test.txt", O_RDONLY);
-	while (linenumber < 3)
+	while (linenumber < 5)
 	{
 		line = get_next_line(fd);
 		printf("@line %d: %s", linenumber, line);
@@ -158,8 +154,12 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-} */
+}
 
+
+
+
+/* 
 char	*read_save_all(int fd, char *static_buffer)
 {
 	char	*buffer;
@@ -253,3 +253,4 @@ char	*get_next_line(int fd)
 	static_buffer = next_line(static_buffer);
 	return (line);
 }
+ */

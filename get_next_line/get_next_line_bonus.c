@@ -94,7 +94,7 @@ char	*next_line(char *static_buffer)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*static_buffer[10240];
+	static char	*static_buffer[4096];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
@@ -104,4 +104,22 @@ char	*get_next_line(int fd)
 	line = oneline(static_buffer[fd]);
 	static_buffer[fd] = next_line(static_buffer[fd]);
 	return (line);
+}
+
+int	main(void)
+{
+	char	*line;
+	int		linenumber;
+	int		fd;
+
+	linenumber = 1;
+	fd = open("test.txt", O_RDONLY);
+	while (linenumber < 5)
+	{
+		line = get_next_line(fd);
+		printf("@line %d: %s", linenumber, line);
+		linenumber++;
+	}
+	close(fd);
+	return (0);
 }

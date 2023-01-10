@@ -18,6 +18,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
 char	*read_save_all(int fd, char *static_buffer);
 char	*oneline(char *static_buffer);
 char	*next_line(char *static_buffer);
