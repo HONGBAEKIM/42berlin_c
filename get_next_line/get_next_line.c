@@ -25,18 +25,18 @@ char	*read_save_all(int fd, char *static_buffer)
 	{
 		//read fd up to BUFFER_SIZE and save into buffer
 		size = read(fd, buffer, BUFFER_SIZE);
-		printf("1.size : %d\n", size);
-		printf("1.buffer : %s\n", buffer);
-		printf("1.static_buffer : %s\n", static_buffer);
+		printf("1.size : %d\n", size); 
+		printf("1.buffer : %s\n", buffer); 
+		printf("1.static_buffer : %s\n", static_buffer); 
 		if (size == -1)
 		{
-			free(static_buffer); //I don't know why it is here actually
+			free(static_buffer);
 			free(buffer);
 			return (NULL);
 		}
-		buffer[size] = '\0'; //added '\0' end of lines  
+		buffer[size] = '\0'; //added '\0' end of lines
 		static_buffer = ft_strjoin(static_buffer, buffer);
-		printf("2.buffer : %s\n", buffer);
+		printf("2.buffer : %s\n", buffer); return
 		printf("2.static_buffer : %s\n", static_buffer);
 	}
 	free(buffer);
@@ -54,15 +54,15 @@ char	*fixed_line(char *static_buffer)
 	while (static_buffer[i] && static_buffer[i] != '\n')
 		i++;
 	printf("4.i : %d\n", i);
-	// why put number of 2 in (i + 2)
-	// 1 for end of line '/0'     and another 1 for first '\0' of next line 
+	// why put number of 2 in (i + 2) ??
+	// 1 for '/n'     another 1 for '\0' 
 	line = (char *)malloc(sizeof(char) * (i + 2)); 
 	if (!line)
 		return (NULL);
 	i = 0;
 	printf("5.line : %s\n", line);
 	printf("5.static_buffer : %s\n", static_buffer);
-	// line == how\0
+	// line == how
 	while (static_buffer[i] && static_buffer[i] != '\n')
 	{
 		line[i] = static_buffer[i];
@@ -72,7 +72,7 @@ char	*fixed_line(char *static_buffer)
 	printf("6.line : %s\n", line);
 	printf("6.static_buffer : %s\n", static_buffer);
 	// change line here
-	// line == how\0 and nextline \0
+	// line == how'\n'
 	if (static_buffer[i] == '\n')
 	{
 		line[i] = static_buffer[i];
@@ -140,12 +140,16 @@ char	*get_next_line(int fd)
 
 int	main(void)
 {
+	//Let's check one by one
+	//cc get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=3 ; ./a.out
 	char	*line;
 	int		linenumber;
 	int		fd;
 
 	linenumber = 1;
 	fd = open("test.txt", O_RDONLY);
+	// prinft("%d\n", fd) ------- return 3
+	// cuz fd starts at 3
 	while (linenumber < 5)
 	{
 		line = get_next_line(fd);
@@ -155,9 +159,6 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-
-
-
 
 /* 
 char	*read_save_all(int fd, char *static_buffer)
