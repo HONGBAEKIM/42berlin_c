@@ -36,8 +36,9 @@ char	*read_save_all(int fd, char *static_buffer)
 		}
 		buffer[size] = '\0'; //added '\0' end of lines
 		static_buffer = ft_strjoin(static_buffer, buffer);
-		printf("2.buffer : %s\n", buffer); return
+		printf("2.buffer : %s\n", buffer);
 		printf("2.static_buffer : %s\n", static_buffer);
+		printf("2.ft_strlen(static_buffer) : %zu\n", (ft_strlen(static_buffer)));
 	}
 	free(buffer);
 	return (static_buffer);
@@ -71,17 +72,21 @@ char	*fixed_line(char *static_buffer)
 	printf("6.i is : %d\n", i);
 	printf("6.line : %s\n", line);
 	printf("6.static_buffer : %s\n", static_buffer);
-	// change line here
+	// change line herehow
 	// line == how'\n'
 	if (static_buffer[i] == '\n')
 	{
 		line[i] = static_buffer[i];
 		i++;
 	}
-	// add '\0' in next line
+	printf("7.i is : %d\n", i);
+	printf("7.line : %s", line);
+	printf("7.static_buffer : %s\n", static_buffer);
+	// add '\0'
+	// without ling[i] = '\0'; it still works
 	line[i] = '\0';
 	printf("8.i is : %d\n", i);
-	printf("8.line : %s\n", line);
+	printf("8.line : %s", line);
 	printf("8.static_buffer : %s\n", static_buffer);
 	return (line);
 }
@@ -102,6 +107,7 @@ char	*next_line(char *static_buffer)
 		return (NULL);
 	}
 	nextline = malloc(sizeof(char) * (ft_strlen(static_buffer) - i + 1));
+	printf("10.ft_strlen(static_buffer) : %zu\n", (ft_strlen(static_buffer)));
 	printf("10.nextline : %s\n", nextline);
 	printf("10.static_buffer : %s\n", static_buffer);
 	if (!nextline)
@@ -115,6 +121,8 @@ char	*next_line(char *static_buffer)
 	printf("12.j is : %d\n", j);
 	printf("12.nextline : %s\n", nextline);
 	printf("12.static_buffer : %s\n", static_buffer);
+	// add '\0'
+	// without nextline[j] = '\0'; it still works
 	nextline[j] = '\0';
 	free(static_buffer);
 	return (nextline);
