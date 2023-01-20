@@ -43,6 +43,13 @@ char	*read_save_all(int fd, char *static_buffer)
 	free(buffer);
 	return (static_buffer);
 }
+ar\0
+how
+ar\n e\n
+you
+man
+
+
 
 char	*fixed_line(char *static_buffer)
 {
@@ -80,16 +87,23 @@ char	*fixed_line(char *static_buffer)
 		i++;
 	}
 	printf("7.i is : %d\n", i);
-	printf("7.line : %s", line);
+	printf("7.line : %s\n", line);
 	printf("7.static_buffer : %s\n", static_buffer);
 	// add '\0'
 	// without ling[i] = '\0'; it still works
 	line[i] = '\0';
 	printf("8.i is : %d\n", i);
-	printf("8.line : %s", line);
+	printf("8.line : %s\n", line);
 	printf("8.static_buffer : %s\n", static_buffer);
 	return (line);
 }
+
+STATIC BUFFER
+\0
+LINE
+you\0
+NEXT LINE
+\0
 
 char	*next_line(char *static_buffer)
 {
@@ -168,8 +182,8 @@ int	main(void)
 	return (0);
 }
 
-/* 
-char	*read_save_all(int fd, char *static_buffer)
+
+/* char	*read_save_all(int fd, char *static_buffer)
 {
 	char	*buffer;
 	int		size;
@@ -236,7 +250,7 @@ char	*next_line(char *static_buffer)
 		free(static_buffer);
 		return (NULL);
 	}
-	nextline = malloc(sizeof(char) * (ft_strlen(static_buffer) - i + 1));
+	nextline = malloc(sizeof(char) * (BUFFER_SIZE));
 	if (!nextline)
 		return (NULL);
 	i++;
@@ -261,5 +275,4 @@ char	*get_next_line(int fd)
 	line = oneline(static_buffer);
 	static_buffer = next_line(static_buffer);
 	return (line);
-}
- */
+} */

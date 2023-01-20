@@ -94,7 +94,7 @@ char	*next_line(char *static_buffer)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*static_buffer[4096];
+	static char	*static_buffer[4000096];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
@@ -105,7 +105,7 @@ char	*get_next_line(int fd)
 	static_buffer[fd] = next_line(static_buffer[fd]);
 	return (line);
 }
-
+/*
 int	main(void)
 {
 	char	*line;
@@ -122,4 +122,4 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-}
+}*/
