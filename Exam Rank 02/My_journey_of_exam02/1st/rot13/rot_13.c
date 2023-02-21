@@ -1,5 +1,5 @@
-/*
-Assignment name  : rot_13
+
+/* Assignment name  : rot_13
 Expected files   : rot_13.c
 Allowed functions: write
 --------------------------------------------------------------------------------
@@ -26,8 +26,7 @@ $
 $>
 $>./rot_13 "" | cat -e
 $
-$>
-*/
+$> */
 
 #include <unistd.h>
 
@@ -54,6 +53,3 @@ int main(int ac, char **av)
     }
     write (1, "\n", 1);
 }
-
-
-
