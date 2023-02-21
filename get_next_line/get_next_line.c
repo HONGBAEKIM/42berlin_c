@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*read_save_all(int fd, char *static_buffer)
+/* char	*read_save_all(int fd, char *static_buffer)
 {
 	char	*buffer;
 	int		size;
@@ -43,11 +43,7 @@ char	*read_save_all(int fd, char *static_buffer)
 	free(buffer);
 	return (static_buffer);
 }
-ar\0
-how
-ar\n e\n
-you
-man
+
 
 
 
@@ -98,12 +94,6 @@ char	*fixed_line(char *static_buffer)
 	return (line);
 }
 
-STATIC BUFFER
-\0
-LINE
-you\0
-NEXT LINE
-\0
 
 char	*next_line(char *static_buffer)
 {
@@ -180,10 +170,10 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-}
+} */
 
 
-/* char	*read_save_all(int fd, char *static_buffer)
+char	*read_save_all(int fd, char *static_buffer)
 {
 	char	*buffer;
 	int		size;
@@ -275,4 +265,24 @@ char	*get_next_line(int fd)
 	line = oneline(static_buffer);
 	static_buffer = next_line(static_buffer);
 	return (line);
-} */
+}
+
+int	main(void)
+{
+	char	*line;
+	int		linenumber;
+	int		fd;
+
+	linenumber = 1;
+	fd = open("test.txt", O_RDONLY);
+	// prinft("%d\n", fd) ------- return 3
+	// cuz fd starts at 3
+	while (linenumber < 10)
+	{
+		line = get_next_line(fd);
+		printf("@line %d: %s", linenumber, line);
+		linenumber++;
+	}
+	close(fd);
+	return (0);
+}
