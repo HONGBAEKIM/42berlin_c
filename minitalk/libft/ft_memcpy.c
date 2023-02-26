@@ -1,62 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 18:05:12 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/08 18:05:13 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/07 11:39:14 by hongbaki          #+#    #+#             */
+/*   Updated: 2022/12/07 11:39:16 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-src < dest : copy direction is from back
-src < dest : copy direction is from front 
+memcpy doesn't care dest or src size 
 */
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t				i;
 	unsigned char		*d;
 	unsigned const char	*s;
+	size_t				i;
 
-	if (!dest || !src)
-		return (0);
-	i = 0;
 	d = dest;
 	s = src;
-	if (s < d)
+	i = 0;
+	if (!dest && !src)
+		return (0);
+	while (i < n)
 	{
-		while (n--)
-			d[n] = s[n];
-	}
-	else
-	{
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		d[i] = s[i];
+		i++;
 	}
 	return (dest);
 }
 /*
 int main(void)
 {
-	char    src1[] = "hijklmn";
-	char    dest1[] = "abcdefg";
-	
-	ft_memmove(dest1, src1, 5);
-	printf("%s\n", dest1);
+    char    src[] = "hijklmn";
+    char    dest[] = "abcdefg";
+
+    memcpy(dest, src, 5);
+    printf("%s", dest);
+    printf("\n");
+    ft_memcpy(dest, src, 5);
+    printf("%s", dest);
+    printf("\n");
+    return (0);
 }
 */
 /*
-    char    src1[6] = "abcdef";
-    char    *dest1 = src1 + 2;
+hijklmn
+abcdefg
 
-    ft_memmove(dest1, src1, 1);
-    printf("%s\n", dest1);
+hijklfg
 
 */

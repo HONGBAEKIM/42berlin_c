@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 12:25:59 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/01/23 12:26:03 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/09 14:42:49 by hongbaki          #+#    #+#             */
+/*   Updated: 2022/12/09 14:43:25 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
+//Assigning memory space to store as many variables as size as counts
+//initialise the allocated memory space to 0
+//malloc dynamically allocates memory
+//NULL is returned if memory is insufficient
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*tmp;
 
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-# include <unistd.h>
-# include <signal.h>
-
-#endif
+	tmp = malloc(count * size);
+	if (!tmp)
+		return (tmp);
+	ft_bzero(tmp, (count * size));
+	return (tmp);
+}
