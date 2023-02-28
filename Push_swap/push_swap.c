@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 12:25:59 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/01/23 12:26:03 by hongbaki         ###   ########.fr       */
+/*   Created: 2023/01/20 14:16:25 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/01/20 14:16:26 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+//#include "push_swap.h"
 
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-# include <unistd.h>
-# include <signal.h>
+typedef struct s_node
+{
+	int				contect;
+	int				rank;
+	struct	s_node	*next;
+	struct	s_node	*prev;
+}					t_node;
 
-#endif
+typedef struct s_stack
+{
+	int		size;
+	t_node	*head;
+	t_node	*tail;
+}			t_stack;
+
+
+
+
+int	main(int ac, char **av)
+{
+	
+}

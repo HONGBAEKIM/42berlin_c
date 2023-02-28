@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/21 15:58:16 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/21 15:58:17 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/21 15:56:02 by hongbaki          #+#    #+#             */
+/*   Updated: 2022/12/21 15:56:05 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 /*
-if there is error, return -1
-if there is no error, return 0; 
+len++;
+if there is error return -1
 */
-int	ft_putstr(char *str, int *len)
+int	ft_putchar(char c, int *len)
 {
-	long unsigned int	i;
-	int					ret;
-
-	ret = 0;
-	i = 0;
-	if (!str)
-		ft_putstr("(null)", len);
-	else
-	{
-		while (str[i])
-		{
-			ret = ft_putchar(str[i], len);
-			if (ret < 0)
-				return (ret);
-			i++;
-		}
-	}
-	return (ret);
+	*len = *len + 1;
+	return (write(1, &c, 1));
 }

@@ -1,8 +1,8 @@
 CC = cc -Wall -Wextra -Werror
 
-all: server client
+all: push_swap
 
-server: server.o
+push_swap: server.o
 		make -C ft_printf
 		make -C libft
 		$(CC) server.o ft_printf/libftprintf.a libft/libft.a -o server
