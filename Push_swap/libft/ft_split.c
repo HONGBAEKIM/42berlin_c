@@ -95,6 +95,7 @@ char	**ft_split(const char *s, char c)
 	ret[i] = 0;
 	return (ret);
 }
+
 /*
 int main()
 {

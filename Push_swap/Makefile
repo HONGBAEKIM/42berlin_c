@@ -1,26 +1,45 @@
+NAME = push_swap
+# CHECK = checker
+
+SRCS = check.c\
+		etc.c\
+		functions.c\
+		index.c\
+		main.c\
+		radix.c\
+		simple.c\
+		t_list.c\
+
+# CHECK_SRCS = check.c\
+# 		etc.c\
+# 		index.c\
+# 		t_list.c\
+# 		functions.c\
+# 		checker.c\
+
+OBJS = $(SRCS:.c=.o)
+# CHECK_OBJS = $(CHECK_SRCS:.c=.o)
+
 CC = cc -Wall -Wextra -Werror
 
-all: push_swap
+all: $(NAME) #$(CHECK)
 
-push_swap: server.o
-		make -C ft_printf
+$(NAME): $(OBJS)
 		make -C libft
-		$(CC) server.o ft_printf/libftprintf.a libft/libft.a -o server
+		$(CC) $(OBJS) libft/libft.a -o $(NAME)
 
-client: client.o
-		make -C ft_printf
-		make -C libft
-		$(CC) client.o ft_printf/libftprintf.a libft/libft.a -o client
+# $(CHECK): $(CHECK_OBJS)
+# 		$(CC) $(CHECK_OBJS) libft/libft.a -o $(CHECK)
 
 clean:
-		make clean -C ft_printf 
 		make clean -C libft
-		rm -f server.o client.o
+		rm -f $(OBJS)
+#rm -f $(CHECK_OBJS)
 
 fclean: clean
-		make fclean -C ft_printf 
 		make fclean -C libft
-		rm -f server client
+		rm -f $(NAME)
+#rm -f $(CHECK)
 
 re: fclean all
 
