@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # reference
 
 sort3
@@ -28,5 +29,7 @@ static int  get_max_bits(t_list **stack)
 # before git push
 
 https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
+=======
+>>>>>>> refs/remotes/origin/main
 
 
