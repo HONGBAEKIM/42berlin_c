@@ -1,8 +1,5 @@
 # reference
 
-
-
-
 sort3
 ![IMG_9166](https://user-images.githubusercontent.com/25191724/225422713-2753337c-0a9a-4adc-9ce4-6a5434661cee.png)
 sort4
@@ -15,16 +12,17 @@ sort5
 ![IMG_9172](https://user-images.githubusercontent.com/25191724/225422730-fa0c0de0-e853-4b2e-b59f-3c43e43d3df7.png)
 ![IMG_9173](https://user-images.githubusercontent.com/25191724/225422732-0060cccc-22aa-4247-bda7-73ae08541632.png)
 
-
-Function rotate to ra, rb, rr
+int	push(t_list **stack_to, t_list **stack_from)
 ![IMG_9163](https://user-images.githubusercontent.com/25191724/225420501-b614e444-674d-462f-b572-588610e4ca81.png)
 ![IMG_9165](https://user-images.githubusercontent.com/25191724/225421329-aece8604-d251-47f3-bd75-56d2c030a720.png)
 
-Function reverserotate to rra, rrb, rrr
+int	reverserotate(t_list **stack)
 ![IMG_9174](https://user-images.githubusercontent.com/25191724/225429028-2682c29e-3abf-44d3-b3b7-8a4b0b1e78b7.png)
 ![IMG_9175](https://user-images.githubusercontent.com/25191724/225429031-0dab5e8f-28ac-4e51-b995-e9f9a8f23268.png)
 
-
+static int  get_max_bits(t_list **stack)
+![IMG_9176](https://user-images.githubusercontent.com/25191724/225447099-93ea3fa9-9715-4ae8-89f8-44f1e6570f9e.png)
+![IMG_9177](https://user-images.githubusercontent.com/25191724/225447102-eab550b7-8cfd-4485-bb46-0eadeecb984e.png)
 
 
 # before git push
