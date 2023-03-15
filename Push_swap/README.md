@@ -20,6 +20,12 @@ Function rotate to ra, rb, rr
 ![IMG_9163](https://user-images.githubusercontent.com/25191724/225420501-b614e444-674d-462f-b572-588610e4ca81.png)
 ![IMG_9165](https://user-images.githubusercontent.com/25191724/225421329-aece8604-d251-47f3-bd75-56d2c030a720.png)
 
+Function reverserotate to rra, rrb, rrr
+![IMG_9174](https://user-images.githubusercontent.com/25191724/225429028-2682c29e-3abf-44d3-b3b7-8a4b0b1e78b7.png)
+![IMG_9175](https://user-images.githubusercontent.com/25191724/225429031-0dab5e8f-28ac-4e51-b995-e9f9a8f23268.png)
+
+
+
 
 # before git push
 
