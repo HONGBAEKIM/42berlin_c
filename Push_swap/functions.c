@@ -73,13 +73,13 @@ int	push(t_list **stack_to, t_list **stack_from)
 	tmp = head_from;
 	head_from = head_from->next;
 	*stack_from = head_from;
-	if (!head_to)
+	if (!head_to) 
 	{
 		head_to = tmp;
 		head_to->next = NULL;
 		*stack_to = head_to;
 	}
-	else
+	else 
 	{
 		tmp->next = head_to;
 		*stack_to = tmp;
@@ -116,9 +116,9 @@ int rotate(t_list **stack)
         return (-1);
     head = *stack;
     tail = ft_lstlast(head);
-    *stack = head->next;
-    head->next = NULL;
     tail->next = head;
+	*stack = head->next;
+    head->next = NULL;
     return (0);
 }
 
@@ -198,3 +198,40 @@ int rrr(t_list **stack_a, t_list **stack_b)
 	ft_putendl_fd("rrr", 1);
 	return (0);
 }
+
+/* int	push(t_list **stack_to, t_list **stack_from)
+{
+	t_list	*tmp;
+	t_list	*head_to;
+	t_list	*head_from;
+
+	if (ft_lstsize(*stack_from) == 0)
+		return (-1);
+	head_to = *stack_to;
+	head_from = *stack_from;
+	ft_printf("0.head_from %d\n",head_from);
+	ft_printf("0.*stack_from %d\n",*stack_from);
+	tmp = head_from;
+	head_from = head_from->next;
+	ft_printf("1.head_from %d\n",head_from);
+	ft_printf("1.tmp %d\n",tmp);
+	ft_printf("1.*stack_from %d\n",*stack_from);
+	*stack_from = head_from;
+	ft_printf("2.head_from %d\n",head_from);
+	ft_printf("2.*stack_from %d\n",*stack_from);
+	ft_printf("2.head_to %d\n",head_to);
+	if (!head_to) //pb
+	{
+		head_to = tmp;
+		ft_printf("3.head_to %d\n",head_to);
+		head_to->next = NULL;
+		*stack_to = head_to;
+	}
+	else //pa
+	{
+		tmp->next = head_to;
+		ft_printf("4.head_to %d\n",head_to);
+		*stack_to = tmp;
+	}
+	return (0);
+} */

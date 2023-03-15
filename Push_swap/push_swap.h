@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <limits.h>
 
 typedef struct s_list
 {
@@ -34,7 +33,7 @@ void	ft_error(char *msg);
 void	ft_check_args(int ac, char **av);
 int	is_sorted(t_list **stack);
 int get_distance(t_list **stack, int index);
-void	make_top(t_list **stack, int distance);
+//void	make_top(t_list **stack, int distance);
 void	free_stack(t_list **stack);
 long long	ft_atoll(char *s);
 void    ft_free(char **str);

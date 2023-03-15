@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-/* typedef struct s_list
-{
-	int	value;
-	int	index;
-	struct	s_list	*next;
-}					t_list; */
-
 static void	initstack(t_list **stack, int ac, char **av)
 {
 	t_list	*new;
@@ -65,12 +58,6 @@ int	main(int ac, char **av)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	initstack(stack_a, ac, av);
-	if (is_sorted(stack_a))
-	{
-		free_stack(stack_a);
-		free_stack(stack_b);
-		return (0);
-	}
 	sort_stack(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);

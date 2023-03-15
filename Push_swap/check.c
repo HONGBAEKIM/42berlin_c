@@ -46,7 +46,7 @@ int	ft_overflow(char *args)
 	long long	tmp;
 
 	tmp = ft_atoll(args);
-	if (tmp >= INT_MIN && tmp <= INT_MAX)
+	if (tmp >= -2147483648 && tmp <= 2147483647)
 		return (1);
 	return (0);
 }
