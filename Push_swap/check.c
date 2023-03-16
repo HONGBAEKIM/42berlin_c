@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	ft_contains(int	num, char **av, int	i)
+static int	ft_contains(int num, char **av, int i)
 {
 	i++;
 	while (av[i])
@@ -23,7 +23,6 @@ static int	ft_contains(int	num, char **av, int	i)
 	}
 	return (0);
 }
-
 
 static int	ft_isnum(char *num)
 {
@@ -53,9 +52,9 @@ int	ft_overflow(char *args)
 
 void	ft_check_args(int ac, char **av)
 {
-	int	i;
+	int		i;
 	long	tmp;
-	char **args;
+	char	**args;
 
 	i = 0;
 	if (ac == 2)

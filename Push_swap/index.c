@@ -16,7 +16,7 @@ static t_list	*get_next_min(t_list **stack)
 {
 	t_list	*head;
 	t_list	*min;
-	int	flag;
+	int		flag;
 
 	min = 0;
 	flag = 0;
@@ -39,7 +39,7 @@ static t_list	*get_next_min(t_list **stack)
 void	index_stack(t_list **stack)
 {
 	t_list	*head;
-	int	index;
+	int		index;
 
 	index = 0;
 	head = get_next_min(stack);
@@ -49,7 +49,6 @@ void	index_stack(t_list **stack)
 		head = get_next_min(stack);
 	}
 }
-
 
 /* static t_list	*get_next_min(t_list **stack)
 {

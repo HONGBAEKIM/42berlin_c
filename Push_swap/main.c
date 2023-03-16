@@ -16,7 +16,7 @@ static void	initstack(t_list **stack, int ac, char **av)
 {
 	t_list	*new;
 	char	**args;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (ac == 2)
@@ -32,7 +32,7 @@ static void	initstack(t_list **stack, int ac, char **av)
 		ft_lstadd_back(stack, new);
 		i++;
 	}
-    index_stack(stack);
+	index_stack(stack);
 	if (ac == 2)
 		ft_free(args);
 }
@@ -40,7 +40,7 @@ static void	initstack(t_list **stack, int ac, char **av)
 static void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) <= 5)
-		simple_sort(stack_a, stack_b);
+		simple_sort_1(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
 }

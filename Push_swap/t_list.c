@@ -87,7 +87,7 @@ int	ft_lstsize(t_list *head)
 
 void	printlist(t_list *head)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = head;
 	while (tmp != NULL)

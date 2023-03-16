@@ -20,7 +20,7 @@ void	ft_error(char *msg)
 
 void	ft_free(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -44,10 +44,10 @@ int	is_sorted(t_list **stack)
 	return (1);
 }
 
-int get_distance(t_list **stack, int index)
+int	get_distance(t_list **stack, int index)
 {
-	t_list  *head;
-	int distance;
+	t_list	*head;
+	int		distance;
 
 	distance = 0;
 	head = *stack;
@@ -61,27 +61,6 @@ int get_distance(t_list **stack, int index)
 	return (distance);
 }
 
-/* void	make_top(t_list **stack, int distance)
-{
-	t_list	*head;
-	int	tmp;
-
-	if (distance == 0)
-		return ;
-	head = *stack;
-	tmp = ft_lstsize(head) - distance;
-	if (distance <= (ft_lstsize(head) / 2))
-	{
-		while (distance-- > 0)
-			ra(stack);
-	}
-	else
-	{
-		while (tmp-- > 0)
-			rra(stack);
-	}
-} */
-
 long long	ft_atoll(char *s)
 {
 	int					i;
@@ -91,8 +70,8 @@ long long	ft_atoll(char *s)
 	i = 0;
 	ret = 0;
 	neg = 1;
-	while (s[i] == '\t' || s[i] == '\n' || s[i] == '\r' || s[i] == '\v' ||\
-		s[i] == '\f' || s[i] == ' ')
+	while (s[i] == '\t' || s[i] == '\n' || s[i] == '\r' || s[i] == '\v' || \
+			s[i] == '\f' || s[i] == ' ')
 		i++;
 	if (s[i] == '-')
 		neg = -1;
@@ -142,4 +121,3 @@ int get_distance(t_list **stack, int index)
 	}
 	return (distance);
 } */
-
