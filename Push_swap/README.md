@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # reference
 
 sort3
@@ -23,12 +22,13 @@ int	reverserotate(t_list **stack)
 
 static int  get_max_bits(t_list **stack)
 ![IMG_9176](https://user-images.githubusercontent.com/25191724/225447099-93ea3fa9-9715-4ae8-89f8-44f1e6570f9e.png)
-![IMG_9185](/nfs/homes/hongbaki/Desktop/berlin42_student_hongbaki/IMG_9185.png)
+![IMG_9185](../Desktop/berlin42_student_hongbaki/Push_swap/IMG_9185.png)
+
+
 
 # before git push
 
 https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
-=======
->>>>>>> refs/remotes/origin/main
+
 
 
