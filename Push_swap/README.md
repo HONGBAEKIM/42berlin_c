@@ -22,8 +22,11 @@ int	reverserotate(t_list **stack)
 
 static int  get_max_bits(t_list **stack)
 ![IMG_9176](https://user-images.githubusercontent.com/25191724/225447099-93ea3fa9-9715-4ae8-89f8-44f1e6570f9e.png)
-![IMG_9185](../Push_swap/IMG_9185.png)
+![IMG_9185](https://user-images.githubusercontent.com/25191724/225589925-87c0c989-c9e6-4cb9-a7dc-545d98739ba4.png)
 
+void    radix_sort(t_list **stack_a, t_list **stack_b)
+![IMG_9186](https://user-images.githubusercontent.com/25191724/225589990-68ac9499-c170-4fd7-be41-62b01e7d6f10.png)
+![IMG_9187](https://user-images.githubusercontent.com/25191724/225590003-c4b5e670-9294-4f76-abdb-e19942d97440.png)
 
 
 # before git push
