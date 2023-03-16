@@ -3,12 +3,16 @@ NAME = push_swap
 
 SRCS = check.c\
 		etc.c\
-		functions.c\
 		index.c\
-		main.c\
+		push_swap.c\
 		radix.c\
 		simple.c\
+		simple2.c\
 		t_list.c\
+		functions_push.c\
+		functions_swap.c\
+		functions_rotate.c\
+		functions_reverserotate.c\
 
 # CHECK_SRCS = check.c\
 # 		etc.c\
