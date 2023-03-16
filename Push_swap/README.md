@@ -23,8 +23,6 @@ int	reverserotate(t_list **stack)
 
 static int  get_max_bits(t_list **stack)
 ![IMG_9176](https://user-images.githubusercontent.com/25191724/225447099-93ea3fa9-9715-4ae8-89f8-44f1e6570f9e.png)
-![IMG_9177](https://user-images.githubusercontent.com/25191724/225447102-eab550b7-8cfd-4485-bb46-0eadeecb984e.png)
-
 
 # before git push
 
