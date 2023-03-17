@@ -21,40 +21,22 @@ typedef struct s_list
 	int				index;
 	struct s_list	*next;
 }					t_list;
-/* static int	ft_contains(int num, char **av, int i);
-static int	ft_isnum(char *num);
-long long	ft_atoll(char *s);
-int			ft_overflow(char *args);*/
-void		ft_check_args(int ac, char **av);
 
+void		ft_check_args(int ac, char **av);
 void		ft_error(char *msg);
 void		ft_free(char **str);
 int			is_sorted(t_list **stack);
 void		free_stack(t_list **stack);
-
-//static t_list	*get_next_min(t_list **stack);
 void		index_stack(t_list **stack);
 t_list		*ft_lstnew(int value);
 t_list		*ft_lstlast(t_list *head);
 int			ft_lstsize(t_list *head);
 void		ft_lstadd_front(t_list **stack, t_list *new);
 void		ft_lstadd_back(t_list **stack, t_list *new);
-
-//static void	initstack(t_list **stack, int ac, char **av);
-//static void	sort_stack(t_list **stack_a, t_list **stack_b);
-
-//static int	get_max_bits(t_list **stack);
 void		radix_sort(t_list **stack_a, t_list **stack_b);
-
 int			get_min(t_list **stack, int val);
-//void	sort_3_1(t_list **stack_a);
-//void	sort_3_2(t_list **stack_a);
-//void	sort_4(t_list **stack_a, t_list **stack_b);
-//void		sort_5(t_list **stack_a, t_list **stack_b);
-
 int			get_distance(t_list **stack, int index);
 void		simple_sort(t_list **stack_a, t_list **stack_b);
-
 int			swap(t_list **stack);
 int			sa(t_list **stack_a);
 int			sb(t_list **stack_b);

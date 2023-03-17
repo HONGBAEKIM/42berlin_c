@@ -26,6 +26,8 @@ static int  get_max_bits(t_list **stack)
 
 void    radix_sort(t_list **stack_a, t_list **stack_b)
 ![IMG_9186](https://user-images.githubusercontent.com/25191724/225589990-68ac9499-c170-4fd7-be41-62b01e7d6f10.png)
+
+picture i is changed to be j
 ![IMG_9187](https://user-images.githubusercontent.com/25191724/225590003-c4b5e670-9294-4f76-abdb-e19942d97440.png)
 
 
