@@ -1,4 +1,5 @@
 NAME	:= fdf
+CC		:= cc
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft

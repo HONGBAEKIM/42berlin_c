@@ -23,4 +23,10 @@
 #define WIDTH 256
 #define HEIGHT 256
 
+typedef struct s_coord
+{
+    int x;
+    int y;
+}               t_coord;
+
 #endif
