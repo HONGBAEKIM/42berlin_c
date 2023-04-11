@@ -50,7 +50,6 @@ SRCS = ft_isalpha.c \
 	ft_putnbr.c\
 	ft_putstr.c\
 	ft_strcmp.c\
-	get_next_line.c\
 	ft_atoi_base.c\
 	
 
