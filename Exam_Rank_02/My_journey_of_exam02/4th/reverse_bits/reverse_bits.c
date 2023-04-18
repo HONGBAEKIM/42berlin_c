@@ -60,18 +60,17 @@ void	print_bits(unsigned char octet)
 
     while (i > 0)
     {
-        bit = (octet >> i & 1) + '0';
-        write (1, &bit, 1);
         i--;
+        bit = ((octet >> i) & 1) + '0';
+        write (1, &bit, 1);
+        
     }
 }
 
 
 int	main(void)
 {
-	unsigned char c;
-
-    c = '1';
-    print_bits(2);
+	print_bits(2);
+	printf("\n");
 	print_bits(reverse_bits(2));
 }
