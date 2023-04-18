@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hx_stackongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:29:36 by hongbaki          #+#    #+#             */
 /*   Updated: 2023/03/07 14:29:37 by hongbaki         ###   ########.fr       */

@@ -21,17 +21,15 @@ static t_list	*get_next_min(t_list **stack)
 	min = 0;
 	flag = 0;
 	head = *stack;
-	if (head)
+	while (head)
 	{
-		while (head)
+		//-1 was initialized in ft_lstnew
+		if ((head->index == -1) && (flag == 0 || head->value < min->value))
 		{
-			if ((head->index == -1) && (flag == 0 || head->value < min->value))
-			{
-				min = head;
-				flag = 1;
-			}
-			head = head->next;
+			min = head;
+			flag = 1;
 		}
+		head = head->next;
 	}
 	return (min);
 }
@@ -41,8 +39,10 @@ void	index_stack(t_list **stack)
 	t_list	*head;
 	int		index;
 
+	//below 2 lines for when index is 0
 	index = 0;
 	head = get_next_min(stack);
+	//after initializing first index using while loof to initialize index by 1 increment. 
 	while (head)
 	{
 		head->index = index++;
