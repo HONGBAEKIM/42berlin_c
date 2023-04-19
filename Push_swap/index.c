@@ -39,13 +39,21 @@ void	index_stack(t_list **stack)
 	t_list	*head;
 	int		index;
 
-	//below 2 lines for when index is 0
+	//below 2 lines is initialized what is head 
 	index = 0;
 	head = get_next_min(stack);
-	//after initializing first index using while loof to initialize index by 1 increment. 
+	//after initializing head, using while loof to initialize index from 0 and increment by 1.
+	/*
+	ex) if I put 5, -1, 1
+	  then printf("1. %d\n", head->index); is going to be
+		1. 0
+		1. 1
+		1. 2
+	*/ 
 	while (head)
 	{
 		head->index = index++;
+		//printf("1. %d\n", head->index);
 		head = get_next_min(stack);
 	}
 }
