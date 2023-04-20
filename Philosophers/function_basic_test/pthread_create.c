@@ -33,9 +33,10 @@ int main(void)
   }
 
   p_function((void *)p2);
+  //p_function((void *)p1);
 
-  printf("created thread id: %lx\n", pthread);
-  printf("end\n");
+  //printf("created thread id: %lx\n", pthread);
+  //printf("end\n");
   return 0;
 }
 
@@ -48,11 +49,10 @@ void *p_function(void * data)
   char* thread_name = (char *)data;
   int i = 0;
 
-  while(i < 3)
+  while(i < 2)
   {
     printf("thread name : %s, tid : %x\n", thread_name, (unsigned int)tid);
     i++;
     usleep(1000 * 1000);
   }
 }
-
