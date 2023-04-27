@@ -10,22 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
-
-int	ft_strlen(char *str);
-char	*ft_strchr(char *str, int c);
-char	*ft_strjoin(char *s1, char *s2);
-char	*oneline(char *static_buffer);
-char	*nextline(char *static_buffer);
-char	*read_save_all(int fd, char *static_buffer);
-char	*get_next_line(int fd);
+# include "get_next_line.h"
 
 int	ft_strlen(char *str)
 {
@@ -42,11 +27,14 @@ char	*ft_strchr(char *str, int c)
 	
 	if (!str)
 		return (0);
-	while (str[i])
+	else
 	{
-		if (str[i] == (char) c)
-			return ((char *)str + i);
-		i++;
+		while (str[i])
+		{
+			if (str[i] == (char) c)
+				return ((char *)str + i);
+			i++;
+		}
 	}
 	return (0);
 }
@@ -77,6 +65,30 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
+char	*read_save_all(int fd, char *static_buffer)
+{
+	char	*buffer;
+	int	size = 1;
+	
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	while (!ft_strchr(static_buffer, '\n') && size)
+	{
+		size = read(fd, buffer, BUFFER_SIZE);
+		if (size == -1)
+		{
+			free(static_buffer);
+			free(buffer);
+			return (NULL);
+		}
+		buffer[size] = '\0';
+		static_buffer = ft_strjoin(static_buffer, buffer);
+	}
+	free(buffer);
+	return (static_buffer);
+}
+
 char	*oneline(char *static_buffer)
 {
 	int	i = 0;
@@ -90,7 +102,6 @@ char	*oneline(char *static_buffer)
 	if (!line)
 		return (NULL);
 	i = 0;
-	//i = 0;
 	while (static_buffer[i] && static_buffer[i] != '\n')
 	{
 		line[i] = static_buffer[i];
@@ -116,6 +127,7 @@ char	*nextline(char *static_buffer)
 	if (!static_buffer[i])
 	{
 		//free(static_buffer);
+		//I missed this one sentence. and memory leak happened.
 		return (NULL);
 	}
 	nextline = malloc(sizeof(char) * BUFFER_SIZE);
@@ -123,38 +135,13 @@ char	*nextline(char *static_buffer)
 		return (NULL);
 	i++;
 	while (static_buffer[i])
-	{
-		//nextline[j] = static_buffer[i];
 		nextline[j++] = static_buffer[i++];
-	}
 	nextline[j] = '\0';
 	free(static_buffer);
 	return (nextline);
 }
 
-char	*read_save_all(int fd, char *static_buffer)
-{
-	char	*buffer;
-	int	size = 1;
-	
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	while (!ft_strchr(static_buffer, '\n') && size)
-	{
-		size = read(fd, buffer, BUFFER_SIZE);
-		if (size == -1)
-		{
-			free(static_buffer);
-			free(buffer);
-			return (NULL);
-		}
-		buffer[size] = '\0';
-		static_buffer = ft_strjoin(static_buffer, buffer);
-	}
-	free(buffer);
-	return (static_buffer);
-}
+
 
 char	*get_next_line(int fd)
 {
@@ -179,7 +166,7 @@ int	main()
 	char	*line;
 	
 	fd = open("test.txt", O_RDONLY);
-	while (linenumber < 4)
+	while (linenumber < 8)
 	{
 		line = get_next_line(fd);
 		printf("@line %d : %s", linenumber, line);

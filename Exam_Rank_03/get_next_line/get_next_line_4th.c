@@ -5,27 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/16 13:46:45 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/04/16 13:46:45 by hongbaki         ###   ########.fr       */
+/*   Created: 2023/04/27 10:36:22 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/04/27 10:36:23 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <fcntl.h>
 # include <unistd.h>
-# include <stdio.h>
+# include <fcntl.h>
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
 # endif
 
-int	ft_strlen(char *str);
-char	*ft_strchr(char *str, int c);
-char	*ft_strjoin(char *s1, char *s2);
-char	*oneline(char *static_buffer);
-char	*nextline(char *static_buffer);
-char	*read_save_all(int fd, char *static_buffer);
-char	*get_next_line(int fd);
 
 int	ft_strlen(char *str)
 {
@@ -41,7 +33,7 @@ char	*ft_strchr(char *str, int c)
 	int	i = 0;
 	
 	if (!str)
-		return (0);
+		return (NULL);
 	while (str[i])
 	{
 		if (str[i] == (char) c)
@@ -77,60 +69,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*oneline(char *static_buffer)
-{
-	int	i = 0;
-	char	*line;
 
-	if (!static_buffer[i])
-		return (NULL);
-	while (static_buffer[i] && static_buffer[i] != '\n')
-		i++;
-	line = malloc(sizeof(char) * (i + 2));
-	if (!line)
-		return (NULL);
-	i = 0;
-	//i = 0;
-	while (static_buffer[i] && static_buffer[i] != '\n')
-	{
-		line[i] = static_buffer[i];
-		i++;
-	}
-	if (static_buffer[i] == '\n')
-	{
-		line[i] = static_buffer[i];
-		i++;
-	}
-	line[i] = '\0'; 
-	return (line);
-}
-
-char	*nextline(char *static_buffer)
-{
-	int	i = 0;
-	int	j = 0;
-	char	*nextline;
-
-	while (static_buffer[i] && static_buffer[i] != '\n')
-		i++;
-	if (!static_buffer[i])
-	{
-		//free(static_buffer);
-		return (NULL);
-	}
-	nextline = malloc(sizeof(char) * BUFFER_SIZE);
-	if (!nextline)
-		return (NULL);
-	i++;
-	while (static_buffer[i])
-	{
-		//nextline[j] = static_buffer[i];
-		nextline[j++] = static_buffer[i++];
-	}
-	nextline[j] = '\0';
-	free(static_buffer);
-	return (nextline);
-}
 
 char	*read_save_all(int fd, char *static_buffer)
 {
@@ -156,11 +95,64 @@ char	*read_save_all(int fd, char *static_buffer)
 	return (static_buffer);
 }
 
+char	*oneline(char *static_buffer)
+{
+	int	i = 0;
+	char	*line;
+	
+	if (!static_buffer[i])
+		return (NULL);
+	while (static_buffer[i] && static_buffer[i] != '\n')
+		i++;
+	line = malloc(sizeof(char) * (i + 2));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (static_buffer[i] && static_buffer[i] != '\n')
+	{
+		line[i] = static_buffer[i];
+		i++;
+	}
+	if (static_buffer[i] == '\n')
+	{
+		line[i] = static_buffer[i];
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
+}
+
+char	*nextline(char *static_buffer)
+{
+	int	i = 0;
+	int	j = 0;
+	char	*nextline;
+	
+	
+	while (static_buffer[i] && static_buffer[i] != '\n')
+		i++;
+	if (!static_buffer[i])
+	{
+		free(static_buffer);
+		return (NULL);
+	}
+	nextline = malloc(sizeof(char) * BUFFER_SIZE);
+	if (!nextline)
+		return (NULL);
+	i++;
+	while (static_buffer[i])
+		nextline[j++] = static_buffer[i++];
+	nextline[j] = '\0';
+	//nextline[i] = '\0';
+	free(static_buffer);
+	return (nextline);
+}
+
 char	*get_next_line(int fd)
 {
-	char		*line;
 	static char	*static_buffer;
-	
+	char		*line;
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	static_buffer = read_save_all(fd, static_buffer);
@@ -171,22 +163,23 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
+/*
+#include <stdio.h>
 
 int	main()
 {
-	int	linenumber = 1;
-	int	fd;
 	char	*line;
-	
+	int	fd;
+	int	ln = 1;
+
 	fd = open("test.txt", O_RDONLY);
-	while (linenumber < 4)
+	while (ln < 10)
 	{
 		line = get_next_line(fd);
-		printf("@line %d : %s", linenumber, line);
+		printf("@line %d : %s", ln, line);
 		free(line);
-		linenumber++;
-	}
+		ln++;
+	}	
 	close(fd);
 	return (0);
-}
-
+}*/
