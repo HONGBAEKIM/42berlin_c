@@ -18,7 +18,7 @@ void	*monitor(void *data_pointer)
 
 	philo = (t_philo *) data_pointer;
 	pthread_mutex_lock(&philo->data->write);
-	printf("data val: %d", philo->data->dead);
+	printf("data val: %d\n", philo->data->dead);
 	pthread_mutex_unlock(&philo->data->write);
 	while (philo->data->dead == 0)
 	{
@@ -39,7 +39,7 @@ void	*supervisor(void *philo_pointer)
 	{
 		pthread_mutex_lock(&philo->lock);
 		if (get_time() >= philo->time_to_die && philo->eating == 0)
-			messages(DIED, philo);
+			messages(IS_DIED, philo);
 		if (philo->eat_cont == philo->data->num_meals)
 		{
 			pthread_mutex_lock(&philo->data->lock);
@@ -63,7 +63,7 @@ void	*routine(void *philo_pointer)
 	while (philo->data->dead == 0)
 	{
 		eat(philo);
-		messages(THINKING, philo);
+		messages(IS_THINKING, philo);
 	}
 	if (pthread_join(philo->t1, NULL))
 		return ((void *)1);
@@ -79,20 +79,20 @@ int	thread_init(t_data *data)
 	if (data->num_meals > 0)
 	{
 		if (pthread_create(&t0, NULL, &monitor, &data->philos[0]))
-			return (error(TH_ERR, data));
+			return (error(CREATING_THREADS_ERROR, data));
 	}
 	i = -1;
 	while (++i < data->num_philo)
 	{
 		if (pthread_create(&data->tid[i], NULL, &routine, &data->philos[i]))
-			return (error(TH_ERR, data));
+			return (error(CREATING_THREADS_ERROR, data));
 		ft_usleep(1);
 	}
 	i = -1;
 	while (++i < data->num_philo)
 	{
 		if (pthread_join(data->tid[i], NULL))
-			return (error(JOIN_ERR, data));
+			return (error(JOINING_THREADS_ERROR, data));
 	}
 	return (0);
 }

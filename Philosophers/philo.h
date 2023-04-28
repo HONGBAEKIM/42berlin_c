@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
-//# include <stdbool.h>
+# ifndef PHILO_H
+#  define PHILO_H
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -25,19 +25,13 @@
 # define ALLOCATING_THREADS_IDS_ERROR "ALLOCATING THREADS IDS ERROR"
 # define ALLOCATING_FORKS_ERROR "ALLOCATING FORKS ERROR"
 # define ALLOCATING_PHILOS_ERROR "ALLOCATING PHILOS ERROR"
-
-//	pthread_err
-# define TH_ERR "ERROR WHILE CREATING THREADS"
-# define JOIN_ERR "ERROR WHILE JOINING THREADS"
-# define INIT_ERR_1 "ERROR WHILE INIT FORKS"
-//	time_err
-# define TIME_ERR "UNABLE TO RETRIVE UTC"
-//	philo_msg
-# define TAKE_FORKS "has taken a fork"
-# define THINKING "is thinking"
-# define SLEEPING "is sleeping"
-# define EATING "is eating"
-# define DIED "died"
+# define CREATING_THREADS_ERROR "CREATING THREADS ERROR"
+# define JOINING_THREADS_ERROR "JOINING THREADS ERROR"
+# define HAS_TAKEN_A_FORK "has taken a fork"
+# define IS_THINKING "is thinking"
+# define IS_SLEEPING "is sleeping"
+# define IS_EATING "is eating"
+# define IS_DIED "is died"
 
 typedef struct s_philo
 {
@@ -71,27 +65,17 @@ typedef struct s_data
 	pthread_mutex_t	write;
 }	t_data;
 
-//	utils
 int			ft_atoi(const char *str);
 int			error(char *str, t_data *data);
 int			ft_strcmp(char *s1, char *s2);
 void		messages(char *str, t_philo *philo);
 void		ft_exit(t_data *data);
-
-//	time
 unsigned int	get_time(void);
 int			ft_usleep(useconds_t time);
-
-//	init
 int			init(t_data *data, char **av, int ac);
 int			thread_init(t_data *data);
-
-//	checker
 int			check_input_is_number(char **av);
-
-//	actions
 void		eat(t_philo *philo);
-
-//	threads
 void		*routine(void *philo_pointer);
-#endif
+
+# endif

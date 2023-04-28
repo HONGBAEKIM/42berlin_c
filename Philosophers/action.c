@@ -30,7 +30,7 @@ void	messages(char *str, t_philo *philo)
 
 	pthread_mutex_lock(&philo->data->write);
 	time = get_time() - philo->data->start_time;
-	if (ft_strcmp(DIED, str) == 0 && philo->data->dead == 0)
+	if (ft_strcmp(IS_DIED, str) == 0 && philo->data->dead == 0)
 	{
 		printf("%u %d %s\n", time, philo->id, str);
 		philo->data->dead = 1;
@@ -43,16 +43,16 @@ void	messages(char *str, t_philo *philo)
 void	take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->rightfork);
-	messages(TAKE_FORKS, philo);
+	messages(HAS_TAKEN_A_FORK, philo);
 	pthread_mutex_lock(philo->leftfork);
-	messages(TAKE_FORKS, philo);
+	messages(HAS_TAKEN_A_FORK, philo);
 }
 
 void	drop_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->leftfork);
 	pthread_mutex_unlock(philo->rightfork);
-	messages(SLEEPING, philo);
+	messages(IS_SLEEPING, philo);
 	ft_usleep(philo->data->time_sleep);
 }
 
@@ -62,7 +62,7 @@ void	eat(t_philo *philo)
 	pthread_mutex_lock(&philo->lock);
 	philo->eating = 1;
 	philo->time_to_die = get_time() + philo->data->time_die;
-	messages(EATING, philo);
+	messages(IS_EATING, philo);
 	philo->eat_cont++;
 	ft_usleep(philo->data->time_eat);
 	philo->eating = 0;
