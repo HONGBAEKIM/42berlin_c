@@ -16,7 +16,7 @@ int	case_one(t_data *data)
 {
 	data->start_time = get_time();
 	if (pthread_create(&data->tid[0], NULL, &routine, &data->philos[0]))
-		return (error(CREATING_THREADS_ERROR, data));
+		return (ft_error(CREATING_THREADS_ERROR, data));
 	pthread_detach(data->tid[0]);
 	while (data->dead == 0)
 		ft_usleep(0);
@@ -49,12 +49,12 @@ void	ft_exit(t_data *data)
 	clear_data(data);
 }
 
-int	error(char *str, t_data *data)
+int	ft_error(char *str, t_data *data)
 {
 	printf("%s\n", str);
 	if (data)
 		ft_exit(data);
-	return (1);
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -62,15 +62,15 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	if (ac < 5 || 6 < ac)
-		return (1);
+		return (0);
 	if (check_input_is_number(av))
-		return (1);
+		return (0);
 	if (init(&data, av, ac))
-		return (1);
+		return (0);
 	if (data.num_philo == 1)
 		return (case_one(&data));
 	if (thread_init(&data))
-		return (1);
+		return (0);
 	ft_exit(&data);
 	return (0);
 }

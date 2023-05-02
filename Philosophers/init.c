@@ -16,13 +16,13 @@ int	alloc(t_data *data)
 {
 	data->tid = malloc(sizeof(pthread_t) * data->num_philo);
 	if (!data->tid)
-		return (error(ALLOCATING_THREADS_IDS_ERROR, data));
+		return (ft_error(ALLOCATING_THREADS_IDS_ERROR, data));
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philo);
 	if (!data->forks)
-		return (error(ALLOCATING_FORKS_ERROR, data));
+		return (ft_error(ALLOCATING_FORKS_ERROR, data));
 	data->philos = malloc(sizeof(t_philo) * data->num_philo);
 	if (!data->philos)
-		return (error(ALLOCATING_PHILOS_ERROR, data));
+		return (ft_error(ALLOCATING_PHILOS_ERROR, data));
 	return (0);
 }
 
@@ -76,7 +76,7 @@ int	init_data(t_data *data, char **av, int ac)
 		data->num_meals = -1;
 	if (data->num_philo <= 0 || 200 < data->num_philo 
 		|| data->time_die < 0 || data->time_eat < 0 || data->time_sleep < 0)
-		return (error(INPUT_IS_OUT_OF_RANGE, NULL));
+		return (ft_error(INPUT_IS_OUT_OF_RANGE, NULL));
 	data->dead = 0;
 	data->finished = 0;
 	pthread_mutex_init(&data->write, NULL);//check later

@@ -46,12 +46,12 @@ int	check_input_is_number(char **av)
 		j = -1;
 		while (av[i][++j])
 			if ((av[i][j] < '0' || av[i][j] > '9'))
-				return (error(INPUT_IS_NOT_A_INTEGER, NULL));
+				return (ft_error(INPUT_IS_NOT_A_INTEGER, NULL));
 	}
 	return (0);
 }
 
-int	ft_usleep(useconds_t time)
+int	ft_usleep(unsigned int time)
 {
 	unsigned int	start;
 

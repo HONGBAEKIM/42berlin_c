@@ -19,18 +19,17 @@ unsigned int	get_time(void)
 {
 	struct timeval	tv;
 
-	if (gettimeofday(&tv, NULL))
-		return (error("gettimeofday() FAILURE\n", NULL));
+	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * (unsigned int)1000) + (tv.tv_usec / 1000));
 }
 
 void	messages(char *str, t_philo *philo)
 {
-	int	time;
+	unsigned int	time;
 
 	pthread_mutex_lock(&philo->data->write);
 	time = get_time() - philo->data->start_time;
-	if (ft_strcmp(IS_DIED, str) == 0 && philo->data->dead == 0)
+	if (ft_strcmp(DIED, str) == 0 && philo->data->dead == 0)
 	{
 		printf("%u %d %s\n", time, philo->id, str);
 		philo->data->dead = 1;
@@ -43,9 +42,9 @@ void	messages(char *str, t_philo *philo)
 void	take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->rightfork);
-	messages(HAS_TAKEN_A_FORK, philo);
+	messages(HAS_TAKEN_RIGHT_FORK, philo);
 	pthread_mutex_lock(philo->leftfork);
-	messages(HAS_TAKEN_A_FORK, philo);
+	messages(HAS_TAKEN_LEFT_FORK, philo);
 }
 
 void	drop_forks(t_philo *philo)
