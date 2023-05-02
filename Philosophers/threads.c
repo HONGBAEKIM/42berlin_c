@@ -17,16 +17,16 @@ void	*monitor(void *data_pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *) data_pointer;
-	pthread_mutex_lock(&philo->data->write);
+	//pthread_mutex_lock(&philo->data->write);
 	printf("philo->data->dead: %d\n", philo->data->dead);
-	pthread_mutex_unlock(&philo->data->write);
+	//pthread_mutex_unlock(&philo->data->write);
 	while (philo->data->dead == 0)
 	{
-		pthread_mutex_lock(&philo->lock);
-		printf("0. %d\n", philo->data->finished);
+		//pthread_mutex_lock(&philo->lock);
+		//printf("0.checking %d\n", philo->data->finished);
 		if (philo->data->finished >= philo->data->num_philo)
 			philo->data->dead = 1;
-		pthread_mutex_unlock(&philo->lock);
+		//pthread_mutex_unlock(&philo->lock);
 	}
 	return (0);
 }
