@@ -36,7 +36,7 @@
 typedef struct s_philo
 {
 	struct s_data	*data;
-	pthread_t		t1;//fist thread name
+	pthread_t		t1;//fist thread's ID
 	int				id;
 	int				eat_cont;
 	int				status;
@@ -52,14 +52,14 @@ typedef struct s_data
 	
 	t_philo			*philos;
 	int				num_philo;//av[1] The number of philosophers and also the number of forks
-	unsigned int	time_die;//av[2] If a philosopher didn’t start eating time_to_die, they die
+	unsigned int	time_die;//av[2] The time a philosopher must fast to die
 	unsigned int	time_eat;//av[3] The time it takes for a philos to eat
 	unsigned int	time_sleep;//av[4] The time a philos will spend sleeping
 	int				num_meals;//av[5]  If all philos have eaten at least num_meals, simulation stops
 	int				dead;
-	int				finished;
+	int				finished;//when (av[5] == philo->eat_cont)  finished++;
 	unsigned int	start_time;
-	pthread_t		*tid;//pthread id
+	pthread_t		*tid;//pthread's ID
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	write;

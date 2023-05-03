@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	alloc(t_data *data)
+int	ft_alloc(t_data *data)
 {
 	data->tid = malloc(sizeof(pthread_t) * data->num_philo);
 	if (!data->tid)
@@ -79,8 +79,8 @@ int	init_data(t_data *data, char **av, int ac)
 		return (ft_error(INPUT_IS_OUT_OF_RANGE, NULL));
 	data->dead = 0;
 	data->finished = 0;
-	pthread_mutex_init(&data->write, NULL);//check later
-	pthread_mutex_init(&data->lock, NULL);//check later
+	pthread_mutex_init(&data->write, NULL);
+	pthread_mutex_init(&data->lock, NULL);
 	return (0);
 }
 
@@ -88,7 +88,7 @@ int	init(t_data *data, char **av, int ac)
 {
 	if (init_data(data, av, ac))
 		return (1);
-	if (alloc(data))
+	if (ft_alloc(data))
 		return (1);
 	if (init_forks(data))
 		return (1);

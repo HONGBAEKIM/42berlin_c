@@ -12,9 +12,6 @@
 
 #include "philo.h"
 
-//to bring current time
-//tv_sec is seconds
-//tv_usec is microseconds
 unsigned int	get_time(void)
 {
 	struct timeval	tv;
@@ -68,3 +65,19 @@ void	eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->lock);
 	drop_forks(philo);
 }
+
+
+/* 
+
+//to bring current time
+//tv_sec is seconds
+//tv_usec is microseconds
+unsigned int	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * (unsigned int)1000) + (tv.tv_usec / 1000));
+} 
+
+*/

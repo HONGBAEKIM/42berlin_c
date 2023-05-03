@@ -24,16 +24,6 @@ int	case_one(t_data *data)
 	return (0);
 }
 
-void	clear_data(t_data *data)
-{
-	if (data->tid)
-		free(data->tid);
-	if (data->forks)
-		free(data->forks);
-	if (data->philos)
-		free(data->philos);
-}
-
 void	ft_exit(t_data *data)
 {
 	int	i;
@@ -46,7 +36,12 @@ void	ft_exit(t_data *data)
 	}
 	pthread_mutex_destroy(&data->write);
 	pthread_mutex_destroy(&data->lock);
-	clear_data(data);
+	if (data->tid)
+		free(data->tid);
+	if (data->forks)
+		free(data->forks);
+	if (data->philos)
+		free(data->philos);
 }
 
 int	ft_error(char *str, t_data *data)
