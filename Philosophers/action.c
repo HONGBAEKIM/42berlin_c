@@ -17,23 +17,23 @@ unsigned int	get_time(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * (unsigned int)1000) + (tv.tv_usec / 1000));
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
 void	messages(char *str, t_philo *philo)
 {
-	unsigned int	time;
+	long long	time;
 
-	pthread_mutex_lock(&philo->data->write);
+	pthread_mutex_lock(&philo->data->print);
 	time = get_time() - philo->data->start_time;
 	if (ft_strcmp(DIED, str) == 0 && philo->data->dead == 0)
 	{
-		printf("%u %d %s\n", time, philo->id, str);
+		printf("%lld %d %s\n", time, philo->id, str);
 		philo->data->dead = 1;
 	}
 	if (!philo->data->dead)
-		printf("%u %d %s\n", time, philo->id, str);
-	pthread_mutex_unlock(&philo->data->write);
+		printf("%lld %d %s\n", time, philo->id, str);
+	pthread_mutex_unlock(&philo->data->print);
 }
 
 void	take_forks(t_philo *philo)
@@ -65,7 +65,6 @@ void	eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->lock);
 	drop_forks(philo);
 }
-
 
 /* 
 

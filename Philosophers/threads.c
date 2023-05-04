@@ -54,7 +54,7 @@ void	*routine(void *philo_pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *) philo_pointer;
-	philo->time_to_die = philo->data->time_die + get_time();
+	philo->time_to_die = get_time() + philo->data->time_die;
 	pthread_create(&philo->t1, NULL, &supervisor, (void *)philo);
 	while (philo->data->dead == 0)
 	{
@@ -81,7 +81,9 @@ int	thread_init(t_data *data)
 	while (++i < data->num_philo)
 	{
 		if (pthread_create(&data->tid[i], NULL, &routine, &data->philos[i]))
+		{
 			return (ft_error(CREATING_THREADS_ERROR, data));
+		}
 		ft_usleep(1);
 	}
 	i = -1;
@@ -92,7 +94,6 @@ int	thread_init(t_data *data)
 	}
 	return (0);
 }
-
 
 /*
 void	*monitor(void *data_pointer)
@@ -158,5 +159,4 @@ void	*routine(void *philo_pointer)
 		return (0);
 	return (0);
 }
-
 */

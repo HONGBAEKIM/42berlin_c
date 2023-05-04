@@ -58,35 +58,36 @@ void	init_philos(t_data *data)
 		data->philos[i].time_to_die = data->time_die;
 		data->philos[i].eat_cont = 0;
 		data->philos[i].eating = 0;
-		data->philos[i].status = 0;
 		pthread_mutex_init(&data->philos[i].lock, NULL);
 		i++;
 	}
 }
 
-int	init_data(t_data *data, char **av, int ac)
+int	init_data(t_data *data, char **av)
 {
 	data->num_philo = (int) ft_atoi(av[1]);
-	data->time_die = (int) ft_atoi(av[2]);
-	data->time_eat = (int) ft_atoi(av[3]);
-	data->time_sleep = (int) ft_atoi(av[4]);
-	if (ac == 6)
+	data->time_die = (unsigned int) ft_atoi(av[2]);
+	data->time_eat = (unsigned int) ft_atoi(av[3]);
+	data->time_sleep = (unsigned int) ft_atoi(av[4]);
+	if (av[5])
 		data->num_meals = (int) ft_atoi(av[5]);
 	else
 		data->num_meals = -1;
-	if (data->num_philo <= 0 || 200 < data->num_philo 
-		|| data->time_die < 0 || data->time_eat < 0 || data->time_sleep < 0)
-		return (ft_error(INPUT_IS_OUT_OF_RANGE, NULL));
 	data->dead = 0;
 	data->finished = 0;
-	pthread_mutex_init(&data->write, NULL);
+	pthread_mutex_init(&data->print, NULL);
 	pthread_mutex_init(&data->lock, NULL);
 	return (0);
 }
 
-int	init(t_data *data, char **av, int ac)
+int	init(t_data *data, char **av)
 {
-	if (init_data(data, av, ac))
+	if (ft_av_check(av))
+	{
+		ft_error(INPUT_IS_OUT_OF_RANGE, NULL);
+		return (1);
+	}
+	if (init_data(data, av))
 		return (1);
 	if (ft_alloc(data))
 		return (1);
@@ -95,3 +96,30 @@ int	init(t_data *data, char **av, int ac)
 	init_philos(data);
 	return (0);
 }
+
+/* if (data->num_philo <= 0 || 200 < data->num_philo 
+		|| data->time_die < 0 || data->time_eat < 0 || 
+		data->time_sleep < 0 || data->num_meals <= 0)
+	
+		
+void	ft_av_check(char **str)
+{
+	int	a;
+	int	b;
+	int	c;
+	int	d;
+	int	e;
+
+	a = ft_atoi(str[1]);
+	b = ft_atoi(str[2]);
+	c = ft_atoi(str[3]);
+	d = ft_atoi(str[4]);
+	if (str[5])
+		e = ft_atoi(str[5]);
+	else
+		e = 1;
+	if (a <= 0 || b <= 0 || c <= 0 || d <= 0 || e <= 0)
+		ft_error(INPUT_IS_OUT_OF_RANGE, NULL);
+}
+
+ */

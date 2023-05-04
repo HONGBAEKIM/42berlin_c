@@ -46,7 +46,7 @@ int	check_input_is_number(char **av)
 		j = -1;
 		while (av[i][++j])
 			if ((av[i][j] < '0' || av[i][j] > '9'))
-				return (ft_error(INPUT_IS_NOT_A_INTEGER, NULL));
+				return (1);
 	}
 	return (0);
 }
@@ -71,6 +71,26 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
+int	ft_av_check(char **str)
+{
+	int	a;
+	int	b;
+	int	c;
+	int	d;
+	int	e;
+
+	a = ft_atoi(str[1]);
+	b = ft_atoi(str[2]);
+	c = ft_atoi(str[3]);
+	d = ft_atoi(str[4]);
+	if (str[5])
+		e = ft_atoi(str[5]);
+	else
+		e = 1;
+	if (a <= 0 || b <= 0 || c <= 0 || d <= 0 || e <= 0)
+		return (1);
+	return (0);
+}
 
 /* 
 int	input_checker(char **av)

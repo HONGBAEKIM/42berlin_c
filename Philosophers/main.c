@@ -34,7 +34,7 @@ void	ft_exit(t_data *data)
 		pthread_mutex_destroy(&data->forks[i]);
 		pthread_mutex_destroy(&data->philos[i].lock);
 	}
-	pthread_mutex_destroy(&data->write);
+	pthread_mutex_destroy(&data->print);
 	pthread_mutex_destroy(&data->lock);
 	if (data->tid)
 		free(data->tid);
@@ -57,15 +57,49 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	if (ac < 5 || 6 < ac)
-		return (0);
+	{
+		ft_error(ARGC_IS_LESS_THAN_5_MORE_THAN_6, NULL);
+		return (1);
+	}
 	if (check_input_is_number(av))
-		return (0);
-	if (init(&data, av, ac))
-		return (0);
+	{
+		ft_error(INPUT_IS_NOT_A_POSITIVE_INTEGER, NULL);
+		return (1);
+	}
+	if (init(&data, av))
+		return (1);
 	if (data.num_philo == 1)
 		return (case_one(&data));
 	if (thread_init(&data))
-		return (0);
+		return (1);
 	ft_exit(&data);
 	return (0);
 }
+
+/* int	main(int ac, char **av)
+{
+	t_data	data;
+
+	//printf("0. Hey\n");
+	if (ac < 5 || 6 < ac)
+	{
+		ft_error(ARGC_IS_LESS_THAN_5_AND_MORE_THAN_6, NULL);
+		return (0);
+	}
+	//printf("1. Hey\n");
+	if (check_input_is_number(av))
+		return (0);
+	//printf("2. Hey\n");
+	if (init(&data, av))
+		return (1);
+	//printf("3. Hey\n");
+	if (data.num_philo == 1)
+		return (case_one(&data));
+	//printf("4. Hey\n");
+	if (thread_init(&data))
+		return (0);
+	//printf("5. Hey\n");
+	ft_exit(&data);
+	//printf("6. Hey\n");
+	return (0);
+} */

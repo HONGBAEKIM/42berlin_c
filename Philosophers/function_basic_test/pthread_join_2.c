@@ -44,18 +44,17 @@ int main()
         perror("thread create error : ");
         exit(0);
     } 
-    //pthread_detach(p_thread1);
-    //pthread_detach(p_thread2);
-    pthread_join(p_thread1, 0);
-    pthread_join(p_thread2, 0);
+    pthread_detach(p_thread1);
+    pthread_detach(p_thread2);
+    //pthread_join(p_thread1, 0);
+    //pthread_join(p_thread2, 0);
 
     int s = 0;
     while (s < 12)
-{
-    printf("takes %d second\n", s++);
-    usleep(1000 * 1000);
-}
-
+    {
+        printf("takes %d second\n", s++);
+        usleep(1000 * 1000);
+    }
     printf("exit main() \n");
     return 0;
 }
