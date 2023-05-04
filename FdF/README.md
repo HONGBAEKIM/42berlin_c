@@ -1,6 +1,12 @@
+# Evaluations
+![IMG_0051](https://user-images.githubusercontent.com/25191724/236207855-fe758f76-86a9-4f8c-854f-42c85348ac1a.png)
+![IMG_0052](https://user-images.githubusercontent.com/25191724/236207867-f6487f48-66e0-4986-9a21-ef1dacc19226.png)
+
+
 # with mlx42 (not MiniLibX)
 
 https://github.com/codam-coding-college/MLX42/blob/master/docs/index.md
+
 https://github.com/codam-coding-college/MLX42/blob/master/docs/Basics.md
 
 # Memory leak problems will be ignored regarding to the pic below
