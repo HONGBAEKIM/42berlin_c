@@ -14,13 +14,16 @@
 
 int	case_one(t_data *data)
 {
+
 	data->start_time = get_time();
 	if (pthread_create(&data->tid[0], NULL, &routine, &data->philos[0]))
 		return (ft_error(CREATING_THREADS_ERROR, data));
 	pthread_detach(data->tid[0]);
 	while (data->dead == 0)
-		ft_usleep(0);
+		ft_usleep(1);
+	//pthread_join(data->tid[0], NULL);
 	ft_exit(data);
+	
 	return (0);
 }
 
@@ -31,16 +34,16 @@ void	ft_exit(t_data *data)
 	i = -1;
 	while (++i < data->num_philo)
 	{
-		pthread_mutex_destroy(&data->forks[i]);
-		pthread_mutex_destroy(&data->philos[i].lock);
+		pthread_mutex_destroy(&data->forks[i]);//
+		pthread_mutex_destroy(&data->philos[i].lock);//
 	}
-	pthread_mutex_destroy(&data->print);
-	pthread_mutex_destroy(&data->lock);
-	if (data->tid)
+	pthread_mutex_destroy(&data->print);//
+	pthread_mutex_destroy(&data->lock);//
+	if (data->tid)//
 		free(data->tid);
-	if (data->forks)
+	if (data->forks)//
 		free(data->forks);
-	if (data->philos)
+	if (data->philos)//
 		free(data->philos);
 }
 
@@ -49,29 +52,44 @@ int	ft_error(char *str, t_data *data)
 	printf("%s\n", str);
 	if (data)
 		ft_exit(data);
-	return (0);
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
 	t_data	data;
 
+	printf("XXX-0-XXX\n");
+
 	if (ac < 5 || 6 < ac)
 	{
 		ft_error(ARGC_IS_LESS_THAN_5_MORE_THAN_6, NULL);
+		printf("XXX-1-XXX\n");
 		return (1);
 	}
 	if (check_input_is_number(av))
 	{
 		ft_error(INPUT_IS_NOT_A_POSITIVE_INTEGER, NULL);
+		printf("XXX-2-XXX\n");
 		return (1);
 	}
 	if (init(&data, av))
+	{
+		printf("XXX-3-XXX\n");
 		return (1);
+	}
 	if (data.num_philo == 1)
-		return (case_one(&data));
-	if (thread_init(&data))
+	{
+		printf("XXX-4-XXX\n");
+		case_one(&data);
 		return (1);
+	}
+	if (thread_init(&data))
+	{
+		printf("XXX-5-XXX\n");
+		return (1);
+	}
+	printf("XXX-6-XXX\n");
 	ft_exit(&data);
 	return (0);
 }

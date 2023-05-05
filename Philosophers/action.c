@@ -16,15 +16,16 @@ unsigned int	get_time(void)
 {
 	struct timeval	tv;
 
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+	if (gettimeofday(&tv, NULL))
+		return (ft_error("gettimeofday() FAILURE\n", NULL));
+	return ((tv.tv_sec * (unsigned int)1000) + (tv.tv_usec / 1000));
 }
 
 void	messages(char *str, t_philo *philo)
 {
 	long long	time;
 
-	pthread_mutex_lock(&philo->data->print);
+	pthread_mutex_lock(&philo->data->print);//
 	time = get_time() - philo->data->start_time;
 	if (ft_strcmp(DIED, str) == 0 && philo->data->dead == 0)
 	{
@@ -33,21 +34,21 @@ void	messages(char *str, t_philo *philo)
 	}
 	if (!philo->data->dead)
 		printf("%lld %d %s\n", time, philo->id, str);
-	pthread_mutex_unlock(&philo->data->print);
+	pthread_mutex_unlock(&philo->data->print);//
 }
 
 void	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->rightfork);
+	pthread_mutex_lock(philo->rightfork);//
 	messages(HAS_TAKEN_RIGHT_FORK, philo);
-	pthread_mutex_lock(philo->leftfork);
+	pthread_mutex_lock(philo->leftfork);//
 	messages(HAS_TAKEN_LEFT_FORK, philo);
 }
 
 void	drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->leftfork);
-	pthread_mutex_unlock(philo->rightfork);
+	pthread_mutex_unlock(philo->leftfork);//
+	pthread_mutex_unlock(philo->rightfork);//
 	messages(IS_SLEEPING, philo);
 	ft_usleep(philo->data->time_sleep);
 }
@@ -55,14 +56,14 @@ void	drop_forks(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	take_forks(philo);
-	pthread_mutex_lock(&philo->lock);
+	pthread_mutex_lock(&philo->lock);//
 	philo->eating = 1;
 	philo->time_to_die = get_time() + philo->data->time_die;
 	messages(IS_EATING, philo);
 	philo->eat_cont++;
 	ft_usleep(philo->data->time_eat);
 	philo->eating = 0;
-	pthread_mutex_unlock(&philo->lock);
+	pthread_mutex_unlock(&philo->lock);//
 	drop_forks(philo);
 }
 
