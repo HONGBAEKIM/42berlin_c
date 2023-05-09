@@ -22,5 +22,7 @@ I just realized I did not git push for 5 times of exam 03....
 At least I know now I am happy!! Good luck.
 I am going to be expert of get_next_line and printf!!
 
-6th 
+6th 100%
+get_next_line
 
+![IMG_8871](https://user-images.githubusercontent.com/25191724/237047419-62b9bdaa-739c-4367-9f29-1c0c26a973ef.jpg)
