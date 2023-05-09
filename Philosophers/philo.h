@@ -49,7 +49,7 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	t_philo			*philos;//
+	t_philo			*philos;
 	int				num_philo;
 	unsigned int	time_die;
 	unsigned int	time_eat;
@@ -58,8 +58,8 @@ typedef struct s_data
 	int				dead;
 	int				finished;
 	unsigned int	start_time;
-	pthread_t		*tid;//
-	pthread_mutex_t	*forks;//
+	pthread_t		*tid;
+	pthread_mutex_t	*forks;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	print;
 }	t_data;
