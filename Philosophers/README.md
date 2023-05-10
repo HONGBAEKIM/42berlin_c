@@ -23,14 +23,14 @@ pthread_create
 
 (ex) pthread_create(&philo->t1, NULL, &supervisor, (void *)philo)
 
-    philo->t1: a pointer towards a pthread_t type variable, to store the ID of the philo->t1 we will be creating.
+   philo->t1: a pointer towards a pthread_t type variable, to store the ID of the philo->t1 we will be creating.
     
-    NULL: an argument that allows us to change the default attributes of the new thread. 
+   NULL: an argument that allows us to change the default attributes of the new thread. 
         in general, passing NULL here suffices.
     
-    supervisor: the function where the philo->t1 will start its execution. This function will have as its prototype: void *function_name(void *arg);. When the philo->t1 reaches the end of this function, it will be done with its tasks.
+   supervisor: the function where the philo->t1 will start its execution. This function will have as its prototype: void *function_name(void *arg);. When the philo->t1 reaches the end of this function, it will be done with its tasks.
     
-    philo: a pointer towards an argument to pass to the philo->t1’s start_routine function. If we’d like to pass several parameters to this function, we will need to give it a pointer to a data structure.
+   philo: a pointer towards an argument to pass to the philo->t1’s start_routine function. If we’d like to pass several parameters to this function, we will need to give it a pointer to a data structure.
 
 
 
@@ -39,7 +39,7 @@ pthread_detach
 
 (ex) pthread_detach(data->tid[0])
 
-    Here, all we have to supply if the data->tid[0]’s ID. We get 0 in return if the operation was a success, or non-zero if there was an error. After detaching the thread, other threads will not be able to kill or wait for this thread with pthread_join.
+ Here, all we have to supply if the data->tid[0]’s ID. We get 0 in return if the operation was a success, or non-zero if there was an error. After detaching the thread, other threads will not be able to kill or wait for this thread with pthread_join.
 
 
 pthread_join
@@ -47,9 +47,9 @@ pthread_join
 
 (ex) pthread_join(philo->t1, NULL)
 
-    philo->t1: the ID of the philo->t1 that this thread should wait for. The specified thread must be joinable (meaning not detached – see below).
+  philo->t1: the ID of the philo->t1 that this thread should wait for. The specified thread must be joinable (meaning not detached – see below).
     
-    NULL: a pointer towards a variable that can contain the return value of the thread’s routine function (the start_routine function we supplied at its creation). 
+  NULL: a pointer towards a variable that can contain the return value of the thread’s routine function (the start_routine function we supplied at its creation). 
 
  The pthread_join function returns 0 for success, or an error code for failure.
 
@@ -75,5 +75,10 @@ pthread_mutex_unlock
  A function to protect shared resources using a mutex. When the use of shared resources ends, mutex is returned to allow other threads or processes to access the shared resources.
 
 
+Evaluation
+![Screenshot from 2023-05-10 12-30-38](https://github.com/HONGBAEKIM/berlin42_student_hongbaki/assets/25191724/0e3f2a43-3f20-41b7-8d6c-d5e062bef786)
 
-Evaluation PDF
+![Screenshot from 2023-05-10 12-31-22](https://github.com/HONGBAEKIM/berlin42_student_hongbaki/assets/25191724/382461dd-05b7-4719-8435-3451edc35481)
+
+![Screenshot from 2023-05-10 12-31-33](https://github.com/HONGBAEKIM/berlin42_student_hongbaki/assets/25191724/dd6eaafd-572a-4809-854e-7400e21f5e5b)
+
