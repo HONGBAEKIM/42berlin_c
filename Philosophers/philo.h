@@ -74,7 +74,7 @@ int				init(t_data *data, char **av);
 int				thread_init(t_data *data);
 int				check_input_is_number(char **av);
 void			eat(t_philo *philo);
-void	*supervisor(void *philo_pointer);
+void			*supervisor(void *philo_pointer);
 void			*routine(void *philo_pointer);
 int				ft_av_check(char **str);
 unsigned int	get_time(void);

@@ -54,7 +54,6 @@ void	drop_forks(t_philo *philo)
 	pthread_mutex_unlock(philo->rightfork);
 	messages(IS_SLEEPING, philo);
 	ft_usleep(philo->data->time_sleep);
-
 }
 
 void	eat(t_philo *philo)

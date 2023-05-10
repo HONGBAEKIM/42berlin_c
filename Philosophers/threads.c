@@ -59,7 +59,7 @@ void	*routine(void *philo_pointer)
 	philo = (t_philo *) philo_pointer;
 	philo->time_to_die = get_time() + philo->data->time_die;
 	if (pthread_create(&philo->t1, NULL, &supervisor, (void *)philo))
-		return ((void *)1);	
+		return ((void *)1);
 	while (philo->data->dead == 0)
 	{
 		eat(philo);
@@ -95,7 +95,6 @@ int	thread_init(t_data *data)
 	{
 		if (pthread_join(data->tid[i], NULL) && data->num_philo != 1)
 			return (ft_error(JOINING_THREADS_ERROR, data));
-		
 	}
 	return (0);
 }
