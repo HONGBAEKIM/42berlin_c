@@ -1,10 +1,10 @@
-NAME = philo
+NAME = minishell
 
 SRCS = main.c\
-		action.c\
-		init.c\
-		threads.c\
-		utils.c\
+		#.c\
+		#.c\
+		#.c\
+		#.c\
 
 OBJS = $(SRCS:.c=.o)
 
