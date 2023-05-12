@@ -7,14 +7,18 @@ https://youtube.com/playlist?list=PLxIRFba3rzLzxxZMMbrm_-mkI7mV9G0pj
 1_process ID
 2_parent process ID
 3_Fork
+
+
+Second day
+
 4_Zombie process
 5_wait
 6_execve
-7_getline
-8_strtok
-9_command line arguments
-10_create your own command line arguments
-11_build a responsive, animated, accessible accordion
+
+ref process of minishell
+https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
+
+https://github.com/Swoorup/mysh
 
 
 
