@@ -15,8 +15,13 @@ Second day
 5_wait
 6_execve
 
-ref process of minishell
+Third day
+read - ref process of minishell
 https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
+
+
+
+
 
 https://github.com/Swoorup/mysh
 
