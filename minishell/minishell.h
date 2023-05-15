@@ -13,13 +13,19 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "libft.h"
+//# include "libft.h"
 # include <stdlib.h>//free, malloc
 # include <unistd.h>//read, write
 # include <stdio.h>//printf
-# include
+# include <readline/readline.h>//readline
+# include <readline/history.h>//add_history
+# include <signal.h>//handle_signals
+# include <termios.h>//
+# include <string.h>//
+# include <stdbool.h>//
 
-typedef enum s_tokens
+
+/* typedef enum s_tokens
 {
 	PIPE = 1,
 	GREAT,
@@ -41,9 +47,7 @@ typedef struct s_data
 {
 	
 }	t_data;
-
+ */
 
 
 #endif
-
-//# define INPUT "INPUT"

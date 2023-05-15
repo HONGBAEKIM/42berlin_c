@@ -19,6 +19,9 @@ Third day
 read - ref process of minishell
 https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
 
+readline example
+https://junselee.tistory.com/m/3
+
 
 
 
