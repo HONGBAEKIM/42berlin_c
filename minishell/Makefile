@@ -1,25 +1,26 @@
 NAME = minishell
 
-SRCS = main.c\
-		#.c\
-		#.c\
-		#.c\
-		#.c\
+SRCS = main.c
 
 OBJS = $(SRCS:.c=.o)
 
-CC = cc -Wall -Wextra -Werror #-fsanitize=thread -g
+CC = cc -Wall -Wextra -Werror 
+
+DD = -lreadline
 
 all: $(NAME) 
 
 $(NAME): $(OBJS)
-		$(CC) $(OBJS) -o $(NAME)
+		make -C libft
+		$(CC) $(OBJS) libft/libft.a $(DD) -o $(NAME)
 
 clean:
+		make clean -C libft
 		rm -f $(OBJS)
 
 
 fclean: clean
+		make fclean -C libft
 		rm -f $(NAME)
 
 re: fclean all

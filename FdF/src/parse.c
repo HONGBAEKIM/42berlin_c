@@ -37,7 +37,7 @@ static void	fill_points(t_fdf *fdf, char **array, t_map *map)
 	{
 		if (array[i][0] != '\n')
 		{
-			height = ft_at oi(array[i]);
+			height = ft_atoi(array[i]);
 			if (height > map->highest)
 				map->highest = height;
 			if (height < map->lowest)

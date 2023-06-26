@@ -21,15 +21,15 @@ https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-Writing
 
 readline example
 https://junselee.tistory.com/m/3
-
-
-
-
-
 https://github.com/Swoorup/mysh
 
 
+4th day
 
+https://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
+
+all the functions
+https://techdebt.tistory.com/33
 
 
 

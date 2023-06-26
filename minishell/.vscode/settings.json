@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "history.h": "c",
+        "termios.h": "c"
     }
 }

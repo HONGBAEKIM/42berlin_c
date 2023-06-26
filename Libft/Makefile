@@ -42,7 +42,8 @@ SRCS = ft_isalpha.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
-	ft_lstnew.c \
+
+SRCS_BONUS = ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -54,19 +55,21 @@ SRCS = ft_isalpha.c \
 
 OBJS = $(SRCS:.c=.o)
 
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
 all: $(NAME)
 
 %.o: %.c
 	$(CC) $(CCFLAG) -c $< -o $@
 
-## $< the first prerequiste (usually a source file) 
+## $< the first prerequiste (usually a source file) %.c
 ## $@ name of the target being generated %.o
 ## -c Compile or assemble the source files, but do not link
 ##    The ultimate output is in the form of an object file for each source file
 ## -o the object file for source.suffix in source.o
 
 clean:
-	$(RM) $(OBJS) 
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 	$(RM) ${NAME}
@@ -74,6 +77,12 @@ fclean: clean
 re: fclean all
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAG) $(NAME) $(OBJS)
+	$(AR) $(ARFLAG) $@ $^
 
-.PHONY: all clean fclean re
+## $@ $(NAME)
+## $^ $(OBJS)
+
+bonus: $(OBJS) $(OBJS_BONUS)
+	$(AR) $(ARFLAG) $(NAME) $^
+
+.PHONY: all clean fclean re bonus
