@@ -1,79 +1,91 @@
-NAME = libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
+#    Updated: 2021/05/14 11:03:47 by dda-silv         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC = cc
-CCFLAG = -Wall -Wextra -Werror
+# Name of the program built
+NAME				:=		libft.a
 
-AR = ar
-ARFLAG = crs
+# Name directory
+PATH_SRC			:=		src
+PATH_BUILD			:=		build
 
-RM = rm -f
+# List of sources
+SRCS				:=		$(shell find $(PATH_SRC) -name *.c)
+OBJS				:=		$(SRCS:%.c=$(PATH_BUILD)/%.o)
+DEPS				:=		$(OBJS:.o=.d)
+INC_DIRS			:=		$(shell find $(PATH_SRC) -type d)
 
-SRCS = ft_isalpha.c \
-	ft_isdigit.c \
-	ft_isalnum.c \
-	ft_isascii.c \
-	ft_isprint.c \
-	ft_strlen.c \
-	ft_memset.c \
-	ft_bzero.c \
-	ft_memcpy.c \
-	ft_memmove.c \
-	ft_strlcpy.c \
-	ft_strlcat.c \
-	ft_toupper.c \
-	ft_tolower.c \
-	ft_strchr.c \
-	ft_strrchr.c \
-	ft_strncmp.c \
-	ft_memchr.c \
-	ft_memcmp.c \
-	ft_strnstr.c \
-	ft_atoi.c \
-	ft_calloc.c \
-	ft_strdup.c \
-	ft_substr.c \
-	ft_strjoin.c \
-	ft_strtrim.c \
-	ft_split.c \
-	ft_itoa.c \
-	ft_strmapi.c \
-	ft_striteri.c \
-	ft_putchar_fd.c \
-	ft_putstr_fd.c \
-	ft_putendl_fd.c \
-	ft_putnbr_fd.c \
-	ft_lstnew.c \
-	ft_lstadd_front.c \
-	ft_lstsize.c \
-	ft_lstlast.c \
-	ft_lstadd_back.c \
-	ft_lstdelone.c \
-	ft_lstclear.c \
-	ft_lstiter.c \
-	ft_lstmap.c \
+# Compiler
+CC					:=		gcc
 
-OBJS = $(SRCS:.c=.o)
+# Flags - compilation
+FLAG_WARNING		:=		-Wall -Wextra -Werror
+FLAG_INC			:= 		$(addprefix -I, $(INC_DIRS))
+FLAG_MAKEFILE		:=		-MMD -MP
+FLAG_DEBUG			:= 		-g
+FLAG_OPTIMIZATION	:=		-O3
+FLAGS_COMP			:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE) $(FLAG_DEBUG)
 
-all: $(NAME)
+# Flags - memory leak check
+FLAG_MEM_LEAK		:= 		-fsanitize=address
 
-%.o: %.c
-	$(CC) $(CCFLAG) -c $< -o $@
+# Others commands
+RM					:=		rm -rf
+ARRC				:=		ar rcs
 
-## $< the first prerequiste (usually a source file) 
-## $@ name of the target being generated %.o
-## -c Compile or assemble the source files, but do not link
-##    The ultimate output is in the form of an object file for each source file
-## -o the object file for source.suffix in source.o
+# Color Code and template code
+_YELLOW				:=		\e[38;5;184m
+_GREEN				:=		\e[38;5;46m
+_RESET				:=		\e[0m
+_INFO				:=		[$(_YELLOW)INFO$(_RESET)]
+_SUCCESS			:=		[$(_GREEN)SUCCESS$(_RESET)]
+
+# Functions
+all:						init $(NAME)
+							@ printf "$(_SUCCESS) Compilation done\n"
+
+init:
+							@ printf "$(_INFO) Initialize $(NAME)\n"	
+
+$(NAME):					$(OBJS)
+							@ $(ARRC) $@ $(OBJS)
+
+$(PATH_BUILD)/%.o:			%.c
+							@ mkdir -p $(dir $@)
+							@ $(CC) $(FLAGS_COMP) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) 
+							@ $(RM) -rf $(PATH_BUILD)
+							@ printf "$(_INFO) Deleted files and directory\n"
 
-fclean: clean
-	$(RM) ${NAME}
+fclean:						clean
+							@ $(RM) $(NAME)
 
-re: fclean all
+re:							fclean all
 
-$(NAME): $(OBJS)
-	$(AR) $(ARFLAG) $(NAME) $(OBJS)
+# Debugging functions
 
-.PHONY: all clean fclean re
+debug:						FLAGS_COMP += $(FLAG_MEM_LEAK)
+debug:						re
+
+# Format functions
+
+normH:
+							@ norminette $(shell find $(PATH_SRC) -name *.h)
+
+normC:
+							@ norminette $(SRCS)
+
+norm:						normH normC
+
+.PHONY:						all clean fclean re
+
+-include $(DEPS)

@@ -18,5 +18,7 @@
 int	main(void)
 {
 	ft_printf(" %p %p ", 0, 0);
+	int	a = 5;
+	ft_printf("this is no %d", a);
 	return (0);
 }
