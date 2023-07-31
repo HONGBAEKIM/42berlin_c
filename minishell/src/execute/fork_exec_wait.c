@@ -89,7 +89,14 @@ void	exec_parent(t_list **pids)
 		printf("%s\n", "8.3.7.2.exec_parent");
 		pid = (long)(*pids)->data;
 		printf("%s\n", "8.3.7.3.exec_parent");
+
+		printf("%s\n", "0.here\n");
+		//the parent process forks a child process, 
+		//and then it waits for the child process to complete using waitpid
 		waitpid(pid, &exit_info, 0);
+		
+		printf("%s\n", "1.here\n");
+
 		printf("%s\n", "8.3.7.4.exec_parent");
 		if (WIFEXITED(exit_info))
 		{

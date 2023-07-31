@@ -46,7 +46,7 @@ char	*ft_getenv(char *key)
 			i++;
 			printf("%s\n", "8.4.3.4.0.0.5.ft_getenv");
 			value = ft_strdup(&(curr_envp[i]));
-			printf("value : %s\n", value);
+			//printf("value : %s\n", value);
 			printf("%s\n", "8.4.3.4.0.0.6.ft_getenv");
 			if (!value)
 				quit_program(EXIT_FAILURE);

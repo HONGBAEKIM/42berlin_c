@@ -84,7 +84,7 @@ char	*get_input(t_dlist *input_history, t_termcaps *termcaps)
 		}
 		else if (!ft_strcmp(&buf[i], termcaps->backspace))
 		{
-			printf("%s\n", "2.5.get_input");
+			//printf("%s\n", "2.5.get_input");
 			delete_single_char(termcaps, buf, &i);
 		}
 		else if (nb_char_read > 2 || (nb_char_read == 1 && is_ctrl(buf[i])))

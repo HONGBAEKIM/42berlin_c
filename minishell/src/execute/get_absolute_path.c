@@ -74,20 +74,20 @@ char	**get_path_env_split(void)
 
 	printf("%s\n", "8.4.3.4.0.0.get_path_env_split");
 	path_env = ft_getenv("PATH");
-	printf("path_env : %s\n", path_env);
+	//printf("path_env : %s\n", path_env);
 	printf("%s\n", "8.4.3.4.0.1.get_path_env_split");
 	if (!path_env)
 		return (0);
 	printf("%s\n", "8.4.3.4.0.2.get_path_env_split");
 	path_env_split = ft_split(path_env, ":");
-	printf("0.path_env_split : %s\n", *path_env_split);
+	//printf("0.path_env_split : %s\n", *path_env_split);
 	printf("%s\n", "8.4.3.4.0.3.get_path_env_split");
 	free(path_env);
 	if (!path_env_split)
 		quit_program(EXIT_FAILURE);
 	printf("%s\n", "8.4.3.4.0.4.get_path_env_split");
 	add_slash(&path_env_split);
-	printf("1.path_env_split : %s\n", *path_env_split);
+	//printf("1.path_env_split : %s\n", *path_env_split);
 	printf("%s\n", "8.4.3.4.0.5.get_path_env_split");
 	return (path_env_split);
 }
