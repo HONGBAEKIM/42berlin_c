@@ -12,6 +12,7 @@
 
 #include "redirections_pipes.h"
 
+
 /*
 ** Creates a 2D array of ints where each subarray will represent a pipe, meaning
 ** it will have 2 ints:
@@ -78,72 +79,36 @@ void	set_redirs_pipes(t_list *redirs,
 	int	**pipes;
 	int	nb_cmds;
 
-	printf("%s\n", "8.3.5.4.0.set_redirs_pipes");
+	// printf("%s\n", "8.3.5.4.0.set_redirs_pipes");
 	pipes = cmd_table->pipes;
-	printf("%s\n", "8.3.5.4.1.set_redirs_pipes");
+	// printf("%s\n", "8.3.5.4.1.set_redirs_pipes");
 	nb_cmds = cmd_table->nb_cmds;
-	printf("%s\n", "8.3.5.4.2.set_redirs_pipes");
+	// printf("%s\n", "8.3.5.4.2.set_redirs_pipes");
 	if (open_all_files(redirs) == EXIT_FAILURE)
 	{
-		printf("%s\n", "8.3.5.4.3.set_redirs_pipes");
+		// printf("%s\n", "8.3.5.4.3.set_redirs_pipes");
 		return ;
 	}
-	if (!has_redirs(redirs, "<") && !has_redirs(redirs, "<<")
-		&& process_index != 0)
+	if (!has_redirs(redirs, "<") && (!has_redirs(redirs, "<<")
+		&& process_index != 0))
 	{
-		printf("%s\n", "8.3.5.4.4.set_redirs_pipes");
-		// printf("%s", "> ");
 		dup2(pipes[process_index - 1][0], STDIN_FILENO);
 	}
-	/* else if (!has_redirs(redirs, "<") && process_index != 0)
+	/* if (!has_redirs(redirs, "<<") && process_index != 0)
 	{
-		printf("%s\n", "8.3.5.4.4.set_redirs_pipes");
+		// printf("%s\n", "8.3.5.4.4.set_redirs_pipes");
+		printf("%s","> ");
 		dup2(pipes[process_index - 1][0], STDIN_FILENO);
 	} */
 	if (!has_redirs(redirs, ">") && !has_redirs(redirs, ">>")
 		&& process_index != nb_cmds - 1)
 	{
-		printf("%s\n", "8.3.5.4.5.set_redirs_pipes");
+		// printf("%s\n", "8.3.5.4.5.set_redirs_pipes");
 		dup2(pipes[process_index][1], STDOUT_FILENO);
 	}
-	printf("%s\n", "8.3.5.4.6.set_redirs_pipes");
+	// printf("%s\n", "8.3.5.4.6.set_redirs_pipes");
 	g_msh.exit_status = EXIT_SUCCESS;
-	printf("%s\n", "8.3.5.4.7.set_redirs_pipes");
 }
-
-/* void	set_redirs_pipes(t_list *redirs,
-						t_cmd_table *cmd_table,
-						int process_index)
-{
-	int	**pipes;
-	int	nb_cmds;
-
-	printf("%s\n", "8.3.5.4.0.set_redirs_pipes");
-	pipes = cmd_table->pipes;
-	printf("%s\n", "8.3.5.4.1.set_redirs_pipes");
-	nb_cmds = cmd_table->nb_cmds;
-	printf("%s\n", "8.3.5.4.2.set_redirs_pipes");
-	if (open_all_files(redirs) == EXIT_FAILURE)
-	{
-		printf("%s\n", "8.3.5.4.3.set_redirs_pipes");
-		return ;
-	}
-	if (!has_redirs(redirs, "<") && !has_redirs(redirs, "<<") 
-		&& process_index != 0)
-	{
-		printf("%s\n", "8.3.5.4.4.set_redirs_pipes");
-		dup2(pipes[process_index - 1][0], STDIN_FILENO);
-	}
-	if (!has_redirs(redirs, ">") && !has_redirs(redirs, ">>")
-		&& process_index != nb_cmds - 1)
-	{
-		printf("%s\n", "8.3.5.4.5.set_redirs_pipes");
-		dup2(pipes[process_index][1], STDOUT_FILENO);
-	}
-	printf("%s\n", "8.3.5.4.6.set_redirs_pipes");
-	g_msh.exit_status = EXIT_SUCCESS;
-	printf("%s\n", "8.3.5.4.7.set_redirs_pipes");
-} */
 
 /*
 ** Checks if the redirs linked list has redirections of the specified type
@@ -182,12 +147,44 @@ int	has_redirs(t_list *redirs, char *type)
 **			error
 */
 
+/* char	read_heredoc(char *delimiter)
+{
+	
+	char	*str;
+	char	*tmp;
+	//char	*str_expand_check;
+	char	*whole_str;
+	//t_redir *redir;
+
+	//redir = (t_redir *)redirs->data;
+	whole_str = ft_strdup("");
+	//signal(, sigint_heredoc);
+	while (1)
+	{
+		str = readline("heredoc>");
+		if (!str)
+			break ;
+		if (!ft_strcmp(str, delimiter))// || g_exit == 130)
+		 	break ;
+		//str_expand_check = replace_env_single_token(&str);
+		
+		tmp = ft_strjoin(whole_str, str);
+		free(str);
+		//free(whole_str);
+		whole_str = ft_strjoin(tmp, "\n");
+		free(tmp);
+		//free(str_expand_check);
+	}
+	return (*whole_str);
+}  */
+
 /* void	sigint_heredoc(int sig)
 {
 	(void)sig;
 	ioctl(STDIN_FILENO, TIOCSTI, "\n");
 	quit_program(EXIT_CMD_INTERRUPTED);
 } */
+
 
 int	open_all_files(t_list *redirs)
 {
@@ -198,28 +195,29 @@ int	open_all_files(t_list *redirs)
 	char	*str;
 	char	*whole_str;
 	char	*tmp;
-	
-	//char	*str_expand_check;
-	
-
+	char	*user;
 
 	fd_i = -2;
 	fd_o = -2;
-	printf("%s\n", "8.3.5.4.2.0.open_all_files");
+	//printf("%s\n", "8.3.5.4.2.0.open_all_files");
 	while (redirs)
 	{
-		printf("%s\n", "8.3.5.4.2.1.open_all_files");
+		//printf("%s\n", "8.3.5.4.2.1.open_all_files");
 		redir = (t_redir *)redirs->data;
-		printf("%s\n", "8.3.5.4.2.2.open_all_files");
+		//printf("%s\n", "8.3.5.4.2.2.open_all_files");
 		if (!ft_strcmp(redir->type, "<"))
 		{
-			printf("%s\n", "8.3.5.4.2.3.open_all_files");
+			//printf("%s\n", "8.3.5.4.2.3.open_all_files");
 			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
 		}
 		else if (!ft_strcmp(redir->type, "<<"))
 		{
-			printf("%s\n", "8.3.5.4.2.4.open_all_files");
+			//printf("%s\n", "8.3.5.4.2.4.open_all_files");
+
 			whole_str = ft_strdup("");
+			
+			user = "$USER";
+			
 			while (1)
 			{
 				str = readline("heredoc>");
@@ -232,54 +230,44 @@ int	open_all_files(t_list *redirs)
 					free(str);
 					break;
 				}
+				//change $USER to hongbaki 
+				replace_vars_with_values(&str);
+				
 				tmp = ft_strjoin(whole_str, str);
 				free(str);
-				free(whole_str);
 				whole_str = ft_strjoin(tmp, "\n");
 				free(tmp);
 			}
-			printf("%s\n", whole_str);
 
-			fd_i = open_file(redir, fd_i, O_RDONLY, 0666);
-			printf("1. fd_i : %d\n", fd_i);
-			if (fd_i == -1)
-				write_exec_error(redir->direction, "heredoc can't be created");
-			//redirs->data = str;
-			//printf("%s\n", whole_str);
-			//signal(SIGINT, sigint_heredoc);
-			// if (redir->direction == redirs->data)
+			printf("%s\n", whole_str);
 			
-			// fd_i = open_file(redir, fd_i, O_RDONLY, 0644);
-			// if (fd_i == -1)
-			// 	write_exec_error(redir->direction, "heredoc can't be created");
+			int	new_fd;
+			new_fd = open(name, O_RDONLY, 0);
+			dup2(new_fd, STDIN_FILENO);
+			close(new_fd);
 			
-			/* fd_i = open_file(redir, fd_i, O_RDONLY, 0);
-			printf("1. fd_i : %d\n", fd_i);
-			if (fd_i == -1)
-			 	write_exec_error(redir->direction, "open heredoc failed"); */
 		}
 		else if (!ft_strcmp(redir->type, ">"))
 		{
-			printf("%s\n", "8.3.5.4.2.5.open_all_files");
+			//printf("%s\n", "8.3.5.4.2.5.open_all_files");
 			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 		}
 		else if (!ft_strcmp(redir->type, ">>"))
 		{
-			printf("%s\n", "8.3.5.4.2.6.open_all_files");
+			//printf("%s\n", "8.3.5.4.2.6.open_all_files");
 			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, 0666);
 		}
 		if (fd_i == -1 || fd_o == -1)
 		{
-			printf("%s\n", "8.3.5.4.2.7.open_all_files");
+			//printf("%s\n", "8.3.5.4.2.7.open_all_files");
 			return (EXIT_FAILURE);
 		}
-		printf("%s\n", "8.3.5.4.2.8.open_all_files");
+		//printf("%s\n", "8.3.5.4.2.8.open_all_files");
 		redirs = redirs->next;
 		
 	}
 	return (EXIT_SUCCESS);
 }
-
 
 /*
 ** Opens a single file based on the flags and permissions passed
@@ -303,185 +291,22 @@ int	open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions)
 	char	*file_name;
 	int		new_fd;
 
-	printf("%s\n", "8.3.5.4.2.4.0.open_files");
 	if (prev_fd != -2)
-	{
 		close(prev_fd);
-	}
-	printf("%s\n", "8.3.5.4.2.4.1.open_files");
 	file_name = redir->direction;
-	printf("%s\n", "8.3.5.4.2.4.2.open_files");
 	new_fd = open(file_name, flags, permissions);
-	printf("%s\n", "8.3.5.4.2.4.3.open_files");
 	if (new_fd == -1)
 	{
-		printf("%s\n", "8.3.5.4.2.4.4.open_files");
 		write_msh_exec_error(file_name, strerror(errno));
 		g_msh.exit_status = errno;
 	}
 	else
 	{
-		printf("%s\n", "8.3.5.4.2.4.5.open_files");
 		if (!ft_strcmp(redir->type, "<") || !ft_strcmp(redir->type, "<<"))
-		{
-			printf("%s\n", "8.3.5.4.2.4.6.open_files");
 			dup2(new_fd, STDIN_FILENO);
-		}
 		else if (!ft_strcmp(redir->type, ">") || !ft_strcmp(redir->type, ">>"))
-		{
-			printf("%s\n", "8.3.5.4.2.4.7.open_files");
 			dup2(new_fd, STDOUT_FILENO);
-		}
-		printf("%s\n", "8.3.5.4.2.4.8.open_files");
 		close(new_fd);
 	}
 	return (new_fd);
 }
-/* 
-int	open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions)
-{
-	char	*file_name;
-	int		new_fd;
-
-	if (prev_fd != -2)
-		close(prev_fd);
-	file_name = redir->direction;
-	new_fd = open(file_name, flags, permissions);
-	if (new_fd == -1)
-	{
-		write_msh_exec_error(file_name, strerror(errno));
-		g_msh.exit_status = errno;
-	}
-	else
-	{
-		if (!ft_strcmp(redir->type, "<") || !ft_strcmp(redir->type, "<<"))
-			dup2(new_fd, STDIN_FILENO);
-		else if (!ft_strcmp(redir->type, ">") || !ft_strcmp(redir->type, ">>"))
-			dup2(new_fd, STDOUT_FILENO);
-		close(new_fd);
-	}
-	return (new_fd);
-} */
-
-
-
-/* int	open_all_files(t_list *redirs)
-{
-	int		fd_i;
-	int		fd_o;
-	t_redir	*redir;
-	char	*str = NULL;
-	
-	
-	//char	*str_expand_check;
-	//char	*whole_str;
-
-
-	fd_i = -2;
-	fd_o = -2;
-	printf("%s\n", "8.3.5.4.2.0.open_all_files");
-	while (redirs)
-	{
-		printf("%s\n", "8.3.5.4.2.1.open_all_files");
-		redir = (t_redir *)redirs->data;
-		printf("%s\n", "8.3.5.4.2.2.open_all_files");
-		if (!ft_strcmp(redir->type, "<"))
-		{
-			printf("%s\n", "8.3.5.4.2.3.open_all_files");
-			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
-		}
-		else if (!ft_strcmp(redir->type, "<<"))
-		{
-			printf("%s\n", "8.3.5.4.2.4.open_all_files");
-			//signal(SIGINT, sigint_heredoc);
-			
-			while (1)
-			{
-				
-				char	*line = readline("heredoc>");
-				if (!line)
-					break ;
-				
-				if (str == NULL)
-					str = strdup(line);
-				else
-				{
-					char	*tmp = str;
-					str = malloc(strlen(tmp) + strlen(line) + 2);
-					// +2 for newline and null-terminator
-					//sprintf(str, "%s\n%s", tmp, line);
-					printf("%s\n",str);
-					free(tmp);
-				}
-				free(line);
-			}
-			redirs->data = str;
-			// Save the concatenated heredoc string
-
-
-			//ft_lst_print_s(redirs->data);
-			//free(str);
-			printf("0. fd_i : %d\n", fd_i);	
-			// fd_i = open_file(redir, fd_i, O_CREAT | O_RDWR, 0644);
-			// printf("1. fd_i : %d\n", fd_i);
-			// if (fd_i == -1)
-			// 	write_exec_error(redir->direction, "heredoc can't be created");
-			
-			
-			
-			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
-			if (fd_i == -1)
-				write_exec_error(redir->direction, "open heredoc failed");
-			printf("2. fd_i : %d\n", fd_i);
-			
-			//fd_i = open_file(redir, fd_i, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-
-		}
-		else if (!ft_strcmp(redir->type, ">"))
-		{
-			printf("%s\n", "8.3.5.4.2.5.open_all_files");
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-		}
-		else if (!ft_strcmp(redir->type, ">>"))
-		{
-			printf("%s\n", "8.3.5.4.2.6.open_all_files");
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, 0666);
-		}
-		if (fd_i == -1 || fd_o == -1)
-		{
-			printf("%s\n", "8.3.5.4.2.7.open_all_files");
-			return (EXIT_FAILURE);
-		}
-		printf("%s\n", "8.3.5.4.2.8.open_all_files");
-		redirs = redirs->next;
-	}
-	return (EXIT_SUCCESS);
-} */
-
-
-
-/* int	open_all_files(t_list *redirs)
-{
-	int		fd_i;
-	int		fd_o;
-	t_redir	*redir;
-
-	fd_i = -2;
-	fd_o = -2;
-	while (redirs)
-	{
-		redir = (t_redir *)redirs->data;
-		if (!ft_strcmp(redir->type, "<"))
-			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
-		else if (!ft_strcmp(redir->type, "<<"))
-			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
-		else if (!ft_strcmp(redir->type, ">"))
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-		else if (!ft_strcmp(redir->type, ">>"))
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, 0666);
-		if (fd_i == -1 || fd_o == -1)
-			return (EXIT_FAILURE);
-		redirs = redirs->next;
-	}
-	return (EXIT_SUCCESS);
-} */

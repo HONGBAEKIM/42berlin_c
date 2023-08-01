@@ -101,11 +101,11 @@ int	is_input_valid_not_supported(const char *input, char *err_message)
 	return (check);
 }
 
-/* int	is_input_valid_not_supported(const char *input, char *err_message)
+/*int	is_input_valid_not_supported(const char *input, char *err_message)
 {
 	int		check;
 
-	if (has_non_supported(input, "<<<", err_message)
+	if (has_non_supported(input, "<<", err_message)
 		|| has_non_supported(input, "*", err_message)
 		|| has_non_supported(input, "\\", err_message)
 		|| has_non_supported_one(input, "&", err_message))
@@ -113,8 +113,7 @@ int	is_input_valid_not_supported(const char *input, char *err_message)
 	else
 		check = 1;
 	return (check);
-} */
-
+}*/
 
 /*
 ** Checks if the input has any open quotes (single or double).

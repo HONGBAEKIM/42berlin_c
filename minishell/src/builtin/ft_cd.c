@@ -27,24 +27,24 @@ int	ft_cd(t_list *tokens, t_list **env)
 {
 	char	pwd[MAX_PATH];
 
-	printf("%s\n", "8.3.5.7.5.0.ft_cd");
+	//printf("%s\n", "8.3.5.7.5.0.ft_cd");
 	if (getcwd(pwd, MAX_PATH) == NULL)
 	{
-		printf("%s\n", "8.3.5.7.5.1.ft_cd");
+		//printf("%s\n", "8.3.5.7.5.1.ft_cd");
 		write_msh_exec_error("cd", strerror(errno));
 		return (errno);
 	}
 	if (!has_only_one_cmd())
 	{
-		printf("%s\n", "8.3.5.7.5.2.ft_cd");
+		//printf("%s\n", "8.3.5.7.5.2.ft_cd");
 		return (only_cd_errors(tokens));
 	}
 	else
 	{
-		printf("%s\n", "8.3.5.7.5.3.ft_cd");
+		//printf("%s\n", "8.3.5.7.5.3.ft_cd");
 		return (execute_cd(tokens, env, pwd));
 	}
-	printf("%s\n", "8.3.5.7.5.4.ft_cd");
+	//printf("%s\n", "8.3.5.7.5.4.ft_cd");
 	printf("getcwd : %s\n" ,getcwd(pwd, MAX_PATH));
 }
 
@@ -67,35 +67,35 @@ int	execute_cd(t_list *tokens, t_list **env, char *pwd)
 	char	*arg;
 	int		status;
 
-	printf("%s\n", "8.3.5.7.5.3.0.execute_cd");
+	//printf("%s\n", "8.3.5.7.5.3.0.execute_cd");
 	if (tokens == 0)
 	{
-		printf("%s\n", "8.3.5.7.5.3.1.execute_cd");
+		//printf("%s\n", "8.3.5.7.5.3.1.execute_cd");
 		status = change_dir_home(pwd, env);
 	}
 	else if (tokens->next != 0)
 	{
-		printf("%s\n", "8.3.5.7.5.3.2.execute_cd");
+		//printf("%s\n", "8.3.5.7.5.3.2.execute_cd");
 		status = cd_error_messsage("cd", "too many arguments");
 	}
 	else
 	{
-		printf("%s\n", "8.3.5.7.5.3.3.execute_cd");
+		//printf("%s\n", "8.3.5.7.5.3.3.execute_cd");
 		arg = tokens->data;
-		printf("%s\n", "8.3.5.7.5.3.4.execute_cd");
+		//printf("%s\n", "8.3.5.7.5.3.4.execute_cd");
 		if (!ft_strcmp(arg, "-"))
 		{
-			printf("%s\n", "8.3.5.7.5.3.5.execute_cd");
+			//printf("%s\n", "8.3.5.7.5.3.5.execute_cd");
 			status = change_to_old_dir(pwd, env);
 		}
 		else if (chdir(arg) == EXIT_SUCCESS)
 		{
-			printf("%s\n", "8.3.5.7.5.3.6.execute_cd");
+			//printf("%s\n", "8.3.5.7.5.3.6.execute_cd");
 			status = update_directories(pwd, env);
 		}
 		else
 		{
-			printf("%s\n", "8.3.5.7.5.3.7.execute_cd");
+			//printf("%s\n", "8.3.5.7.5.3.7.execute_cd");
 			status = other_invalid_error("cd", errno, arg);
 		}
 	}
@@ -149,38 +149,38 @@ int	change_dir_home(char *cur_pwd, t_list **env)
 	int		status;
 	char	*home;
 
-	printf("%s\n", "8.3.5.7.5.3.1.0.change_dir_home");
+	//printf("%s\n", "8.3.5.7.5.3.1.0.change_dir_home");
 	home = ft_getenv("HOME");
-	printf("%s\n", "8.3.5.7.5.3.1.1.change_dir_home");
+	//printf("%s\n", "8.3.5.7.5.3.1.1.change_dir_home");
 	if (home == 0)
 	{
-		printf("%s\n", "8.3.5.7.5.3.1.2.change_dir_home");
+		//printf("%s\n", "8.3.5.7.5.3.1.2.change_dir_home");
 		write_msh_exec_error("cd", "HOME not set");
 		status = EXIT_FAILURE;
 	}
 	else if (*home == '\0')
 	{
-		printf("%s\n", "8.3.5.7.5.3.1.3.change_dir_home");
+		//printf("%s\n", "8.3.5.7.5.3.1.3.change_dir_home");
 		status = EXIT_SUCCESS;
 	}
 	else
 	{
 		if (chdir(home) == 0)
 		{
-			printf("%s\n", "8.3.5.7.5.3.1.4.change_dir_home");
+			//printf("%s\n", "8.3.5.7.5.3.1.4.change_dir_home");
 			status = update_directories(cur_pwd, env);
 		}
 		else
 		{
-			printf("%s\n", "8.3.5.7.5.3.1.5.change_dir_home");
+			//printf("%s\n", "8.3.5.7.5.3.1.5.change_dir_home");
 			status = other_invalid_error("cd", errno, home);
 		}
-		printf("%s\n", "8.3.5.7.5.3.1.6.change_dir_home");
+		// printf("%s\n", "8.3.5.7.5.3.1.6.change_dir_home");
 		home = EXIT_SUCCESS;
 	}
 	if (home)
 	{
-		printf("%s\n", "8.3.5.7.5.3.1.7.change_dir_home");
+		//printf("%s\n", "8.3.5.7.5.3.1.7.change_dir_home");
 		free(home);
 	}
 	return (status);

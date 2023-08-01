@@ -47,38 +47,38 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	printf("%s\n", "00.main");
+	// printf("%s\n", "00.main");
 	init_minishell(&g_msh, envp);
-	printf("%s\n", "01.main");
+	// printf("%s\n", "01.main");
 	while (1)
 	{
-		printf("%s\n", "0.main");
+		// printf("%s\n", "0.main");
 		turn_off_canonical_mode(&g_msh.termcaps);
 		//this means pressing Enter is not necessary to execute a command
 
-		printf("%s\n", "1.main"); 
+		// printf("%s\n", "1.main"); 
 		write_prompt();
 		//printf("%s\n", "2.main");
 	 	input = ft_dlstnew((void *)get_input(g_msh.input_history,
 					&g_msh.termcaps));
-		printf("%s\n", "3.main");
+		// printf("%s\n", "3.main");
 		if (!input)
 			quit_program(EXIT_FAILURE);
-		printf("%s\n", "4.main");
+		// printf("%s\n", "4.main");
 		ft_dlstadd_front(&g_msh.input_history, input);
-		printf("%s\n", "5.main");
+		// printf("%s\n", "5.main");
 		if (!is_input_valid((const char *)input->data))
 			continue ;
-		printf("%s\n", "6.main");
+		// printf("%s\n", "6.main");
 		turn_on_canonical_mode(&g_msh.termcaps);
-		printf("%s\n", "7.main");
+		// printf("%s\n", "7.main");
 		
 		g_msh.ast = get_ast((const char *)input->data);
-		printf("%s\n", "8.main");
+		// printf("%s\n", "8.main");
 		exec_ast(g_msh.ast);
-		printf("%s\n", "9.main");
+		// printf("%s\n", "9.main");
 		free_ast(g_msh.ast);
-		printf("%s\n", "10.main");
+		// printf("%s\n", "10.main");
 		g_msh.ast = 0;
 		//printf("%s\n", "11.main");
 		// printf("0.strerror(errno) : %s\n", strerror(errno));

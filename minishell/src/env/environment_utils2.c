@@ -106,36 +106,36 @@ void	increment_shlvl(void)
 	char	*cur_lvl;
 	int		lvl_nbr;
 
-	printf("%s\n", "01.5.0.increment_shlvl");
+	//printf("%s\n", "01.5.0.increment_shlvl");
 	if (is_env_var("SHLVL", g_msh.dup_envp) == 0)
 	{
-		printf("%s\n", "01.5.1.increment_shlvl");
+		//printf("%s\n", "01.5.1.increment_shlvl");
 		create_environment_var("SHLVL=1", &g_msh.dup_envp);
 	}
 	else
 	{
-		printf("%s\n", "01.5.2.increment_shlvl");
+		//printf("%s\n", "01.5.2.increment_shlvl");
 		cur_lvl = ft_getenv("SHLVL");
-		printf("%s\n", "01.5.3.increment_shlvl");
+		//printf("%s\n", "01.5.3.increment_shlvl");
 		lvl_nbr = ft_atoi(cur_lvl);
-		printf("lvl_nbr %d\n", lvl_nbr);
-		printf("%s\n", "01.5.4.increment_shlvl");
+		//printf("lvl_nbr %d\n", lvl_nbr);
+		//printf("%s\n", "01.5.4.increment_shlvl");
 		lvl_nbr++;
-		printf("%s\n", "01.5.5.increment_shlvl");
+		//printf("%s\n", "01.5.5.increment_shlvl");
 		free(cur_lvl);
-		printf("%s\n", "01.5.6.increment_shlvl");
+		//printf("%s\n", "01.5.6.increment_shlvl");
 		cur_lvl = ft_itoa(lvl_nbr);
-		printf("cur_lvl %s\n", cur_lvl);
-		printf("%s\n", "01.5.7.increment_shlvl");
+		//printf("cur_lvl %s\n", cur_lvl);
+		//printf("%s\n", "01.5.7.increment_shlvl");
 		if (cur_lvl == 0)
 		{
-			printf("%s\n", "01.5.8.increment_shlvl");
+			//printf("%s\n", "01.5.8.increment_shlvl");
 			quit_program(EXIT_FAILURE);
 		}
-		printf("%s\n", "01.5.9.increment_shlvl");
+		//printf("%s\n", "01.5.9.increment_shlvl");
 		update_environment_var("SHLVL", cur_lvl, g_msh.dup_envp);
-		printf("%s\n", "01.5.10.increment_shlvl");
+		//printf("%s\n", "01.5.10.increment_shlvl");
 		free(cur_lvl);
-		printf("%s\n", "01.5.11.increment_shlvl");
+		//printf("%s\n", "01.5.11.increment_shlvl");
 	}
 }

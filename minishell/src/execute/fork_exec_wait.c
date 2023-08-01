@@ -81,34 +81,15 @@ void	exec_parent(t_list **pids)
 	long	pid;
 	int		exit_info;
 
-	printf("%s\n", "8.3.7.0.exec_parent");
 	exit_info = 0;
-	printf("%s\n", "8.3.7.1.exec_parent");
 	while (*pids)
 	{
-		printf("%s\n", "8.3.7.2.exec_parent");
 		pid = (long)(*pids)->data;
-		printf("%s\n", "8.3.7.3.exec_parent");
-
-		printf("%s\n", "0.here\n");
-		//the parent process forks a child process, 
-		//and then it waits for the child process to complete using waitpid
 		waitpid(pid, &exit_info, 0);
-		
-		printf("%s\n", "1.here\n");
-
-		printf("%s\n", "8.3.7.4.exec_parent");
 		if (WIFEXITED(exit_info))
-		{
-			printf("%s\n", "8.3.7.5.exec_parent");
 			g_msh.exit_status = WEXITSTATUS(exit_info);
-		}
 		else if (WIFSIGNALED(exit_info))
-		{
-			printf("%s\n", "8.3.7.6.exec_parent");
 			g_msh.exit_status = WTERMSIG(exit_info);
-		}
-		printf("%s\n", "8.3.7.7.exec_parent");
 		ft_lstdel_first(pids, ft_lstdel_int);
 	}
 }

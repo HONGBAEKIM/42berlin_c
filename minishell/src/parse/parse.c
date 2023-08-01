@@ -32,30 +32,30 @@ t_ast	*get_ast(const char *input)
 	t_list	*cmd_table;
 	int		curr_pos;
 
-	printf("%s\n", "7.0.get_ast");
+	// printf("%s\n", "7.0.get_ast");
 	ast = ft_calloc(1, sizeof(t_ast));
-	printf("%s\n", "7.1.get_ast");
+	// printf("%s\n", "7.1.get_ast");
 	if (!ast)
 	{
-		printf("%s\n", "7.2.get_ast");
+		// printf("%s\n", "7.2.get_ast");
 		quit_program(EXIT_FAILURE);
 	}
 	curr_pos = 0;
 	while (input[curr_pos])
 	{
-		printf("%s\n", "7.3.get_ast");
+		// printf("%s\n", "7.3.get_ast");
 		skip_spaces(input, &curr_pos);
-		printf("%s\n", "7.4.get_ast");
+		// printf("%s\n", "7.4.get_ast");
 		cmd_table = ft_lstnew((void *)get_cmd_table(input, &curr_pos));
-		printf("%s\n", "7.5.get_ast");
+		// printf("%s\n", "7.5.get_ast");
 		if (!cmd_table)
 		{
-			printf("%s\n", "7.6.get_ast");
+			// printf("%s\n", "7.6.get_ast");
 			quit_program(EXIT_FAILURE);
 		}
-		printf("%s\n", "7.7.get_ast");
+		// printf("%s\n", "7.7.get_ast");
 		ft_lstadd_back(&ast->cmd_tables, cmd_table);
-		printf("%s\n", "7.8.get_ast");
+		// printf("%s\n", "7.8.get_ast");
 	}
 	return (ast);
 }
@@ -79,9 +79,9 @@ t_cmd_table	*get_cmd_table(const char *input, int *curr_pos)
 	t_cmd_table	*cmd_table;
 	t_list		*cmd;
 
-	printf("%s\n", "7.4.0.get_cmd_table");
+	// printf("%s\n", "7.4.0.get_cmd_table");
 	cmd_table = ft_calloc(1, sizeof(t_cmd_table));
-	printf("%s\n", "7.4.1.get_cmd_table");
+	// printf("%s\n", "7.4.1.get_cmd_table");
 	if (!cmd_table)
 	{
 		//printf("%s\n", "7.4.2.get_cmd_table");
@@ -89,25 +89,25 @@ t_cmd_table	*get_cmd_table(const char *input, int *curr_pos)
 	}
 	while (input[*curr_pos] && !is_cmd_table_delimiter(&input[*curr_pos]))
 	{
-		printf("%s\n", "7.4.3.get_cmd_table");
+		// printf("%s\n", "7.4.3.get_cmd_table");
 		skip_spaces(input, curr_pos);
-		printf("%s\n", "7.4.4.get_cmd_table");
+		// printf("%s\n", "7.4.4.get_cmd_table");
 		cmd = ft_lstnew((void *)get_cmd(input, curr_pos));
-		printf("%s\n", "7.4.5.get_cmd_table");
+		// printf("%s\n", "7.4.5.get_cmd_table");
 		if (!cmd)
 		{
 			//printf("%s\n", "7.4.6.get_cmd_table");
 			quit_program(EXIT_FAILURE);
 		}
-		printf("%s\n", "7.4.7.get_cmd_table");
+		// printf("%s\n", "7.4.7.get_cmd_table");
 		ft_lstadd_back(&cmd_table->cmds, cmd);
-		printf("%s\n", "7.4.8.get_cmd_table");
+		// printf("%s\n", "7.4.8.get_cmd_table");
 		if (input[*curr_pos] == '|' && input[*curr_pos + 1] != '|')
 			(*curr_pos)++;
 	}
-	printf("%s\n", "7.4.9.get_cmd_table");
+	// printf("%s\n", "7.4.9.get_cmd_table");
 	cmd_table->delimiter = get_cmd_table_delimiter(input, curr_pos);
-	printf("%s\n", "7.4.10.get_cmd_table");
+	// printf("%s\n", "7.4.10.get_cmd_table");
 	return (cmd_table);
 }
 
@@ -130,45 +130,45 @@ t_cmd	*get_cmd(const char *input, int *curr_pos)
 	t_cmd	*cmd;
 	t_list	*new_node;
 
-	printf("%s\n", "7.4.4.0.get_cmd");
+	// printf("%s\n", "7.4.4.0.get_cmd");
 	cmd = ft_calloc(1, sizeof(t_cmd));
-	printf("%s\n", "7.4.4.1.get_cmd");
+	// printf("%s\n", "7.4.4.1.get_cmd");
 	if (!cmd)
 	{
-		printf("%s\n", "7.4.4.2.get_cmd");
+		// printf("%s\n", "7.4.4.2.get_cmd");
 		quit_program(EXIT_FAILURE);
 	}
 	while (input[*curr_pos] && !is_cmd_delimiter(input[*curr_pos]))
 	{
 		//printf("0.*curr_pos : %d\n",*curr_pos);
-		printf("%s\n", "7.4.4.3.get_cmd");
+		// printf("%s\n", "7.4.4.3.get_cmd");
 		if (input[*curr_pos] != '>' && input[*curr_pos] != '<')
 		{
-			printf("%s\n", "7.4.4.4.get_cmd");
+			// printf("%s\n", "7.4.4.4.get_cmd");
 			new_node = ft_lstnew((void *)get_token(input, curr_pos));
-			printf("%s\n", "7.4.4.5.get_cmd");
+			// printf("%s\n", "7.4.4.5.get_cmd");
 			if (!new_node)
 			{
-				printf("%s\n", "7.4.4.6.get_cmd");
+				// printf("%s\n", "7.4.4.6.get_cmd");
 				quit_program(EXIT_FAILURE);
 			}
-			printf("%s\n", "7.4.4.7.get_cmd");
+			// printf("%s\n", "7.4.4.7.get_cmd");
 			ft_lstadd_back(&cmd->tokens, new_node);
 		}
 		else if (input[*curr_pos] == '>' || input[*curr_pos] == '<')
 		{
-			printf("%s\n", "7.4.4.8.get_cmd");
+			// printf("%s\n", "7.4.4.8.get_cmd");
 			new_node = ft_lstnew((void *)get_redir(input, curr_pos));
-			printf("%s\n", "7.4.4.9.get_cmd");
+			// printf("%s\n", "7.4.4.9.get_cmd");
 			if (!new_node)
 			{
-				printf("%s\n", "7.4.4.10.get_cmd");
+				// printf("%s\n", "7.4.4.10.get_cmd");
 				quit_program(EXIT_FAILURE);
 			}
-			printf("%s\n", "7.4.4.11.get_cmd");
+			// printf("%s\n", "7.4.4.11.get_cmd");
 			ft_lstadd_back(&cmd->redirs, new_node);
 		}
-		printf("%s\n", "7.4.4.12.get_cmd");
+		// printf("%s\n", "7.4.4.12.get_cmd");
 		skip_spaces(input, curr_pos);
 	}
 	return (cmd);
@@ -189,20 +189,23 @@ t_redir	*get_redir(const char *input, int *curr_pos)
 {
 	t_redir	*redir;
 
-	printf("%s\n", "7.4.4.8.0.get_redir");
+	// printf("%s\n", "7.4.4.8.0.get_redir");
 	redir = ft_calloc(1, sizeof(t_redir));
-	printf("%s\n", "7.4.4.8.1.get_redir");
+	// printf("%s\n", "7.4.4.8.1.get_redir");
 	if (!redir)
 		quit_program(EXIT_FAILURE);
 	if (!ft_strncmp(&input[*curr_pos], "<<", 2))
 	{
-		printf("%s\n", "7.4.4.8.1-0.get_redir");
+		// printf("%s\n", "7.4.4.8.2.get_redir");
 		ft_strncpy(redir->type, (char *)&input[*curr_pos], 2);
 		*curr_pos += 2;
+		//printf("this is redir %c\n\n\n", redir->direction);
+		//printf("0.*curr_pos : %d\n", *curr_pos);
+		//printf("0.input[(*curr_pos) : %s\n", input);
 	}
 	else if (input[*curr_pos] == '<')
 	{
-		printf("%s\n", "7.4.4.8.2.get_redir");
+		// printf("%s\n", "7.4.4.8.2.get_redir");
 		*redir->type = input[(*curr_pos)++];
 		//printf("this is redir %c\n\n\n", redir->direction);
 		//printf("0.*curr_pos : %d\n", *curr_pos);
@@ -210,7 +213,7 @@ t_redir	*get_redir(const char *input, int *curr_pos)
 	}
 	else if (!ft_strncmp(&input[*curr_pos], ">>", 2))
 	{
-		printf("%s\n", "7.4.4.8.3.get_redir");
+		// printf("%s\n", "7.4.4.8.3.get_redir");
 		//*redir->type = input[(*curr_pos)++];
 		//*redir->type = input[(*curr_pos)++];
 		ft_strncpy(redir->type, (char *)&input[*curr_pos], 2);
@@ -218,15 +221,14 @@ t_redir	*get_redir(const char *input, int *curr_pos)
 	}
 	else if (input[*curr_pos] == '>')
 	{
-		printf("%s\n", "7.4.4.8.4.get_redir");
+		// printf("%s\n", "7.4.4.8.4.get_redir");
 		*redir->type = input[(*curr_pos)++];
 	}
-	
-	printf("%s\n", "7.4.4.8.5.get_redir");
+	// printf("%s\n", "7.4.4.8.5.get_redir");
 	skip_spaces(input, curr_pos);
-	printf("%s\n", "7.4.4.8.6.get_redir");
+	// printf("%s\n", "7.4.4.8.6.get_redir");
 	redir->direction = get_token(input, curr_pos);
-	printf("%s\n", "7.4.4.8.7.get_redir");
+	// printf("%s\n", "7.4.4.8.7.get_redir");
 	return (redir);
 }
 

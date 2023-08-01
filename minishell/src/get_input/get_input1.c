@@ -79,17 +79,17 @@ char	*get_input(t_dlist *input_history, t_termcaps *termcaps)
 		//printf("%s\n", "2.3.get_input");
 		if (is_up_down_arrow(&buf[i], termcaps))
 		{
-			printf("%s\n", "2.4.get_input");
+			// printf("%s\n", "2.4.get_input");
 			parse_input_history(&input_history, termcaps, buf, &i);
 		}
 		else if (!ft_strcmp(&buf[i], termcaps->backspace))
 		{
-			//printf("%s\n", "2.5.get_input");
+			// printf("%s\n", "2.5.get_input");
 			delete_single_char(termcaps, buf, &i);
 		}
 		else if (nb_char_read > 2 || (nb_char_read == 1 && is_ctrl(buf[i])))
 		{
-			printf("%s\n", "2.6.get_input");
+			// printf("%s\n", "2.6.get_input");
 			ft_bzero(&buf[i], BUFSIZ - i);
 		}
 		else if (buf[i] == CTRL_C)
@@ -108,7 +108,7 @@ char	*get_input(t_dlist *input_history, t_termcaps *termcaps)
 			i += write(STDOUT_FILENO, &buf[i], nb_char_read);
 		}
 	}
-	printf("%s\n", "2.10.get_input");
+	// printf("%s\n", "2.10.get_input");
 	input = extract_input(buf, i);
 	return (input);
 }

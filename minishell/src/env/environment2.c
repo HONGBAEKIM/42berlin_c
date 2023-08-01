@@ -26,9 +26,9 @@ char	*ft_getenv(char *key)
 	char	*curr_envp;
 	char	*value;
 
-	printf("%s\n", "8.4.3.4.0.0.0.ft_getenv");
+	//printf("%s\n", "8.4.3.4.0.0.0.ft_getenv");
 	envp = g_msh.dup_envp;
-	printf("%s\n", "8.4.3.4.0.0.1.ft_getenv");
+	//printf("%s\n", "8.4.3.4.0.0.1.ft_getenv");
 	while (envp)
 	{
 		i = 0;
@@ -44,10 +44,10 @@ char	*ft_getenv(char *key)
 				|| curr_envp[i] == '\0'))
 		{
 			i++;
-			printf("%s\n", "8.4.3.4.0.0.5.ft_getenv");
+			//printf("%s\n", "8.4.3.4.0.0.5.ft_getenv");
 			value = ft_strdup(&(curr_envp[i]));
 			//printf("value : %s\n", value);
-			printf("%s\n", "8.4.3.4.0.0.6.ft_getenv");
+			//printf("%s\n", "8.4.3.4.0.0.6.ft_getenv");
 			if (!value)
 				quit_program(EXIT_FAILURE);
 			return (value);

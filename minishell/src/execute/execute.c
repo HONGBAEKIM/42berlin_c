@@ -32,32 +32,32 @@ void	exec_ast(t_ast *ast)
 	t_list	*cmd_table;
 	char	*delimiter;
 
-	printf("%s\n", "8.0.exec_ast");
+	//printf("%s\n", "8.0.exec_ast");
 	cmd_table = ast->cmd_tables;
-	printf("%s\n", "8.1.exec_ast");
+	//printf("%s\n", "8.1.exec_ast");
 	while (cmd_table)
 	{	
-		printf("%s\n", "8.2.exec_ast");
+		//printf("%s\n", "8.2.exec_ast");
 		g_msh.curr_cmd_table = cmd_table->data;
-		printf("%s\n", "8.3.exec_ast");
+		//printf("%s\n", "8.3.exec_ast");
 		exec_cmd_table(g_msh.curr_cmd_table);
-		printf("%s\n", "8.4.exec_ast");
+		//printf("%s\n", "8.4.exec_ast");
 		save_last_token(g_msh.curr_cmd_table);
-		printf("%s\n", "8.5.exec_ast");
+		//printf("%s\n", "8.5.exec_ast");
 		delimiter = g_msh.curr_cmd_table->delimiter;
-		printf("%s\n", "8.6.exec_ast");
+		//printf("%s\n", "8.6.exec_ast");
 		if (!ft_strcmp(delimiter, "&&") && g_msh.exit_status != EXIT_SUCCESS)
 		{
-			printf("%s\n", "8.7.exec_ast");
+			//printf("%s\n", "8.7.exec_ast");
 			break ;
 		}
-		printf("%s\n", "8.8.exec_ast");
+		//printf("%s\n", "8.8.exec_ast");
 		if (!ft_strcmp(delimiter, "||") && g_msh.exit_status == EXIT_SUCCESS)
 		{
 		
 			break ;
 		}
-		printf("%s\n", "8.8.exec_ast");
+		//printf("%s\n", "8.8.exec_ast");
 		cmd_table = cmd_table->next;
 	}
 }
@@ -90,28 +90,28 @@ void	exec_cmd_table(t_cmd_table *cmd_table)
 	t_list	*cmds;
 	int		i;
 
-	printf("%s\n", "8.3.0.exec_cmd_table");
+	//printf("%s\n", "8.3.0.exec_cmd_table");
 	cmd_table->return_value = -1;
-	printf("%s\n", "8.3.1.exec_cmd_table");
+	//printf("%s\n", "8.3.1.exec_cmd_table");
 	cmds = cmd_table->cmds;
-	printf("%s\n", "8.3.2.exec_cmd_table");
+	//printf("%s\n", "8.3.2.exec_cmd_table");
 	cmd_table->nb_cmds = ft_lstsize(cmds);
-	printf("%s\n", "8.3.3.exec_cmd_table");
+	//printf("%s\n", "8.3.3.exec_cmd_table");
 	cmd_table->pipes = init_pipes(cmd_table->nb_cmds);
-	printf("%s\n", "8.3.4.exec_cmd_table");
+	//printf("%s\n", "8.3.4.exec_cmd_table");
 	i = 0;
 	while (i < cmd_table->nb_cmds)
 	{
-		printf("%s\n", "8.3.5.exec_cmd_table");
+		//printf("%s\n", "8.3.5.exec_cmd_table");
 		exec_cmd(cmds->data, cmd_table, i);
 		cmds = cmds->next;
 		i++;
 	}
-	printf("%s\n", "8.3.6.exec_cmd_table");
+	//printf("%s\n", "8.3.6.exec_cmd_table");
 	close_all_pipes(cmd_table->pipes, cmd_table->nb_cmds);
-	printf("%s\n", "8.3.7.exec_cmd_table");
+	//printf("%s\n", "8.3.7.exec_cmd_table");
 	exec_parent(&cmd_table->pids);
-	printf("%s\n", "8.3.8.exec_cmd_table");
+	// printf("%s\n", "8.3.8.exec_cmd_table");
 	free_arr((void **)cmd_table->pipes);
 	if (cmd_table->return_value != -1)
 		g_msh.exit_status = cmd_table->return_value;
@@ -147,38 +147,38 @@ void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index)
 	int	saved_stdout;
 	int	nb_cmds;
 
-	printf("%s\n", "8.3.5.0.exec_cmd");
+	// printf("%s\n", "8.3.5.0.exec_cmd");
 	nb_cmds = cmd_table->nb_cmds;
-	printf("%s\n", "8.3.5.1.exec_cmd");
+	// printf("%s\n", "8.3.5.1.exec_cmd");
 	replace_envs(&cmd->tokens, cmd->redirs);
-	printf("%s\n", "8.3.5.2.exec_cmd");
+	// printf("%s\n", "8.3.5.2.exec_cmd");
 	saved_stdin = dup(STDIN_FILENO);
-	printf("%s\n", "8.3.5.3.exec_cmd");
+	// printf("%s\n", "8.3.5.3.exec_cmd");
 	saved_stdout = dup(STDOUT_FILENO);
-	printf("%s\n", "8.3.5.4.exec_cmd");
+	// printf("%s\n", "8.3.5.4.exec_cmd");
 	set_redirs_pipes(cmd->redirs, cmd_table, process_index);
-	printf("%s\n", "8.3.5.5.exec_cmd");
+	// printf("%s\n", "8.3.5.5.exec_cmd");
 	if (g_msh.exit_status == EXIT_SUCCESS && cmd->tokens != 0)
 	{
-		printf("%s\n", "8.3.5.6.exec_cmd");
+		// printf("%s\n", "8.3.5.6.exec_cmd");
 		if (is_builtin(cmd->tokens))
 		{
-			printf("%s\n", "8.3.5.7.exec_cmd");
+			// printf("%s\n", "8.3.5.7.exec_cmd");
 			exec_builtin(cmd->tokens, &g_msh.dup_envp, nb_cmds, process_index);
 		}
 		else
 		{
-			printf("%s\n", "8.3.5.8.exec_cmd");
+			// printf("%s\n", "8.3.5.8.exec_cmd");
 			exec_program(cmd->tokens, cmd_table);
 		}
 	}
-	printf("%s\n", "8.3.5.9.exec_cmd");
+	// printf("%s\n", "8.3.5.9.exec_cmd");
 	dup2(saved_stdin, STDIN_FILENO);
-	printf("%s\n", "8.3.5.10.exec_cmd");
+	// printf("%s\n", "8.3.5.10.exec_cmd");
 	dup2(saved_stdout, STDOUT_FILENO);
-	printf("%s\n", "8.3.5.11.exec_cmd");
+	// printf("%s\n", "8.3.5.11.exec_cmd");
 	close(saved_stdin);
-	printf("%s\n", "8.3.5.12.exec_cmd");
+	// printf("%s\n", "8.3.5.12.exec_cmd");
 	close(saved_stdout);
 }
 
@@ -201,43 +201,43 @@ void	exec_builtin(t_list *tokens,
 {
 	char	*program_name;
 
-	printf("%s\n", "8.3.5.7.0.exec_builtin");
+	// printf("%s\n", "8.3.5.7.0.exec_builtin");
 	program_name = tokens->data;
-	printf("%s\n", "8.3.5.7.1.exec_builtin");
+	// printf("%s\n", "8.3.5.7.1.exec_builtin");
 	if (!ft_strcmp(program_name, "exit"))
 	{
-		printf("%s\n", "8.3.5.7.2.exec_builtin");
+		// printf("%s\n", "8.3.5.7.2.exec_builtin");
 		g_msh.exit_status = ft_exit(tokens->next);
 	}
 	else if (!ft_strcmp(program_name, "echo"))
 	{
-		printf("%s\n", "8.3.5.7.3.exec_builtin");
+		// printf("%s\n", "8.3.5.7.3.exec_builtin");
 		g_msh.exit_status = ft_echo(tokens->next);
 	}
 	else if ((!ft_strcmp(program_name, "env")) && ft_lstsize(tokens) == 1)
 	{
-		printf("%s\n", "8.3.5.7.4.exec_builtin");
+		// printf("%s\n", "8.3.5.7.4.exec_builtin");
 		g_msh.exit_status = ft_env(*env);
 	}
 	else if (!ft_strcmp(program_name, "cd"))
 	{
-		printf("%s\n", "8.3.5.7.5.exec_builtin");
-		ft_lst_print_s(tokens->next);
+		// printf("%s\n", "8.3.5.7.5.exec_builtin");
+		// ft_lst_print_s(tokens->next);
 		g_msh.exit_status = ft_cd(tokens->next, env);
 	}
 	else if (!ft_strcmp(program_name, "pwd"))
 	{
-		printf("%s\n", "8.3.5.7.6.exec_builtin");
+		// printf("%s\n", "8.3.5.7.6.exec_builtin");
 		g_msh.exit_status = ft_pwd();
 	}
 	else if (!ft_strcmp(program_name, "export"))
 	{
-		printf("%s\n", "8.3.5.7.7.exec_builtin");
+		// printf("%s\n", "8.3.5.7.7.exec_builtin");
 		g_msh.exit_status = ft_export(tokens->next, env);
 	}
 	else if (!ft_strcmp(program_name, "unset"))
 	{
-		printf("%s\n", "8.3.5.7.8.exec_builtin");
+		// printf("%s\n", "8.3.5.7.8.exec_builtin");
 		g_msh.exit_status = ft_unset(tokens->next, env);
 	}
 	if (process_index == nb_cmds - 1)
@@ -269,28 +269,28 @@ void	exec_program(t_list *lst_tokens, t_cmd_table *cmd_table)
 	long	pid;
 	t_list	*new_node;
 
-	printf("%s\n", "8.3.5.8.0.exec_cmd");
+	// printf("%s\n", "8.3.5.8.0.exec_cmd");
 	tokens = convert_list_to_arr(lst_tokens);
-	printf("%s\n", "8.3.5.8.1.exec_cmd");
+	// printf("%s\n", "8.3.5.8.1.exec_cmd");
 	envp = convert_list_to_arr(g_msh.dup_envp);
-	printf("%s\n", "8.3.5.8.2.exec_cmd");
+	// printf("%s\n", "8.3.5.8.2.exec_cmd");
 	pid = fork();
-	printf("%s\n", "8.3.5.8.3.exec_cmd");
+	// printf("%s\n", "8.3.5.8.3.exec_cmd");
 	if (pid < 0)
 		quit_program(EXIT_FAILURE);
 	else if (pid == 0)
 	{
-		printf("%s\n", "8.3.5.8.4.exec_cmd");
+		// printf("%s\n", "8.3.5.8.4.exec_cmd");
 		exec_child(tokens, envp, cmd_table->nb_cmds, cmd_table->pipes);
 	}
 	new_node = ft_lstnew((void *)pid);
 	if (!new_node)
 		quit_program(EXIT_FAILURE);
-	printf("%s\n", "8.3.5.8.5.exec_cmd");
+	// printf("%s\n", "8.3.5.8.5.exec_cmd");
 	ft_lstadd_back(&cmd_table->pids, new_node);
-	printf("%s\n", "8.3.5.8.6.exec_cmd");
+	// printf("%s\n", "8.3.5.8.6.exec_cmd");
 	free(tokens);
-	printf("%s\n", "8.3.5.8.7.exec_cmd");
+	// printf("%s\n", "8.3.5.8.7.exec_cmd");
 	free(envp);
-	printf("%s\n", "8.3.5.8.8.exec_cmd");
+	// printf("%s\n", "8.3.5.8.8.exec_cmd");
 }

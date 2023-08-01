@@ -28,8 +28,8 @@ INC_DIRS			:=		$(shell find $(PATH_SRC) -type d)
 CC					:=		cc
 
 # Flags - compilation
-FLAG_WARNING		:=		-Wall -Wextra -Werror
-FLAG_INC			:= 		$(addprefix -I, $(INC_DIRS))
+FLAG_WARNING		:=		-Wall -Wextra -Werror 
+FLAG_INC			:= 		$(addprefix -I, $(INC_DIRS)) 
 FLAG_MAKEFILE		:=		-MMD -MP
 FLAG_DEBUG			:= 		-g
 FLAG_OPTIMIZATION	:=		-O3
