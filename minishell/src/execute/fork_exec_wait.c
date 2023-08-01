@@ -51,6 +51,9 @@ void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes)
 	}
 	else
 		exec_path = get_absolute_path(tokens[0]);
+	//printf("what\n");
+	// if (strcmp())
+	// 	execve(exec_path, tokens, envp);
 	execve(exec_path, tokens, envp);
 	if (errno == EACCES)
 		write_msh_exec_error(tokens[0], "Permission denied");

@@ -195,42 +195,31 @@ int	open_all_files(t_list *redirs)
 	char	*str;
 	char	*whole_str;
 	char	*tmp;
-	char	*user;
 
 	fd_i = -2;
 	fd_o = -2;
-	//printf("%s\n", "8.3.5.4.2.0.open_all_files");
+	
 	while (redirs)
 	{
-		//printf("%s\n", "8.3.5.4.2.1.open_all_files");
 		redir = (t_redir *)redirs->data;
-		//printf("%s\n", "8.3.5.4.2.2.open_all_files");
 		if (!ft_strcmp(redir->type, "<"))
 		{
-			//printf("%s\n", "8.3.5.4.2.3.open_all_files");
 			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
 		}
 		else if (!ft_strcmp(redir->type, "<<"))
 		{
-			//printf("%s\n", "8.3.5.4.2.4.open_all_files");
-
 			whole_str = ft_strdup("");
-			
-			user = "$USER";
-			
 			while (1)
 			{
 				str = readline("heredoc>");
 				if (!str)
 					break ;
 				name = (char *)redir->direction;
-				//printf("name : %s\n", name);
 				if (!ft_strcmp(str, (char *)name))
 				{
 					free(str);
 					break;
 				}
-				//change $USER to hongbaki 
 				replace_vars_with_values(&str);
 				
 				tmp = ft_strjoin(whole_str, str);
@@ -238,33 +227,20 @@ int	open_all_files(t_list *redirs)
 				whole_str = ft_strjoin(tmp, "\n");
 				free(tmp);
 			}
-
 			printf("%s\n", whole_str);
-			
-			int	new_fd;
-			new_fd = open(name, O_RDONLY, 0);
-			dup2(new_fd, STDIN_FILENO);
-			close(new_fd);
-			
+			free(whole_str);
+			fd_i = open(redirs->data, O_RDONLY | O_CREAT, 0);
+			dup2(fd_i, STDIN_FILENO); 
+			close(fd_i);
+			unlink(redirs->data);
 		}
 		else if (!ft_strcmp(redir->type, ">"))
-		{
-			//printf("%s\n", "8.3.5.4.2.5.open_all_files");
 			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-		}
 		else if (!ft_strcmp(redir->type, ">>"))
-		{
-			//printf("%s\n", "8.3.5.4.2.6.open_all_files");
 			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, 0666);
-		}
 		if (fd_i == -1 || fd_o == -1)
-		{
-			//printf("%s\n", "8.3.5.4.2.7.open_all_files");
 			return (EXIT_FAILURE);
-		}
-		//printf("%s\n", "8.3.5.4.2.8.open_all_files");
 		redirs = redirs->next;
-		
 	}
 	return (EXIT_SUCCESS);
 }
@@ -302,7 +278,8 @@ int	open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions)
 	}
 	else
 	{
-		if (!ft_strcmp(redir->type, "<") || !ft_strcmp(redir->type, "<<"))
+		// if ((!ft_strcmp(redir->type, "<")) || !ft_strcmp(redir->type, "<<"))
+		if (!ft_strcmp(redir->type, "<"))
 			dup2(new_fd, STDIN_FILENO);
 		else if (!ft_strcmp(redir->type, ">") || !ft_strcmp(redir->type, ">>"))
 			dup2(new_fd, STDOUT_FILENO);
