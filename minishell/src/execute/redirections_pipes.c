@@ -47,7 +47,6 @@ int	**init_pipes(int nb_cmds)
 			quit_program(EXIT_FAILURE);
 		i++;
 	}
-	//printf("pipes : %i\n", **pipes);
 	return (pipes);
 }
 
@@ -215,7 +214,7 @@ int	has_redirs(t_list *redirs, char *type)
 	return (*whole_str);
 } */
 
-void open_heredoc_file(t_redir *redir)
+void read_heredoc_file(t_redir *redir)
 {
     char *whole_str;
     char *str;
@@ -244,11 +243,33 @@ void open_heredoc_file(t_redir *redir)
 }
 
 
+int	open_heredoc_file(t_redir *redir, int prev_fd, int flags, mode_t permissions)
+{
+	char	*file_name;
+	int		new_fd;
+
+	if (prev_fd != -2)
+		close(prev_fd);
+	file_name = redir->direction;
+	new_fd = open(file_name, flags, permissions);
+	if (new_fd == -1)
+	{
+		write_msh_exec_error(file_name, strerror(errno));
+		g_msh.exit_status = errno;
+	}
+	else
+	{
+		dup2(new_fd, STDIN_FILENO);
+		close(new_fd);
+		unlink(file_name);
+	}
+	return (new_fd);
+}
+
 int	open_all_files(t_list *redirs)
 {
 	int		fd_i;
 	int		fd_o;
-	char	*name;
 	t_redir	*redir;
 	
 	fd_i = -2;
@@ -260,12 +281,8 @@ int	open_all_files(t_list *redirs)
 			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
 		else if (!ft_strcmp(redir->type, "<<"))
 		{
-			open_heredoc_file(redir);
-			if ((fd_i = open(name, O_RDONLY | O_CREAT, 0)) == -1)
-				return (EXIT_FAILURE);
-			dup2(fd_i, STDIN_FILENO);
-			close(fd_i);
-			unlink(name);
+			read_heredoc_file(redir);
+			fd_i = open_heredoc_file(redir, fd_i, O_RDONLY | O_CREAT, 0);
 		}
 		else if (!ft_strcmp(redir->type, ">"))
 			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);
@@ -277,6 +294,9 @@ int	open_all_files(t_list *redirs)
 	}
 	return (EXIT_SUCCESS);
 }
+
+
+
 
 /*
 ** Opens a single file based on the flags and permissions passed
