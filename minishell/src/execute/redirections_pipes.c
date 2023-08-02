@@ -186,53 +186,86 @@ int	has_redirs(t_list *redirs, char *type)
 } */
 
 
+/* char	ft_heredoc(t_list *redirs, char	*whole_str)
+{
+	t_redir	*redir;
+	
+	char	*name;
+	char	*str;
+	char	*tmp;
+	
+	whole_str = ft_strdup("");
+	while (1)
+	{
+		str = readline("heredoc>");
+		if (!str)
+			break ;
+		name = (char *)redir->direction;
+		if (!ft_strcmp(str, (char *)name))
+		{
+			free(str);
+			break;
+		}
+		replace_vars_with_values(&str);
+		tmp = ft_strjoin(whole_str, str);
+		free(str);
+		whole_str = ft_strjoin(tmp, "\n");
+		free(tmp);
+	}
+	return (*whole_str);
+} */
+
+void open_heredoc_file(t_redir *redir)
+{
+    char *whole_str;
+    char *str;
+    char *tmp;
+    char *name;
+
+	whole_str = ft_strdup("");
+	name = (char *)redir->direction;
+    while (1) 
+	{
+        str = readline("heredoc>");
+        if (!str)
+            break;
+        if (!ft_strcmp(str, (char *)name)) 
+		{
+            free(str);
+            break;
+        }
+        replace_vars_with_values(&str);
+        tmp = ft_strjoin(whole_str, str);
+        free(str);
+        whole_str = ft_strjoin(tmp, "\n");
+        free(tmp);
+    }
+    printf("%s", whole_str);
+}
+
+
 int	open_all_files(t_list *redirs)
 {
 	int		fd_i;
 	int		fd_o;
-	t_redir	*redir;
 	char	*name;
-	char	*str;
-	char	*whole_str;
-	char	*tmp;
-
+	t_redir	*redir;
+	
 	fd_i = -2;
 	fd_o = -2;
-	
 	while (redirs)
 	{
 		redir = (t_redir *)redirs->data;
 		if (!ft_strcmp(redir->type, "<"))
-		{
 			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
-		}
 		else if (!ft_strcmp(redir->type, "<<"))
 		{
-			whole_str = ft_strdup("");
-			while (1)
-			{
-				str = readline("heredoc>");
-				if (!str)
-					break ;
-				name = (char *)redir->direction;
-				if (!ft_strcmp(str, (char *)name))
-				{
-					free(str);
-					break;
-				}
-				replace_vars_with_values(&str);
-				
-				tmp = ft_strjoin(whole_str, str);
-				free(str);
-				whole_str = ft_strjoin(tmp, "\n");
-				free(tmp);
-			}
-			printf("%s\n", whole_str);
-			free(whole_str);
-			fd_i = open(redirs->data, O_RDONLY | O_CREAT, 0);
-			dup2(fd_i, STDIN_FILENO); 
+			open_heredoc_file(redir);
+			if ((fd_i = open(name, O_RDONLY | O_CREAT, 0)) == -1)
+				return (EXIT_FAILURE);
+			dup2(fd_i, STDIN_FILENO);
 			close(fd_i);
-			unlink(redirs->data);
+			unlink(name);
 		}
 		else if (!ft_strcmp(redir->type, ">"))
 			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);

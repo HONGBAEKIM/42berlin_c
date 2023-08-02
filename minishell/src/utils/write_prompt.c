@@ -21,10 +21,5 @@
 
 void	write_prompt(void)
 {
-	if (g_msh.exit_status == EXIT_SUCCESS)
-		ft_putstr(GREEN);
-	else
-		ft_putstr(RED);
-	ft_putstr("msh → ");
-	ft_putstr(RESET);
+	ft_putstr("minishell :");
 }
