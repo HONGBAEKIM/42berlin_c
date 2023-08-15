@@ -53,6 +53,19 @@ unsigned char	reverse_bits(unsigned char octet)
     return (ret);
 }
 
+unsigned char	reverse_bits_2(unsigned char octet)
+{
+    unsigned char   ret = 0;
+    int i = 8;
+
+    while (i--)
+    {
+        ret = (ret << 1) + (octet & 1);
+        octet >>= 1;
+    }
+    return (ret);
+}
+
 void	print_bits(unsigned char octet)
 {
     unsigned char   bit;
@@ -73,6 +86,9 @@ int	main(void)
 	unsigned char c;
 
     c = '1';
-    print_bits(2);
-	print_bits(reverse_bits(2));
+    print_bits(5);
+    printf("\n");
+	print_bits(reverse_bits(5));
+    printf("\n");
+    print_bits(reverse_bits_2(5));
 }
