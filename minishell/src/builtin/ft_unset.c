@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 10:42:08 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/17 11:47:30 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/08 09:54:19 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:08:53 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_unset.h"
 
-/*
-** Deletes environment variable from Envp list
-** @param:	- [t_list *] arguments following unset
-**			- [t_list **] pointer to envp linked list
-** @return:	[int] exit status
-** Line-by-line comments:
-** @6		Checking for invalid input and writing error message
-** @10-11	First checking if environment variable exists and deleting it in
-**			case it does
-*/
-
-int	ft_unset(t_list *tokens, t_list **env)
+int	ft_unset(t_list *tokens, t_list **env, t_msh *g_msh)
 {
 	char	*token_str;
 
@@ -32,25 +21,13 @@ int	ft_unset(t_list *tokens, t_list **env)
 		token_str = tokens->data;
 		if (!has_valid_identifier_unset(token_str))
 			return (EXIT_FAILURE);
-		if (has_only_one_cmd())
-		{	
+		if (has_only_one_cmd(g_msh))
 			if (is_env_var(token_str, *env))
 				delete_env_var(token_str, env);
-		}
 		tokens = tokens->next;
 	}
 	return (EXIT_SUCCESS);
 }
-
-/*
-** Goes through the environment variable list and deletes one of the nodes if
-** it finds the match (always making sure that the list is connected)
-** @param:	- [char *] potential environment variable to be deleted
-**			- [t_list **] pointer to envp linked list
-** Line-by-line comments:
-** @16		Function that uses the node number of a linked list to delete that
-**			node
-*/
 
 void	delete_env_var(char *var, t_list **env)
 {
@@ -76,11 +53,6 @@ void	delete_env_var(char *var, t_list **env)
 		env_ptr = env_ptr->next;
 	}
 }
-
-/*
-** Frees the data in the pointer and sets the pointer to null
-** @param:	- [void *] list->data
-*/
 
 void	ft_delete_list_str(void *data)
 {

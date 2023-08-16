@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 16:48:16 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/07/08 00:56:53 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:02:11 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/15 18:16:11 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "../libft/src/libft.h"
+
+# include "../libft/libft.h"
+# include "../libft_utils/libft_utils.h"
 
 # include "structs.h"
 # include "constants.h"
@@ -49,6 +51,7 @@
 # include "execute_utils.h"
 # include "fork_exec_wait.h"
 # include "redirections_pipes.h"
+# include "redirections_pipes_2.h"
 # include "get_absolute_path.h"
 
 # include "parse.h"
@@ -67,6 +70,5 @@
 # include "write_prompt.h"
 # include "utils.h"
 
-extern t_msh	g_msh;
-
+extern int	g_code_exit;
 #endif

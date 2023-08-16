@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 17:33:11 by gleal             #+#    #+#             */
-/*   Updated: 2021/05/24 17:10:35 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/08 09:48:39 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:09:26 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin_utils.h"
-
-/*
-** Checks for invalid input specific to the unset function
-** @param:	- [char *] argument/input to be analyzed
-**			- [type] param_value
-** @return:	[int] true/false
-** Line-by-line comments:
-** @5-10	If input is invalid we write an error message
-*/
 
 int	has_valid_identifier_unset(char *token_str)
 {
@@ -37,16 +28,6 @@ int	has_valid_identifier_unset(char *token_str)
 		check = 1;
 	return (check);
 }
-
-/*
-** Checks various types if invalid input
-** @param:	- [char *] token_str
-**			- [char *] pointer to array of chars where we will write the message
-** @return:	[int] true/false
-** Line-by-line comments:
-** @8		Preventing against "unset $ENVVAR" command (the correct formatting
-**			is unset ENVVAR)
-*/
 
 int	is_token_valid_unset(char *token_str, char *err_message)
 {
@@ -71,16 +52,6 @@ int	is_token_valid_unset(char *token_str, char *err_message)
 	return (check);
 }
 
-/*
-** Given the node number to delete it applies the correct lst_del function
-** (del_first, del_last or del_middle)
-** @param:	- [t_list **] linked list head pointer
-**			- [int] index of node to be deleted (starts at node 0)
-**			- [void *] function to delete each node
-** Line-by-line comments:
-** @7-8		Protecting against node numbers above the lst size
-*/
-
 void	ft_lstdel_node_nbr(t_list **lst, int node_nbr, void (*del)(void*))
 {
 	if (!lst)
@@ -95,15 +66,6 @@ void	ft_lstdel_node_nbr(t_list **lst, int node_nbr, void (*del)(void*))
 		ft_lstdel_middle(lst, node_nbr, del);
 	return ;
 }
-
-/*
-** Deletes a node that is neither the first or last in the linked list (if
-** you're not sure if it can be the first or last then I suggest using the
-** ft_lstdel_node_nbr)
-** @param:	- [t_list *] linked list pointer
-**			- [int] linked list number that will be deleted
-**			- [void (*f)(void*)] pointer to delete function
-*/
 
 void	ft_lstdel_middle(t_list **lst, int node_nbr, void (*del)(void*))
 {
@@ -124,18 +86,11 @@ void	ft_lstdel_middle(t_list **lst, int node_nbr, void (*del)(void*))
 	free(to_delete);
 }
 
-/*
-** Checks if there only one simple command in the command table currently being
-** executed. Some programs can only be executed if they are the only simple
-** command in the the current command table
-** @return:	[int] true or false
-*/
-
-int	has_only_one_cmd(void)
+int	has_only_one_cmd(t_msh *g_msh)
 {
 	int	check;
 
-	if (ft_lstsize(g_msh.curr_cmd_table->cmds) == 1)
+	if (ft_lstsize(g_msh->curr_cmd_table->cmds) == 1)
 		check = 1;
 	else
 		check = 0;

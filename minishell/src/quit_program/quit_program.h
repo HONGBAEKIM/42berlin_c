@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quit_program.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 19:45:29 by gleal             #+#    #+#             */
-/*   Updated: 2021/05/25 11:25:52 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:41 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:01:42 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "main.h"
 
-void	quit_program(int exit_code);
+void	quit_program(int exit_code, t_msh *g_msh);
 
 #endif

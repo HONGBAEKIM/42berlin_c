@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/25 17:53:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/05/25 10:45:02 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/08 10:00:52 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:52:20 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute_utils.h"
-
-/*
-** Checks if first token is one of the mandatory builtin programs
-** @param:	- [char *] token to be checked
-** @return:	[int] true or false
-*/
 
 int	is_builtin(t_list *tokens)
 {
@@ -43,12 +37,6 @@ int	is_builtin(t_list *tokens)
 	return (check);
 }
 
-/*
-** Converts a linked list to a NULL-terminated array of strings
-** @param:	- [t_list *] list with string as data
-** @return:	[char **] NULL-terminated array of strings
-*/
-
 char	**convert_list_to_arr(t_list *lst)
 {
 	char	**strs;
@@ -66,13 +54,6 @@ char	**convert_list_to_arr(t_list *lst)
 	return (strs);
 }
 
-/*
-** Checks if the first token has a relative path like ./a.out or ./minishell
-** @param:	- [char *] first token of the simple command. Likely to represent
-**                     the program name
-** @return:	[int] true or false
-*/
-
 int	has_relative_path(char *first_token)
 {
 	int	check;
@@ -83,13 +64,6 @@ int	has_relative_path(char *first_token)
 		check = 0;
 	return (check);
 }
-
-/*
-** Checks if the first token has a absolute path like /bin/ls
-** @param:	- [char *] first token of the simple command. Likely to represent
-**                     the program name
-** @return:	[int] true or false
-*/
 
 int	has_absolute_path(char *first_token)
 {

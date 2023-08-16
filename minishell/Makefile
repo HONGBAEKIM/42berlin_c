@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
+#    By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/05/14 11:03:43 by dda-silv         ###   ########.fr        #
+#    Updated: 2023/08/15 18:35:11 by hongbaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,15 +21,14 @@ PATH_LIBFT			:=		libft
 # List of sources
 SRCS				:=		$(shell find $(PATH_SRC) -name *.c)
 OBJS				:=		$(SRCS:%.c=$(PATH_BUILD)/%.o)
-DEPS				:=		$(OBJS:.o=.d)
 INC_DIRS			:=		$(shell find $(PATH_SRC) -type d)
 
 # Compiler
-CC					:=		cc
+CC					:=		gcc
 
 # Flags - compilation
-FLAG_WARNING		:=		-Wall -Wextra -Werror 
-FLAG_INC			:= 		$(addprefix -I, $(INC_DIRS)) 
+FLAG_WARNING		:=		-Wall -Wextra -Werror
+FLAG_INC			:= 		$(addprefix -I, $(INC_DIRS))
 FLAG_MAKEFILE		:=		-MMD -MP
 FLAG_DEBUG			:= 		-g
 FLAG_OPTIMIZATION	:=		-O3
@@ -40,7 +39,7 @@ FLAG_MEM_LEAK		:= 		-fsanitize=address
 
 # Flags - linking
 FLAG_LIBFT			:=		-L$(PATH_LIBFT) -lft
-FLAG_TERMCAPS		:=		-lncurses -ltermcap
+FLAG_TERMCAPS		:=		-lncurses -ltermcap -lreadline
 FLAGS_LINKING		:=		$(FLAG_LIBFT) $(FLAG_TERMCAPS)
 
 # Others commands
@@ -62,7 +61,7 @@ init:
 							@ make -C $(PATH_LIBFT)
 
 $(NAME):					$(OBJS)
-							@ $(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKING) -lreadline
+							@ $(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKING)
 
 
 $(PATH_BUILD)/%.o:			%.c
@@ -82,26 +81,5 @@ fclean:						clean
 
 re:							fclean all
 
-# Debugging functions
-
-debug:						FLAGS_COMP += $(FLAG_MEM_LEAK)
-debug:						re
-
-# Format functions
-
-normH:
-							@ norminette $(shell find $(PATH_SRC) -name *.h)
-							@ make -C $(PATH_LIBFT) normH
-
-normC:
-							@ norminette $(SRCS)
-							@ make -C $(PATH_LIBFT) normC
-
-norm:						normH normC
 
 .PHONY:						all clean fclean re
-
--include $(DEPS)
-
-# Source for some pieces of this Makefile: 
-# https://makefiletutorial.com/#makefile-cookbook

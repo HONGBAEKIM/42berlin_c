@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork_exec_wait.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 09:41:00 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/18 09:55:23 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:00:54 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:44:21 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include "main.h"
 
-void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes);
-void	exec_parent(t_list **pids);
+void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, \
+t_msh *g_msh);
+void	exec_parent(t_list **pids, t_msh *g_msh);
 void	close_all_pipes(int **pipes, int nb_cmds);
 
 #endif

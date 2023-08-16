@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_memory.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/30 10:23:00 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/25 11:25:40 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/08 10:17:13 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:59:48 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "free_memory.h"
-
-/*
-** Frees the memory of base struct
-** @param:	- [t_msh *] base struct of the program
-** Line-by-line comments:
-** @1-2		Both input_history and dup_envp only have strings as nodes so
-** 			passing free is enough
-** @3-4		But ast is a struct so we had to get a bit fancy
-*/
 
 void	free_msh(t_msh *msh)
 {
@@ -28,14 +19,6 @@ void	free_msh(t_msh *msh)
 	if (msh->ast != 0)
 		free_ast(msh->ast);
 }
-
-/*
-** Frees the Abstract Syntax Tree struct
-** Besides free_ast, all functions in this file are made to be passed to the
-** ft_lstclear function as a function pointer to free each node. But we also
-** need to free the struct itself when we are done with the linked list
-** @param:	- [t_ast *] struct with the abstract syntax tree
-*/
 
 void	free_ast(t_ast *ast)
 {

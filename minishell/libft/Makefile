@@ -1,91 +1,82 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/05/14 11:03:47 by dda-silv         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = libft.a
 
-# Name of the program built
-NAME				:=		libft.a
+CC = cc
+CCFLAG = -Wall -Wextra -Werror
 
-# Name directory
-PATH_SRC			:=		src
-PATH_BUILD			:=		build
+AR = ar
+ARFLAG = crs
 
-# List of sources
-SRCS				:=		$(shell find $(PATH_SRC) -name *.c)
-OBJS				:=		$(SRCS:%.c=$(PATH_BUILD)/%.o)
-DEPS				:=		$(OBJS:.o=.d)
-INC_DIRS			:=		$(shell find $(PATH_SRC) -type d)
+RM = rm -f
 
-# Compiler
-CC					:=		gcc
+SRCS = ft_isalpha.c \
+	ft_isdigit.c \
+	ft_isalnum.c \
+	ft_isascii.c \
+	ft_isprint.c \
+	ft_strlen.c \
+	ft_memset.c \
+	ft_bzero.c \
+	ft_memcpy.c \
+	ft_memmove.c \
+	ft_strlcpy.c \
+	ft_strlcat.c \
+	ft_toupper.c \
+	ft_tolower.c \
+	ft_strchr.c \
+	ft_strrchr.c \
+	ft_strncmp.c \
+	ft_memchr.c \
+	ft_memcmp.c \
+	ft_strnstr.c \
+	ft_atoi.c \
+	ft_calloc.c \
+	ft_strdup.c \
+	ft_substr.c \
+	ft_strjoin.c \
+	ft_strtrim.c \
+	ft_split.c \
+	ft_itoa.c \
+	ft_strmapi.c \
+	ft_striteri.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c \
 
-# Flags - compilation
-FLAG_WARNING		:=		-Wall -Wextra -Werror
-FLAG_INC			:= 		$(addprefix -I, $(INC_DIRS))
-FLAG_MAKEFILE		:=		-MMD -MP
-FLAG_DEBUG			:= 		-g
-FLAG_OPTIMIZATION	:=		-O3
-FLAGS_COMP			:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE) $(FLAG_DEBUG)
+SRCS_BONUS = ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstiter_bonus.c \
+	ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstadd_front_bonus.c ft_lstadd_back_bonus.c \
+	ft_lstmap_bonus.c
 
-# Flags - memory leak check
-FLAG_MEM_LEAK		:= 		-fsanitize=address
+OBJS = $(SRCS:.c=.o)
 
-# Others commands
-RM					:=		rm -rf
-ARRC				:=		ar rcs
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-# Color Code and template code
-_YELLOW				:=		\e[38;5;184m
-_GREEN				:=		\e[38;5;46m
-_RESET				:=		\e[0m
-_INFO				:=		[$(_YELLOW)INFO$(_RESET)]
-_SUCCESS			:=		[$(_GREEN)SUCCESS$(_RESET)]
+all: $(NAME)
 
-# Functions
-all:						init $(NAME)
-							@ printf "$(_SUCCESS) Compilation done\n"
+%.o: %.c
+	$(CC) $(CCFLAG) -c $< -o $@
 
-init:
-							@ printf "$(_INFO) Initialize $(NAME)\n"	
-
-$(NAME):					$(OBJS)
-							@ $(ARRC) $@ $(OBJS)
-
-$(PATH_BUILD)/%.o:			%.c
-							@ mkdir -p $(dir $@)
-							@ $(CC) $(FLAGS_COMP) -c $< -o $@
+## $< the first prerequiste (usually a source file) %.c
+## $@ name of the target being generated %.o
+## -c Compile or assemble the source files, but do not link
+##    The ultimate output is in the form of an object file for each source file
+## -o the object file for source.suffix in source.o
 
 clean:
-							@ $(RM) -rf $(PATH_BUILD)
-							@ printf "$(_INFO) Deleted files and directory\n"
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
-fclean:						clean
-							@ $(RM) $(NAME)
+fclean: clean
+	$(RM) ${NAME}
 
-re:							fclean all
+re: fclean all
 
-# Debugging functions
+$(NAME): $(OBJS) $(OBJS_BONUS)
+	$(AR) $(ARFLAG) $@ $^
 
-debug:						FLAGS_COMP += $(FLAG_MEM_LEAK)
-debug:						re
+## $@ $(NAME)
+## $^ $(OBJS)
 
-# Format functions
+bonus: $(OBJS) $(OBJS_BONUS)
+	$(AR) $(ARFLAG) $(NAME) $^
 
-normH:
-							@ norminette $(shell find $(PATH_SRC) -name *.h)
-
-normC:
-							@ norminette $(SRCS)
-
-norm:						normH normC
-
-.PHONY:						all clean fclean re
-
--include $(DEPS)
+.PHONY: all clean fclean re bonus

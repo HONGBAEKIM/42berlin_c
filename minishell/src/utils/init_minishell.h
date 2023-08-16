@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minishell.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 12:17:29 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/12 12:17:53 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:46 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:01:47 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "main.h"
 
-void	init_minishell(t_msh *msh, char **envp);
+void	init_minishell(char **envp, t_msh *g_msh);
 
 #endif

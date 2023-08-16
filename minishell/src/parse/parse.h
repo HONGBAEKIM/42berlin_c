@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 10:41:00 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/16 18:37:48 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:32 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:01:34 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "main.h"
 
-t_ast		*get_ast(const char *input);
-t_cmd_table	*get_cmd_table(const char *input, int *curr_pos);
-t_cmd		*get_cmd(const char *input, int *curr_pos);
-t_redir		*get_redir(const char *input, int *curr_pos);
-char		*get_token(const char *input, int *curr_pos);
+t_ast		*get_ast(const char *input, t_msh *g_msh);
+t_cmd_table	*get_cmd_table(const char *input, int *curr_pos, t_msh *g_msh);
+t_cmd		*get_cmd(const char *input, int *curr_pos, t_msh *g_msh);
+t_redir		*get_redir(const char *input, int *curr_pos, t_msh *g_msh);
+char		*get_token(const char *input, int *curr_pos, t_msh *g_msh);
 
 #endif

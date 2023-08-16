@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 10:27:15 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/18 16:15:35 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:29 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:57:26 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	delete_quotes(char *str);
 int		is_cmd_table_delimiter(const char *str);
 int		is_cmd_delimiter(char c);
 int		is_token_delimiter(char c);
-char	*get_cmd_table_delimiter(const char *input, int *curr_pos);
+char	*get_cmd_table_delimiter(const char *input, int *curr_pos, \
+t_msh *g_msh);
 int		is_ctrl(char c);
 
 #endif

@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   write_err_message.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 00:51:36 by gleal             #+#    #+#             */
-/*   Updated: 2021/05/25 11:33:54 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/08 10:18:33 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 11:05:27 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "write_err_message.h"
-
-/*
-** Different types of error messages to best mimic bash. Messages need to be
-** sent to STDERR
-*/
 
 void	write_msh_error(char *err_message)
 {

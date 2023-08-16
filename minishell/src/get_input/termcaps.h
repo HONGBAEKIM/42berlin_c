@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termcaps.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/27 18:55:37 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/04/30 11:14:39 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:18 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:01:20 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "main.h"
 
-void	init_termcaps(t_termcaps *termcaps);
+void	init_termcaps(t_termcaps *termcaps, t_msh *g_msh);
 int		has_capabilities(t_termcaps *termcaps);
-void	turn_off_canonical_mode(t_termcaps *termcaps);
-void	turn_on_canonical_mode(t_termcaps *termcaps);
+void	turn_off_canonical_mode(t_termcaps *termcaps, t_msh *g_msh);
+void	turn_on_canonical_mode(t_termcaps *termcaps, t_msh *g_msh);
 int		ft_putint(int c);
 
 #endif

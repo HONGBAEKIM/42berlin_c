@@ -3,35 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   init_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 10:58:07 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/17 19:01:51by gleal            ###   ########.fr       */
+/*   Created: 2023/08/08 10:18:15 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/08 10:18:16 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_minishell.h"
 
-/*
-** Set a few things the program needs to run
-** @param:	- [t_msh *] main struct of the program
-**			- [char **] environment pointers that we need to duplicate
-** Line-by-line comments:
-** @1-2		Makes sure that the terminal is linked to the STDIN
-** @6		Increases SHLVL environment variable everytime we call 
-** 			./minishell inside another one
-*/
-
-void	init_minishell(t_msh *msh, char **envp)
+void	init_minishell(char **envp, t_msh *g_msh)
 {
-
 	if (!isatty(STDIN_FILENO))
-		quit_program(EXIT_FAILURE);
-	ft_bzero(msh, sizeof(t_msh));
-	duplicate_env(&msh->dup_envp, envp);
-	unset_oldpwd();
-	increment_shlvl();
-	init_termcaps(&msh->termcaps);
+		quit_program(EXIT_FAILURE, g_msh);
+	ft_bzero(g_msh, sizeof(t_msh));
+	duplicate_env(&g_msh->dup_envp, envp, g_msh);
+	unset_oldpwd(g_msh);
+	increment_shlvl(g_msh);
+	init_termcaps(&g_msh->termcaps, g_msh);
 	signal(SIGINT, catch_sigint);
 	signal(SIGQUIT, catch_sigquit);
 }
+
+/* void	init_minishell(char **envp, t_msh *g_msh)
+{
+	if (!isatty(STDIN_FILENO))
+		quit_program(EXIT_FAILURE, g_msh);
+	ft_bzero(g_msh, sizeof(t_msh));
+	duplicate_env(&g_msh->dup_envp, envp, g_msh);
+	//check if there is a OLDPWD then replace if not create one.
+	unset_oldpwd(g_msh);
+	increment_shlvl(g_msh);
+	init_termcaps(&g_msh->termcaps, g_msh);
+	signal(SIGINT, catch_sigint);
+	signal(SIGQUIT, catch_sigquit);
+} */
