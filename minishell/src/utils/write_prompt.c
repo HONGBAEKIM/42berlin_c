@@ -14,5 +14,5 @@
 
 void	write_prompt(void)
 {
-	ft_putstr_fd("minishell: ", 1);
+	ft_putstr_fd("msh: ", 1);
 }

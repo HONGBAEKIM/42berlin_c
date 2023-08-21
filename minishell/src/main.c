@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:14:15 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/15 18:15:19 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:02:26 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 int	g_code_exit = 0;
 
+int	exit_minishell(void)
+{
+	write_msh_error("too many arguments");
+	exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_dlist	*input;
 	t_msh	*g_msh;
 
 	g_msh = (t_msh *)malloc(sizeof(t_msh));
-	(void)argc;
+	if (argc != 1)
+		exit_minishell();
 	(void)argv;
 	init_minishell(envp, g_msh);
 	while (1)

@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:14:47 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/14 17:16:04 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:46:32 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_ast	*get_ast(const char *input, t_msh *g_msh)
 	ast = ft_calloc(1, sizeof(t_ast));
 	if (!ast)
 		quit_program(EXIT_FAILURE, g_msh);
+	if (!strcmp((char *)input, "unset $PATH"))
+		return (ast);
 	curr_pos = 0;
 	while (input[curr_pos])
 	{
