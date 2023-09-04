@@ -8,7 +8,7 @@ SRCS = main.c\
 
 OBJS = $(SRCS:.c=.o)
 
-CC = cc -Wall -Wextra -Werror #-fsanitize=thread -g
+CC = cc -Wall -Wextra -Werror# -fsanitize=thread -g
 
 all: $(NAME) 
 
