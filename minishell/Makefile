@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+         #
+#    By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2023/08/15 18:35:11 by hongbaki         ###   ########.fr        #
+#    Created: 2023/09/04 13:38:36 by hongbaki          #+#    #+#              #
+#    Updated: 2023/09/04 13:38:41 by hongbaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 # Name of the program built
 NAME				:=		minishell
