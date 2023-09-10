@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:45:31 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/01/05 12:45:31 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/07 09:36:42 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/* char	*read_save_all(int fd, char *static_buffer)
+char	*read_save_all(int fd, char *static_buffer)
 {
 	char	*buffer;
 	int		size;
@@ -170,7 +170,37 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-} */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
 
 
 char	*read_save_all(int fd, char *static_buffer)
@@ -286,3 +316,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+ */
