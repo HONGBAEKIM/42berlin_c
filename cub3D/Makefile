@@ -1,6 +1,8 @@
 NAME	:= cub3D
 CC		:= cc
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
+CFLAGS	:= -Wextra -Wall -Werror
+#CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
+
 LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
 GNL	:= ./get_next_line
@@ -24,7 +26,7 @@ libmlx:
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-$(NAME): libmlx $(OBJS)
+$(NAME): $(libmlx) $(OBJS)
 	make -C $(LIBFT)
 	@$(CC) $(OBJS) $(LIBS) $(LIBF) $(HEADERS) -o $(NAME)
 

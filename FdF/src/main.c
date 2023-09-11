@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FdF.c                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:29:07 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/03/20 11:29:08 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:03:58 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,13 @@ static void	fdf(char *file_name)
 		stop(ERR_INIT);
 	img = fdf->img;
 	draw(fdf, fdf->map);
+	
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
 	mlx_loop_hook(fdf->mlx, &hook, fdf);
 	mlx_loop(fdf->mlx);
 	mlx_terminate(fdf->mlx);
 	exit(EXIT_SUCCESS);
+	
 }
 
 int32_t	main(int argc, char *argv[])

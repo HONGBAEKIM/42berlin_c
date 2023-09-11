@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/03/28 13:44:36 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:57:25 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # define ERR_FILE			    "ERR_FILE"
 # define ERR_FILE_EXTENSION	    "ERR_FILE_EXTENSION"
@@ -38,6 +38,29 @@ Example of color blue
               blue
                     alpha(opacity)
  */
+
+/* typedef struct s_map
+{
+    float	x_start;
+	float	y_start;
+	float	spacing;
+	int		cols;
+	int		rows;
+	float	highest;
+	float	lowest;
+	t_point	*point;
+}               t_map;
+
+typedef struct s_fdf
+{
+    t_map   *map;
+}               t_fdf; */
+
+/* typedef struct s_coord
+{
+    int x;
+    int y;
+}               t_coord; */
 
 typedef enum e_colors
 {
@@ -82,6 +105,14 @@ typedef struct s_coord
 	int	y;
 }				t_coord;
 
+/* typedef struct mlx_key_data
+{
+	keys_t		key;
+	action_t	action;
+	int32_t		os_key;
+	modifier_key_t	modifier;
+}	mlx_key_data_t; */
+
 typedef struct s_map
 {
 	float	x_start;
@@ -107,22 +138,26 @@ typedef struct s_fdf
 	char		*addr;
 }				t_fdf;
 
-t_fdf	*fdf_init(int32_t width, int32_t height, char *name);
-int		check_fdfnull(char *test_map, char *fdfnull);
-void	free_array(char **array);
-int		ft_isblank(char c);
-t_map	*parse(t_fdf *fdf, int fd);
-t_point	*pt_new(float height, unsigned int color);
-void	pt_add_back(t_point *dst, t_point *new);
-void	pt_clear(t_point *pt);
-t_point	*next_row_pt(t_point *pt, int cols);
-t_map	*map_new(void);
-void	translate(t_fdf *fdf, char xy, int amount);
-void	zoom(t_fdf *fdf, int amount);
-void	change_height(t_fdf *fdf, float factor, int up);
-void	change_color(t_fdf *fdf, uint32_t rgb);
-void	stop(char *s);
-void	lh_init(t_linehelper *lh, t_coord *c0, t_coord *c1);
-void	draw(t_fdf *fdf, t_map *map);
+// t_fdf	*fdf_init(int32_t width, int32_t height, char *name);
+// int		check_fdfnull(char *test_map, char *fdfnull);
+// void	free_array(char **array);
+// int		ft_isblank(char c);
+// t_map	*parse(t_fdf *fdf, int fd);
+// t_point	*pt_new(float height, unsigned int color);
+// void	pt_add_back(t_point *dst, t_point *new);
+// void	pt_clear(t_point *pt);
+// t_point	*next_row_pt(t_point *pt, int cols);
+// t_map	*map_new(void);
+// void	translate(t_fdf *fdf, char xy, int amount);
+// void	zoom(t_fdf *fdf, int amount);
+// void	change_height(t_fdf *fdf, float factor, int up);
+// void	change_color(t_fdf *fdf, uint32_t rgb);
+// void	stop(char *s);
+// void	lh_init(t_linehelper *lh, t_coord *c0, t_coord *c1);
+// void	draw(t_fdf *fdf, t_map *map);
+
+int	greenDotY = 200;
+int	greenDotX = 200;
+
 
 #endif
