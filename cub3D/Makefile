@@ -26,7 +26,7 @@ libmlx:
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-$(NAME): $(libmlx) $(OBJS)
+$(NAME): libmlx $(OBJS)
 	make -C $(LIBFT)
 	@$(CC) $(OBJS) $(LIBS) $(LIBF) $(HEADERS) -o $(NAME)
 

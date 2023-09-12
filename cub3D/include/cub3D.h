@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/11 15:57:25 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:30:07 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <unistd.h>
 # include <math.h>
 # include <stdlib.h>
+# include <stdio.h>
+
 # include <fcntl.h>
 # include <errno.h>
 # include <MLX42.h>
@@ -72,14 +74,25 @@ typedef enum e_colors
 	SILVER	= 0xC0C0C0FF
 }	t_colors;
 
-# ifndef WIDTH
+/* # ifndef WIDTH
 #  define WIDTH 2240
 # endif
 # ifndef HEIGHT
 #  define HEIGHT 1260
-# endif
+# endif */
 
-typedef struct s_linehelper
+#define WIDTH 2240
+#define HEIGHT 1260
+#define mapWidth 6
+#define mapHeight 6
+#define WALL 1
+#define EMPTY 0
+#define PLAYER 'N'
+
+int	greenDotY = 200;
+int	greenDotX = 200;
+ 
+/* typedef struct s_linehelper
 {
 	int	dx;
 	int	sx;
@@ -89,21 +102,22 @@ typedef struct s_linehelper
 	int	err2;
 	int	x;
 	int	y;
-}			t_linehelper;
+}			t_linehelper; */
 
-typedef struct s_point
+
+/* typedef struct s_point
 {
 	float			height;
 	unsigned int	color;
 	struct s_point	*next;
 	struct s_point	*last;
-}					t_point;
+}					t_point; */
 
-typedef struct s_coord
+/* typedef struct s_coord
 {
 	int	x;
 	int	y;
-}				t_coord;
+}				t_coord;  */
 
 /* typedef struct mlx_key_data
 {
@@ -113,7 +127,14 @@ typedef struct s_coord
 	modifier_key_t	modifier;
 }	mlx_key_data_t; */
 
-typedef struct s_map
+/* typedef struct s_map
+{
+	int	width;
+	int	height;
+	int	**grid;
+}			t_map; */
+
+/* typedef struct s_map
 {
 	float	x_start;
 	float	y_start;
@@ -123,13 +144,14 @@ typedef struct s_map
 	float	highest;
 	float	lowest;
 	t_point	*point;
-}			t_map;
+}			t_map;  */
 
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	t_map		*map;
+	//void	*win;
+	//t_map		*map;
 	uint32_t	rgb;
 	uint32_t	line_rgb;
 	int			bits_per_pixel;
@@ -156,8 +178,7 @@ typedef struct s_fdf
 // void	lh_init(t_linehelper *lh, t_coord *c0, t_coord *c1);
 // void	draw(t_fdf *fdf, t_map *map);
 
-int	greenDotY = 200;
-int	greenDotX = 200;
+
 
 
 #endif
