@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 15:59:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/12 14:08:44 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:30:39 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ char cub3dMap[mapWidth][mapHeight] =
 
 void mlx_fill_square(mlx_image_t *img, int x, int y, int size, int color)
 {
-    int end_x = x + size;
-    int end_y = y + size;
+    int end_x = x + size - 1;
+    int end_y = y + size - 1;
 
     while (y < end_y)
     {
@@ -95,7 +95,7 @@ void mlx_fill_square(mlx_image_t *img, int x, int y, int size, int color)
 void displayMap(t_fdf *fdf) 
 {
     int x = 0, y = 0;
-    int block_size = 100; // Adjust the size of each map block
+    int block_size = 50; // Adjust the size of each map block
 
     while (y < mapHeight) 
 	{
@@ -106,9 +106,9 @@ void displayMap(t_fdf *fdf)
 
             // Define colors for different map elements (customize as needed)
             if (cub3dMap[x][y] == '1')
-                color = 0xFFFFFF; // Wall
+                color = WHITE; // Wall
             else if (cub3dMap[x][y] == '0')
-                color = 0x000000; // Empty space
+                color = BLACK; // Empty space
             else if (cub3dMap[x][y] == 'N')
                 color = RED; // Player position
 
@@ -178,7 +178,7 @@ int32_t	main(void)
 
 	img = fdf->img;
 	// Even after the image is being displayed, we can still modify the buffer.
-	mlx_put_pixel(img, 200, 200, GREEN);
+	mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
 
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
 
