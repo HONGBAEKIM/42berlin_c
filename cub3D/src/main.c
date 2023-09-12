@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 15:59:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/12 15:23:41 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:11:13 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,49 +154,66 @@ void draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, int color)
     }
 }
 
+#include <math.h>
+#define PI 3.1415926535
+double pa = 0.0;
+int	py = 210;
+int	px = 150;
+
 // Print the window width and height.
 static void ft_hook(void* param)
 {
 	t_fdf *fdf = param;
 	mlx_image_t	*img;
-	int	targetX = greenDotX;
-	int	targetY = greenDotY;
-
+	
+	int	pdx = cos(pa) * 5;
+	int	pdy = sin(pa) * 5;
 
 	img = fdf->img;
 	
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
 	{
-		greenDotY -= 10;
+		// px -= 10;
+		pa -= 0.1;
+		if (pa < 0)
+			pa += 2*PI;
 		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
 		displayMap(fdf);
-		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
-		draw_line(img, greenDotX, greenDotY - 20, targetX, targetY, GREEN);
-	}
-	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
-	{
-		greenDotY += 10;
-		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
-		displayMap(fdf);
-		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
-		draw_line(img, greenDotX, greenDotY + 20, targetX, targetY, GREEN);
-	}
-	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
-	{
-		greenDotX -= 10;
-		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
-		displayMap(fdf);
-		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
-		draw_line(img, greenDotX, greenDotY, targetX + 20, targetY, GREEN);
+		mlx_put_pixel(img, px, py, GREEN);
+		draw_line(img, px, py, px+(pdx*5), py+(pdy*5), GREEN);
 	}
 	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_D))
 	{
-		greenDotX += 10;
+		//px += 10;
+		pa += 0.1;
+		if (pa > 2*PI)
+			pa -= 2*PI;
 		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
 		displayMap(fdf);
-		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
-		draw_line(img, greenDotX, greenDotY, targetX - 20, targetY, GREEN);
+		mlx_put_pixel(img, px, py, GREEN);
+		draw_line(img, px, py, px+(pdx*5), py+(pdy*5), GREEN);
 	}
+	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_W))
+	{
+		//py -= 10;
+		px += pdx;
+		py += pdy;
+		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
+		displayMap(fdf);
+		mlx_put_pixel(img, px, py, GREEN);
+		draw_line(img, px, py , px+(pdx*5), py+(pdy*5) , GREEN);
+	}
+	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
+	{
+		//py += 10;
+		px -= pdx;
+		py -= pdy;
+		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
+		displayMap(fdf);
+		mlx_put_pixel(img, px, py, GREEN);
+		draw_line(img, px, py , px+(pdx*5), py+(pdy*5) , GREEN);
+	}
+
 	
 
 }
@@ -221,7 +238,7 @@ int32_t	main(void)
 
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
 	
-	mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
+	mlx_put_pixel(img, px, py, GREEN);
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
 	mlx_loop_hook(fdf->mlx, ft_hook, fdf);

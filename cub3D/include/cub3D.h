@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/12 14:39:16 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:52:03 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ typedef enum e_colors
 #define EMPTY 0
 #define PLAYER 'N'
 
-int	greenDotY = 210;
-int	greenDotX = 150;
+
  
 /* typedef struct s_linehelper
 {
