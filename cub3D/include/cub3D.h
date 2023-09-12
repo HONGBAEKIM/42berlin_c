@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/12 14:27:31 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:39:16 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,6 @@ typedef enum e_colors
 	SILVER	= 0xC0C0C0FF
 }	t_colors;
 
-/* # ifndef WIDTH
-#  define WIDTH 2240
-# endif
-# ifndef HEIGHT
-#  define HEIGHT 1260
-# endif */
 
 #define WIDTH 2240
 #define HEIGHT 1260
@@ -89,8 +83,8 @@ typedef enum e_colors
 #define EMPTY 0
 #define PLAYER 'N'
 
-int	greenDotY = 1260 / 50;
-int	greenDotX = 2240 / 50;
+int	greenDotY = 210;
+int	greenDotX = 150;
  
 /* typedef struct s_linehelper
 {

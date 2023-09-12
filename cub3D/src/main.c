@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 15:59:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/12 14:30:39 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:23:41 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 t_fdf	*fdf_init(int32_t width, int32_t height, char *name);
 void clear_image(mlx_image_t *img, int32_t width, int32_t height, int32_t bg_color);
-static void ft_hook(void* param);
 
 void mlx_fill_square(mlx_image_t *img, int x, int y, int size, int color);
 void displayMap(t_fdf *fdf);
+void draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, int color);
+static void ft_hook(void* param);
+
 //void displayMap(char map[mapWidth][mapHeight], int x, int y, int width, int height);
 // Exit the program as failure.
 /* static void ft_error(void)
@@ -95,7 +97,7 @@ void mlx_fill_square(mlx_image_t *img, int x, int y, int size, int color)
 void displayMap(t_fdf *fdf) 
 {
     int x = 0, y = 0;
-    int block_size = 50; // Adjust the size of each map block
+    int block_size = 100; // Adjust the size of each map block
 
     while (y < mapHeight) 
 	{
@@ -120,41 +122,80 @@ void displayMap(t_fdf *fdf)
     }
 }
 
+//Bresenham's algorithm
+void draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, int color) 
+{
+    int dx = abs(x1 - x0);
+    int dy = abs(y1 - y0);
+    int sx = x0 < x1 ? 1 : -1;
+    int sy = y0 < y1 ? 1 : -1;
+    int err = (dx > dy ? dx : -dy) / 2;
+    int e2;
+
+    while (1) 
+	{
+        mlx_put_pixel(img, x0, y0, color);
+
+        if (x0 == x1 && y0 == y1) {
+            break;
+        }
+
+        e2 = err;
+
+        if (e2 > -dx) {
+            err -= dy;
+            x0 += sx;
+        }
+
+        if (e2 < dy) {
+            err += dx;
+            y0 += sy;
+        }
+    }
+}
 
 // Print the window width and height.
 static void ft_hook(void* param)
 {
 	t_fdf *fdf = param;
 	mlx_image_t	*img;
+	int	targetX = greenDotX;
+	int	targetY = greenDotY;
+
 
 	img = fdf->img;
+	
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_W))
 	{
-		greenDotY -= 5;
+		greenDotY -= 10;
 		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
 		displayMap(fdf);
 		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
+		draw_line(img, greenDotX, greenDotY - 20, targetX, targetY, GREEN);
 	}
 	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
 	{
-		greenDotY += 5;
+		greenDotY += 10;
 		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
 		displayMap(fdf);
 		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
+		draw_line(img, greenDotX, greenDotY + 20, targetX, targetY, GREEN);
 	}
 	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
 	{
-		greenDotX -= 5;
+		greenDotX -= 10;
 		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
 		displayMap(fdf);
 		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
+		draw_line(img, greenDotX, greenDotY, targetX + 20, targetY, GREEN);
 	}
 	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_D))
 	{
-		greenDotX += 5;
+		greenDotX += 10;
 		clear_image(fdf->img, WIDTH, HEIGHT, 0x000000);
 		displayMap(fdf);
 		mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
+		draw_line(img, greenDotX, greenDotY, targetX - 20, targetY, GREEN);
 	}
 	
 
@@ -172,16 +213,15 @@ int32_t	main(void)
 	mlx_set_setting(MLX_MAXIMIZED, true);
 
 
-
 	displayMap(fdf);
 
 
 	img = fdf->img;
 	// Even after the image is being displayed, we can still modify the buffer.
-	mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
 
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
-
+	
+	mlx_put_pixel(img, greenDotX, greenDotY, GREEN);
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
 	mlx_loop_hook(fdf->mlx, ft_hook, fdf);
