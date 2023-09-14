@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 15:59:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/14 15:30:38 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:38:36 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,13 @@
 	data->camera_x = 2 * x (double)
 } */
 
+/* cub->data.pos_x0 = 150;
+cub->data.pos_y0 = 210;
+cub->data.pos_ang = 0.0; */
 
+/* pos_x0 = 150;
+pos_y0 = 210;
+pos_ang = 0.0; */
 
 static void ft_hook(void* param)
 {
@@ -86,8 +92,9 @@ static void ft_hook(void* param)
 	}
 	else if (mlx_is_key_down(cub->mlx, MLX_KEY_W))
 	{
-		/* cub->data.pos_x = 150;
-		cub->data.pos_y = 210; */
+		/* cub->data.pos_x0 = 150;
+	cub->data.pos_y0 = 210; */
+		
 		(cub->data.pos_x0) += + cub->data.pos_x1;
 		(cub->data.pos_y0) += + cub->data.pos_y1;
 		clear_image(cub->img, WIDTH, HEIGHT, 0x000000);
@@ -97,8 +104,9 @@ static void ft_hook(void* param)
 	}
 	else if (mlx_is_key_down(cub->mlx, MLX_KEY_S))
 	{
-		/* cub->data.pos_x = 150;
-		cub->data.pos_y = 210; */
+		
+		/* cub->data.pos_x0 = 150;
+	cub->data.pos_y0 = 210; */
 		(cub->data.pos_x0) -= cub->data.pos_x1;
 		(cub->data.pos_y0) -= cub->data.pos_y1;
 		clear_image(cub->img, WIDTH, HEIGHT, 0x000000);
@@ -145,24 +153,18 @@ int32_t	main(void)
 	// MLX allows you to define its core behaviour before startup.w
 	mlx_set_setting(MLX_MAXIMIZED, true);
 
-
 	displayMap(cub);
 
-
 	img = cub->img;
-	// Even after the image is being displayed, we can still modify the buffer.
 
 	mlx_image_to_window(cub->mlx, cub->img, 0, 0);
 	
 	
-	//mlx_put_pixel(img, cub->data.pos_x1, cub->data.pos_y1, GREEN);
-
 	
-	// Register a hook and pass mlx as an optional param.
-	// NOTE: Do this before calling mlx_loop!
 	
 	//mlx_loop_hook(cub->mlx, ft_raycasting_hook, cub);
 	mlx_loop_hook(cub->mlx, ft_hook, cub);
+
 
 	mlx_loop(cub->mlx);
 	mlx_terminate(cub->mlx);

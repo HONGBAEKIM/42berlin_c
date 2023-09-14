@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/14 15:10:49 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:04:46 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,10 @@ typedef enum e_colors
 #define WALL 1
 #define EMPTY 0
 #define PLAYER 'N'
-
-
 #define PI 3.1415926535
-
-
-
+/* #define pos_x0 150
+#define pos_y0 210
+#define pos_ang 0.0 */
 
 
 
@@ -97,7 +95,43 @@ typedef struct s_data
 	// double			wall_x;
 	// double			step;
 }	t_data;
- 
+
+typedef struct s_cub
+{
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_data		data;
+	//void	*win;
+	//t_map		*map;
+	// uint32_t	rgb;
+	// uint32_t	line_rgb;
+	// int			bits_per_pixel;
+	// int			line_length;
+	// int			endian;
+	// char		*addr;
+}				t_cub;
+
+//init
+t_cub	*cub_init(int32_t width, int32_t height, char *name);
+static void set_data(t_cub *cub);
+//hook
+//static void ft_hook(void* param);
+
+//image
+void clear_image(mlx_image_t *img, int32_t width, int32_t height, int32_t bg_color);
+void mlx_fill_square(mlx_image_t *img, int x, int y, int size, int color);
+
+//map
+void displayMap(t_cub *cub);
+
+//drwaline
+void draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, int color);
+
+
+
+
+
+
 /* typedef struct s_linehelper
 {
 	int	dx;
@@ -152,36 +186,7 @@ typedef struct s_data
 	t_point	*point;
 }			t_map;  */
 
-typedef struct s_cub
-{
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-	t_data		data;
-	//void	*win;
-	//t_map		*map;
-	// uint32_t	rgb;
-	// uint32_t	line_rgb;
-	// int			bits_per_pixel;
-	// int			line_length;
-	// int			endian;
-	// char		*addr;
-}				t_cub;
 
-//init
-t_cub	*cub_init(int32_t width, int32_t height, char *name);
-
-//hook
-//static void ft_hook(void* param);
-
-//image
-void clear_image(mlx_image_t *img, int32_t width, int32_t height, int32_t bg_color);
-void mlx_fill_square(mlx_image_t *img, int x, int y, int size, int color);
-
-//map
-void displayMap(t_cub *cub);
-
-//drwaline
-void draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, int color);
 
 
 
