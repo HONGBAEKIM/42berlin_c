@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/14 16:04:46 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:10:29 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,9 @@ typedef struct s_cub
 
 //init
 t_cub	*cub_init(int32_t width, int32_t height, char *name);
-static void set_data(t_cub *cub);
+
+// static void set_data(t_cub *cub);
+
 //hook
 //static void ft_hook(void* param);
 
