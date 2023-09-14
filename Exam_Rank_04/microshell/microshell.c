@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:28:39 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/07 17:27:20 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/14 20:28:27 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	exec(char **av, char **envp, int i)
 	if (has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
 		return err("error: fatal\n");
 
-	return WIFEXITED(status) && WIFEXITED(status);
+	return WIFEXITED(status) && WEXITSTATUS(status);
 }
 
 int	main(int ac, char **av, char **envp)
