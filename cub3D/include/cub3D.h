@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/12 16:52:03 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:10:49 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <math.h> //sin and cos
 
 # include <fcntl.h>
 # include <errno.h>
@@ -30,39 +31,7 @@
 # include <libft.h>
 # include <get_next_line.h>
 
-/* 
-Example of color blue 
-0x0000FF88
----------------------------------
-0x  00  00    FF    88
-    Red
-        green
-              blue
-                    alpha(opacity)
- */
 
-/* typedef struct s_map
-{
-    float	x_start;
-	float	y_start;
-	float	spacing;
-	int		cols;
-	int		rows;
-	float	highest;
-	float	lowest;
-	t_point	*point;
-}               t_map;
-
-typedef struct s_fdf
-{
-    t_map   *map;
-}               t_fdf; */
-
-/* typedef struct s_coord
-{
-    int x;
-    int y;
-}               t_coord; */
 
 typedef enum e_colors
 {
@@ -84,6 +53,50 @@ typedef enum e_colors
 #define PLAYER 'N'
 
 
+#define PI 3.1415926535
+
+
+
+
+
+
+typedef struct s_data
+{
+	// 	char			player_char;
+	int32_t		screen_width;
+	int32_t		screen_height;
+	// int				map_x;
+	// int				map_y;
+	// int				side;
+	// int				line_height;
+	// int				draw_start;
+	// int				draw_end;
+	// int				step_x;
+	// int				step_y;
+	// int				tex_x;
+	// int				tex_y;
+	// int				tex_num;
+	// int				tex_width;
+	// int				tex_height;
+	double			pos_x0;
+	double			pos_y0;
+	double			pos_x1;
+	double			pos_y1;
+	double			pos_ang;
+	// double			plane_x;
+	// double			plane_y;
+	double			camera_x;
+	// double			raydir_x;
+	// double			raydir_y;
+	// double			side_dist_x;
+	// double			side_dist_y;
+	// double			delta_dist_x;
+	// double			delta_dist_y;
+	// double			perp_wall_dist;
+	// double			tex_pos;
+	// double			wall_x;
+	// double			step;
+}	t_data;
  
 /* typedef struct s_linehelper
 {
@@ -139,39 +152,72 @@ typedef enum e_colors
 	t_point	*point;
 }			t_map;  */
 
-typedef struct s_fdf
+typedef struct s_cub
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	t_data		data;
 	//void	*win;
 	//t_map		*map;
-	uint32_t	rgb;
-	uint32_t	line_rgb;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	char		*addr;
-}				t_fdf;
+	// uint32_t	rgb;
+	// uint32_t	line_rgb;
+	// int			bits_per_pixel;
+	// int			line_length;
+	// int			endian;
+	// char		*addr;
+}				t_cub;
 
-// t_fdf	*fdf_init(int32_t width, int32_t height, char *name);
-// int		check_fdfnull(char *test_map, char *fdfnull);
-// void	free_array(char **array);
-// int		ft_isblank(char c);
-// t_map	*parse(t_fdf *fdf, int fd);
-// t_point	*pt_new(float height, unsigned int color);
-// void	pt_add_back(t_point *dst, t_point *new);
-// void	pt_clear(t_point *pt);
-// t_point	*next_row_pt(t_point *pt, int cols);
-// t_map	*map_new(void);
-// void	translate(t_fdf *fdf, char xy, int amount);
-// void	zoom(t_fdf *fdf, int amount);
-// void	change_height(t_fdf *fdf, float factor, int up);
-// void	change_color(t_fdf *fdf, uint32_t rgb);
-// void	stop(char *s);
-// void	lh_init(t_linehelper *lh, t_coord *c0, t_coord *c1);
-// void	draw(t_fdf *fdf, t_map *map);
+//init
+t_cub	*cub_init(int32_t width, int32_t height, char *name);
+
+//hook
+//static void ft_hook(void* param);
+
+//image
+void clear_image(mlx_image_t *img, int32_t width, int32_t height, int32_t bg_color);
+void mlx_fill_square(mlx_image_t *img, int x, int y, int size, int color);
+
+//map
+void displayMap(t_cub *cub);
+
+//drwaline
+void draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, int color);
 
 
 
+
+/* 
+Example of color blue 
+0x0000FF88
+---------------------------------
+0x  00  00    FF    88
+    Red
+        green
+              blue
+                    alpha(opacity)
+ */
+
+/* typedef struct s_map
+{
+    float	x_start;
+	float	y_start;
+	float	spacing;
+	int		cols;
+	int		rows;
+	float	highest;
+	float	lowest;
+	t_point	*point;
+}               t_map;
+
+typedef struct s_fdf
+{
+    t_map   *map;
+}               t_fdf; */
+
+/* typedef struct s_coord
+{
+    int x;
+    int y;
+}               t_coord; */
 
 #endif
