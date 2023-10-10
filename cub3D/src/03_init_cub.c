@@ -6,13 +6,11 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:37:45 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 13:37:19 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:09:03 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 void	init_cub(int argc, char **argv, cub_main *cub)
 {
@@ -55,9 +53,6 @@ void	init_fileflags(cub_main *cub)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		ft_putstr("Error\n");
-	
-
-	
 	cub = (t_cub *)malloc(sizeof(t_cub));
 	if (!cub)
 		return (NULL);

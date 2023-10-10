@@ -32,7 +32,7 @@ $(NAME): libmlx $(OBJS)
 clean:
 	@rm -f $(OBJS)
 	make clean -C $(LIBFT)
-	rm -rf ./MLX42
+#rm -rf ./MLX42
 
 fclean: clean
 	@rm -f $(NAME)

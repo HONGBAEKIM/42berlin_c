@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:56:47 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:41:16 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:33:44 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 {
 	cub_main	*cub;
 
-	cub = (cub_main*)param;
+	cub = (cub_main *)param;
 	keys_ws(keydata, param);
 	keys_ad(keydata, param);
 	keys_left_right(keydata, param);

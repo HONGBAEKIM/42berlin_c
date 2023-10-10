@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 13:37:11 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:50:07 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,10 @@
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
-
 # define SQRS_PER_SEC 2.0 //squares (movement in a grid-based game)
 # define RADS_PER_SEC 3.0 //radians (angular measurement )
 # define NUM_TEXTURES 4
 
-# define COLOUR_RED 0xFF0000FF
-# define COLOUR_BLUE 0x00FF00FF
-# define COLOUR_GREEN 0x0000FFFF
-# define COLOUR_WHITE 0xFFFFFFFF
-# define COLOUR_YELLOW 0xFFFF00FF
-# define MINIMAP_BGND_COL 0xAAAAAAFF
-# define MINIMAP_WALL_COL 0x8B4513FF
-# define MINIMAP_EMPTY_COL 0xADD8E6FF
-# define MINIMAP_PLAYPOS_COL 0x22DD22FF
-# define MINIMAP_PLAYDIR_COL 0xFFDD22FF
-
-# define TEXTURE_NO 0
-# define TEXTURE_SO 1
-# define TEXTURE_WE 2
-# define TEXTURE_EA 3
-
-# define ERR_MSG "Error\n"
 # define ERR_ARGS "Wrong number of arguments to program\n"
 # define ERR_FILETYPE "Wrong file extension (should be .cub)\n"
 # define ERR_FILE "File not found\n"
@@ -66,7 +48,8 @@
 # define ERR_NO_PLAYPOS "Invalid file format: No player position\n"
 # define ERR_DUP_PLAYPOS "Invalid file format: Duplicate player position\n"
 
-typedef struct s_map {
+typedef struct s_map 
+{
 	int		nrows;
 	int		ncols;
 	int		longest_ncols;
@@ -76,7 +59,8 @@ typedef struct s_map {
 	bool	c_alloc;
 }	t_map;
 
-typedef struct s_fileflags {
+typedef struct s_fileflags 
+{
 	bool	no;
 	bool	so;
 	bool	we;
@@ -85,36 +69,26 @@ typedef struct s_fileflags {
 	bool	c;
 }	t_fileflags;
 
-typedef struct s_point2Dd {
+typedef struct s_point2Dd 
+{
 	double	x;
 	double	y;
 }	t_pt2d_d;
 
-typedef struct s_point2Di {
+typedef struct s_point2Di 
+{
 	int	x;
 	int	y;
 }	t_pt2d_i;
 
-// pos; 		// player start position
-// dir; 		// initial direction vector (line from player position to )
-// plane; 		// 2d raycaster version of camera plane
-// raydr;		// the direction in which the ray will be cast
-// side_dist;	// distance ray has to travel from its start pos to next x/y sqr
-// delta_dist;	// distance between one x/y square to next x/y square
-// map_pos; 	// which square the player is in on the map
-// step; 		// what direction to step in x or y-direction (either +1 or -1)
-
-typedef struct cub_main {
+typedef struct cub_main 
+{
 	char			*filename;
 	int				fd;
 	char			char_read;
 	char			map_char;
 	int				total_chars_read;
-
-
-	
 	t_fileflags		fileflags;
-	
 	char			*tex_paths[4];
 	bool			tex_paths_alloc;
 	t_map			map;
@@ -122,7 +96,6 @@ typedef struct cub_main {
 	mlx_image_t		*img;
 	mlx_texture_t	*textures[4];
 	bool			texture_alloc;
-	
 	t_pt2d_d		pos; //player's position
 	t_pt2d_d		dir; // player's direction (the player is looking)
 	t_pt2d_d		plane; // plane vectors (the plane of the screen)
@@ -130,22 +103,17 @@ typedef struct cub_main {
 	t_pt2d_d		side_dist;
 	//keep track of the distance the ray has traveled from 
 	//its starting point to the first intersection with a grid cell or object boundary. 
-	
 	t_pt2d_d		delta_dist; 
 	// determine how far the ray needs to move in the x and y directions between each step
-	
 	t_pt2d_i		map_pos; //map position
 	t_pt2d_i		step; 
 	t_pt2d_i		tex; 
-	
 	int				draw_start;
 	int				draw_end;
 	double			move_speed;
 	double			rot_speed;
 	int				side;
-	
 	int				wall_direction;
-	
 	double			perp_wall_dist;
 	int				line_height;
 	int				pitch;
@@ -158,12 +126,6 @@ typedef struct cub_main {
 	uint32_t		ceiling_color;
 	uint32_t		floor_color;
 }	cub_main;
-
-
-
-
-
-
 
 //01_check_map
 void		check_map_command(int argc, char **argv);
@@ -183,78 +145,62 @@ void	init_window(cub_main *cub);
 
 //04_read
 void	load_textures(cub_main *cub);
-//04_readmap_0
 void	read_subject_file(char **argv, cub_main *cub);
+
+//04_readcolor
+bool		read_color_prefix(cub_main *cub, char *path);
+
+//04_readmap_0
+void		get_player_position(cub_main *cub);
+
 //04_readmap_1
+void		get_map_dims(cub_main *cub);
+void		fill_map(cub_main *cub);
 
 //04_readmap_2
+void		malloc_map_i(cub_main *cub);
+void		convert_map_data_c_to_i(cub_main *cub);
 
 //04_readtexture
+bool		read_tex_prefix(cub_main *cub, char *path);
+
+//04_readutil
+void		read_char(cub_main *cub);
+bool		match_char(cub_main *cub, char char_to_match);
+bool		*choose_fileflag(cub_main *cub, char *path);
+void		read_prefixes(cub_main *cub);
 
 //05_key
 void	keyhook(mlx_key_data_t keydata, void *param);
 
 //06_raycast
-
-//07_move
-
-//08_image
-void	clear_image(cub_main *cub);
-//09_math
-
-//10_draw
-
-//end_0
-
-//end_1
-
-
-
-
-int			alloc_map(cub_main *cub);
-
-void		read_tex_filenames(cub_main *cub);
-
-void		delete_textures(cub_main *cub);
-void		free_map(cub_main *cub);
-
-
 void		ft_raycast(void *param);
+
+//07_move_wsad
 void		move_player(cub_main *cub);
+
+//07_move_rotate
 void		rotate_left(cub_main *cub);
 void		rotate_right(cub_main *cub);
 
+//09_image
+void	clear_image(cub_main *cub);
+
+//10_math
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane);
 t_pt2d_d	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr);
 void		calc_step_and_side_dist(cub_main *cub);
 void		perform_dda(cub_main *cub);
+
+//11_draw
 void		draw_tex(cub_main *cub, int x);
-void		draw_tex2(cub_main *cub, int x);
-void		get_map_dims(cub_main *cub);
-void		fill_map(cub_main *cub);
 
-void		free_map_data(t_map *map);
+//end_0
 void		ft_error(char *str, cub_main *cub);
-
-void		get_player_position(cub_main *cub);
-
-
-
-void		read_prefixes(cub_main *cub);
-void		read_char(cub_main *cub);
-bool		match_char(cub_main *cub, char char_to_match);
-bool		*choose_fileflag(cub_main *cub, char *path);
-bool		read_tex_prefix(cub_main *cub, char *path);
-bool		read_color_prefix(cub_main *cub, char *path);
-
-void		malloc_map_i(cub_main *cub);
-void		convert_map_data_c_to_i(cub_main *cub);
-
-
-
-
+void		delete_textures(cub_main *cub);
 void		closehook(void *param);
+
+//end_1
 void		free_cub(cub_main *cub);
-int			ft_strcmp(char *str1, char *str2);
 
 #endif

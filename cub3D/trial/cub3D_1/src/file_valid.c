@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:58:52 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/28 16:25:52 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:03:30 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static bool	cub_extension(char *cub_file)
 	while (str[i])
 		i++;
 	i--;
-	if (ft_strcmp(str[i], "cub") == 0)
+	if (!ft_strcmp(str[i], "cub"))
 	{
 		ft_free_array(str);
 		return (1);

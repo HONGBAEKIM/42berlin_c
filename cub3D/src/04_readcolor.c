@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:15:41 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:40:27 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:02:28 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ bool	read_color_prefix(cub_main *cub, char *path)
 		chosen_fileflag = choose_fileflag(cub, path);
 		if (*chosen_fileflag == true)
 			ft_error(ERR_DUPL_COL, cub);
-		if (ft_strcmp(path, "F") == 0)
+		if (!ft_strcmp(path, "F"))
 			cub->floor_color = read_color_path(cub);
-		if (ft_strcmp(path, "C") == 0)
+		if (!ft_strcmp(path, "C"))
 			cub->ceiling_color = read_color_path(cub);
 		*chosen_fileflag = true;
 		return (true);

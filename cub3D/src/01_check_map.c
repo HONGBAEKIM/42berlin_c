@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:28:23 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 13:27:28 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:33:14 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_sc_utils2(cub_main *cub, int x, int y)
 
 int	ft_surround_check_utils3(cub_main *cub)
 {
-	int	y = 0;
+	int	y;
 
 	y = 0;
 	while (y < (int)ft_strlen(cub->map.data_c[0]))
@@ -50,7 +50,6 @@ int	ft_surround_check_utils3(cub_main *cub)
 		y++;
 	}
 	y = 0;
-	// check if there is 0 at the map end row
 	while (y < (int)ft_strlen(cub->map.data_c[cub->map.nrows - 1]))
 	{
 		if (cub->map.data_c[cub->map.nrows - 1][y] == '0')
@@ -65,7 +64,6 @@ int	ft_surround_check(cub_main *cub)
 	int	x;
 	int	y;
 
-	//check first row and last row if there is 0      (1 is wall) 
 	if (ft_surround_check_utils3(cub))
 		return (1);
 	x = 0;

@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:06:20 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 13:24:13 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:34:00 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	load_textures(cub_main *cub)
 {
 	int	i;
 	int	fd;
-
 
 	i = 0;
 	while (i < NUM_TEXTURES)
@@ -33,8 +32,8 @@ void	load_textures(cub_main *cub)
 
 void	read_subject_file(char **argv, cub_main *cub)
 {
-	int i;
-	
+	int	i;
+
 	cub->filename = argv[1];
 	cub->total_chars_read = 0; 
 	cub->fd = open(cub->filename, O_RDONLY);
@@ -52,4 +51,3 @@ void	read_subject_file(char **argv, cub_main *cub)
 	convert_map_data_c_to_i(cub);
 	load_textures(cub);
 }
-

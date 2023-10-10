@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:21:26 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:41:10 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:17:46 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	read_char(cub_main *cub)
 		ft_error(ERR_READ, cub);
 	cub->total_chars_read += num_chars_read;
 	cub->char_read = onechar;
-	//printf("cub->char_read :  %c\n", cub->char_read);
-//	cub->char_read = onechar[0];
 }
 
 bool	match_char(cub_main *cub, char char_to_match)
@@ -69,4 +67,3 @@ void	read_prefixes(cub_main *cub)
 		return ;
 	ft_error(ERR_PREFIXES, cub);
 }
-

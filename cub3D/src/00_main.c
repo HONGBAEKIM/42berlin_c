@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 15:59:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 13:40:48 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:05:00 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ int	main(int argc, char **argv)
 // error handling
 // argc == 3 to check input everytime.
 
-
 // understand how raycast works
-// it is just math
+// 2D -> 3d racating is math part
 
 
 // 

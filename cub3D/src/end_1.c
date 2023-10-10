@@ -6,24 +6,11 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:14:39 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:42:22 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:29:09 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	ft_tex_paths(cub_main *cub)
-{
-	int	n;
-
-	n = 0;
-	while (n < NUM_TEXTURES)
-	{
-		if (cub->tex_paths[n])
-			free(cub->tex_paths[n]);
-		n++;
-	}
-}
 
 void	free_map_c(t_map *map)
 {
@@ -48,6 +35,19 @@ void	free_map_i(t_map *map)
 		while (i < map->nrows)
 			free(map->data_i[i++]);
 		free(map->data_i);
+	}
+}
+
+void	ft_tex_paths(cub_main *cub)
+{
+	int	n;
+
+	n = 0;
+	while (n < NUM_TEXTURES)
+	{
+		if (cub->tex_paths[n])
+			free(cub->tex_paths[n]);
+		n++;
 	}
 }
 
