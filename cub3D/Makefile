@@ -5,14 +5,13 @@ CFLAGS	:= -Wextra -Wall -Werror
 
 LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
-GNL	:= ./get_next_line
 
-HEADERS	:= -I ./include -I $(LIBFT) -I $(GNL) -I $(LIBMLX)/include/MLX42
+
+HEADERS	:= -I ./include -I $(LIBFT) -I $(LIBMLX)/include/MLX42
 #HEADERS	:= -I ./include -I $(LIBFT) -I $(LIBMLX)/include/MLX42
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBF	:= $(LIBFT)/libft.a
-SRCS	:= $(shell find ./src -iname "*.c")\
-	   $(shell find ./get_next_line -iname "*.c")
+SRCS	:= $(shell find ./src -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}
 
 all: $(NAME)
