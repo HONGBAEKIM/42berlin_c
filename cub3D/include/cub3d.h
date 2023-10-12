@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:44:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/10 15:50:07 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:20:09 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define SQRS_PER_SEC 2.0 //squares (movement in a grid-based game)
 # define RADS_PER_SEC 3.0 //radians (angular measurement )
 # define NUM_TEXTURES 4
+# define TEXTURE_NO 0
+# define TEXTURE_SO 1
+# define TEXTURE_WE 2
+# define TEXTURE_EA 3
 
 # define ERR_ARGS "Wrong number of arguments to program\n"
 # define ERR_FILETYPE "Wrong file extension (should be .cub)\n"
