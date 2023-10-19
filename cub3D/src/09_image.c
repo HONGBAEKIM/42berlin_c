@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	clear_image(cub_main *cub)
+void	clear_image(t_main *cub)
 {
 	unsigned int	x;
 	unsigned int	y;

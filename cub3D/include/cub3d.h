@@ -85,7 +85,7 @@ typedef struct s_point2Di
 	int	y;
 }	t_pt2d_i;
 
-typedef struct cub_main 
+typedef struct s_main 
 {
 	char			*filename;
 	int				fd;
@@ -100,16 +100,13 @@ typedef struct cub_main
 	mlx_image_t		*img;
 	mlx_texture_t	*textures[4];
 	bool			texture_alloc;
-	t_pt2d_d		pos; //player's position
-	t_pt2d_d		dir; // player's direction (the player is looking)
-	t_pt2d_d		plane; // plane vectors (the plane of the screen)
-	t_pt2d_d		raydr; // direction where Ray will be cast 
+	t_pt2d_d		pos;
+	t_pt2d_d		dir;
+	t_pt2d_d		plane;
+	t_pt2d_d		raydr;
 	t_pt2d_d		side_dist;
-	//keep track of the distance the ray has traveled from 
-	//its starting point to the first intersection with a grid cell or object boundary. 
 	t_pt2d_d		delta_dist; 
-	// determine how far the ray needs to move in the x and y directions between each step
-	t_pt2d_i		map_pos; //map position
+	t_pt2d_i		map_pos;
 	t_pt2d_i		step; 
 	t_pt2d_i		tex; 
 	int				draw_start;
@@ -129,82 +126,144 @@ typedef struct cub_main
 	bool			key_right_pressed;	
 	uint32_t		ceiling_color;
 	uint32_t		floor_color;
-}	cub_main;
+}		t_main;
 
 //01_check_map
 void		check_map_command(int argc, char **argv);
-int			ft_surround_check(cub_main *cub);
+int			ft_surround_check(t_main *cub);
 
 //02_print_map
 void		print_map_c(t_map *map);
 void		print_map_i(t_map *map);
-void		print_cub_file_summary(cub_main *cub);
+void		print_cub_file_summary(t_main *cub);
 
 //03_init_cub
-void	init_cub(int argc, char **argv, cub_main *cub);
-void		init_fileflags(cub_main *cub);
+void		init_cub(int argc, char **argv, t_main *cub);
+void		init_fileflags(t_main *cub);
 
 //03_init_window
-void	init_window(cub_main *cub);
+void		init_window(t_main *cub);
 
 //04_read
-void	load_textures(cub_main *cub);
-void	read_subject_file(char **argv, cub_main *cub);
+void		load_textures(t_main *cub);
+void		read_subject_file(char **argv, t_main *cub);
 
 //04_readcolor
-bool		read_color_prefix(cub_main *cub, char *path);
+bool		read_color_prefix(t_main *cub, char *path);
 
 //04_readmap_0
-void		get_player_position(cub_main *cub);
+void		get_player_position(t_main *cub);
 
 //04_readmap_1
-void		get_map_dims(cub_main *cub);
-void		fill_map(cub_main *cub);
+void		get_map_dims(t_main *cub);
+void		fill_map(t_main *cub);
 
 //04_readmap_2
-void		malloc_map_i(cub_main *cub);
-void		convert_map_data_c_to_i(cub_main *cub);
+void		malloc_map_i(t_main *cub);
+void		convert_map_data_c_to_i(t_main *cub);
 
 //04_readtexture
-bool		read_tex_prefix(cub_main *cub, char *path);
+bool		read_tex_prefix(t_main *cub, char *path);
 
 //04_readutil
-void		read_char(cub_main *cub);
-bool		match_char(cub_main *cub, char char_to_match);
-bool		*choose_fileflag(cub_main *cub, char *path);
-void		read_prefixes(cub_main *cub);
+void		read_char(t_main *cub);
+bool		match_char(t_main *cub, char char_to_match);
+bool		*choose_fileflag(t_main *cub, char *path);
+void		read_prefixes(t_main *cub);
 
 //05_key
-void	keyhook(mlx_key_data_t keydata, void *param);
+void		keyhook(mlx_key_data_t keydata, void *param);
 
 //06_raycast
 void		ft_raycast(void *param);
 
 //07_move_wsad
-void		move_player(cub_main *cub);
+void		move_player(t_main *cub);
 
 //07_move_rotate
-void		rotate_left(cub_main *cub);
-void		rotate_right(cub_main *cub);
+void		rotate_left(t_main *cub);
+void		rotate_right(t_main *cub);
 
 //09_image
-void	clear_image(cub_main *cub);
+void		clear_image(t_main *cub);
 
 //10_math
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane);
 t_pt2d_d	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr);
-void		calc_step_and_side_dist(cub_main *cub);
-void		perform_dda(cub_main *cub);
+void		calc_step_and_side_dist(t_main *cub);
+void		perform_dda(t_main *cub);
 
 //11_draw
-void		draw_tex(cub_main *cub, int x);
+void		draw_tex(t_main *cub, int x);
 
 //end_0
-void		ft_error(char *str, cub_main *cub);
-void		delete_textures(cub_main *cub);
+void		ft_error(char *str, t_main *cub);
+void		delete_textures(t_main *cub);
 void		closehook(void *param);
 
 //end_1
-void		free_cub(cub_main *cub);
+void		free_cub(t_main *cub);
+
+/* typedef struct t_main 
+{
+	char			*filename;
+	int				fd;
+	char			char_read;
+	char			map_char;
+	int				total_chars_read;
+	t_fileflags		fileflags;
+	char			*tex_paths[4];
+	bool			tex_paths_alloc;
+	t_map			map;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_texture_t	*textures[4];
+	bool			texture_alloc;
+	t_pt2d_d		pos; 
+	//player's position
+	
+	t_pt2d_d		dir; 
+	// player's direction 
+	(the player is looking)
+	
+	t_pt2d_d		plane; 
+	// plane vectors 
+	(the plane of the screen)
+	
+	t_pt2d_d		raydr; 
+	// direction where Ray will be cast 
+	
+	t_pt2d_d		side_dist;
+	//keep track of the distance the ray has traveled from 
+	//its starting point to the first intersection
+	// with a grid cell or object boundary. 
+	
+	t_pt2d_d		delta_dist; 
+	// determine how far the ray needs to move 
+	//in the x and y directions between each step
+	
+	t_pt2d_i		map_pos; 
+	//map position
+	
+	t_pt2d_i		step; 
+	t_pt2d_i		tex; 
+	int				draw_start;
+	int				draw_end;
+	double			move_speed;
+	double			rot_speed;
+	int				side;
+	int				wall_direction;
+	double			perp_wall_dist;
+	int				line_height;
+	int				pitch;
+	bool			key_w_pressed;
+	bool			key_s_pressed;
+	bool			key_d_pressed;
+	bool			key_a_pressed;
+	bool			key_left_pressed;
+	bool			key_right_pressed;	
+	uint32_t		ceiling_color;
+	uint32_t		floor_color;
+}	t_main; */
 
 #endif

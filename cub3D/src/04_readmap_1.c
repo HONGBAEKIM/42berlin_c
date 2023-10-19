@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	read_map_characters(cub_main *cub, char *onechar)
+void	read_map_characters(t_main *cub, char *onechar)
 {
 	int	read_check;
 
@@ -39,7 +39,7 @@ void	read_map_characters(cub_main *cub, char *onechar)
 	}
 }
 
-void	get_map_dims(cub_main *cub)
+void	get_map_dims(t_main *cub)
 {
 	char	onechar;
 
@@ -54,7 +54,7 @@ void	get_map_dims(cub_main *cub)
 	cub->map.data_c = 0;
 }
 
-void	process_row(cub_main *cub, int row)
+void	process_row(t_main *cub, int row)
 {
 	int		col;
 	bool	detectingendoftheline;
@@ -81,7 +81,7 @@ void	process_row(cub_main *cub, int row)
 	}
 }
 
-static void	malloc_map_c(cub_main *cub)
+static void	malloc_map_c(t_main *cub)
 {
 	int		i;
 	t_map	*map;
@@ -103,7 +103,7 @@ static void	malloc_map_c(cub_main *cub)
 	}
 }
 
-void	fill_map(cub_main *cub)
+void	fill_map(t_main *cub)
 {
 	char	onechar;
 	int		i;
@@ -126,7 +126,7 @@ void	fill_map(cub_main *cub)
 	close(cub->fd);
 }
 
-/* void	read_map_characters(cub_main *cub, char *onechar)
+/* void	read_map_characters(t_main *cub, char *onechar)
 {
 	int read_check;
 	
@@ -157,7 +157,7 @@ void	fill_map(cub_main *cub)
 
 
 
-void	get_map_dims(cub_main *cub)
+void	get_map_dims(t_main *cub)
 {
 	char	onechar;
 	//char	onechar[1];
@@ -183,7 +183,7 @@ void	get_map_dims(cub_main *cub)
 
 // 'read' re-reads the file
 // 'while (i < m->total_chars_read - 1)' seeks to start of map
-void	process_row(cub_main *cub, int row)
+void	process_row(t_main *cub, int row)
 {
 	int		col;
 	bool	detectingendoftheline;
@@ -215,7 +215,7 @@ void	process_row(cub_main *cub, int row)
 	}
 }
 
-static void	malloc_map_c(cub_main *cub)
+static void	malloc_map_c(t_main *cub)
 {
 	int		i;
 	t_map	*map;
@@ -246,7 +246,7 @@ static void	malloc_map_c(cub_main *cub)
 }
 
 //initializing and filling the map data structure.
-void	fill_map(cub_main *cub)
+void	fill_map(t_main *cub)
 {
 	
 	//char	onechar[1];

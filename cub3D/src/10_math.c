@@ -36,7 +36,7 @@ t_pt2d_d	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr)
 	return (delta_dist);
 }
 
-void	calc_step_and_side_dist(cub_main *cub)
+void	calc_step_and_side_dist(t_main *cub)
 {
 	if (cub->raydr.x < 0)
 	{
@@ -62,7 +62,7 @@ void	calc_step_and_side_dist(cub_main *cub)
 	}
 }
 
-void	handle_wall_hit(cub_main *cub, int side)
+void	handle_wall_hit(t_main *cub, int side)
 {
 	cub->side = side;
 	if (side == 0)
@@ -81,7 +81,7 @@ void	handle_wall_hit(cub_main *cub, int side)
 	}
 }
 
-void	perform_dda(cub_main *cub)
+void	perform_dda(t_main *cub)
 {
 	int	hit;
 	int	side;
@@ -149,7 +149,7 @@ t_pt2d_d	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr)
 }
 
 //calculate step and initial side_dist
-void	calc_step_and_side_dist(cub_main *cub)
+void	calc_step_and_side_dist(t_main *cub)
 {
 	//check ray direction of x is less than 0
 	if (cub->raydr.x < 0)
@@ -181,7 +181,7 @@ void	calc_step_and_side_dist(cub_main *cub)
 	}
 }
 
-void	handle_wall_hit(cub_main *cub, int side)
+void	handle_wall_hit(t_main *cub, int side)
 {
 	cub->side = side;
 	if (side == 0)
@@ -203,7 +203,7 @@ void	handle_wall_hit(cub_main *cub, int side)
 //It calculates the intersection of a ray with walls 
 //in the environment and determines which side 
 //(horizontal or vertical) of the wall was hit
-void	perform_dda(cub_main *cub)
+void	perform_dda(t_main *cub)
 {
 	int	hit;
 	int	side;

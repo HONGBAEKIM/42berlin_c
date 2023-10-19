@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	read_char(cub_main *cub)
+void	read_char(t_main *cub)
 {
 	char	onechar;
 	int		num_chars_read;
@@ -24,14 +24,14 @@ void	read_char(cub_main *cub)
 	cub->char_read = onechar;
 }
 
-bool	match_char(cub_main *cub, char char_to_match)
+bool	match_char(t_main *cub, char char_to_match)
 {
 	if (cub->char_read == char_to_match)
 		return (1);
 	return (0);
 }
 
-bool	*choose_fileflag(cub_main *cub, char *path)
+bool	*choose_fileflag(t_main *cub, char *path)
 {
 	if (!ft_strcmp(path, "NO"))
 		return (&cub->fileflags.no);
@@ -48,7 +48,7 @@ bool	*choose_fileflag(cub_main *cub, char *path)
 	return (NULL);
 }
 
-void	read_prefixes(cub_main *cub)
+void	read_prefixes(t_main *cub)
 {
 	read_char(cub);
 	while (cub->char_read == '\n')

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int	read_color_value(cub_main *cub)
+int	read_color_value(t_main *cub)
 {
 	char	color_str[PATH_MAX];
 	int		i;
@@ -29,7 +29,7 @@ int	read_color_value(cub_main *cub)
 	return (ft_atoi(color_str));
 }
 
-uint32_t	read_color_path(cub_main *cub)
+uint32_t	read_color_path(t_main *cub)
 {
 	int	red;
 	int	green;
@@ -52,7 +52,7 @@ uint32_t	read_color_path(cub_main *cub)
 	return ((red << 24) | (green << 16) | (blue << 8) | 0xFF);
 }
 
-bool	read_color_prefix(cub_main *cub, char *path)
+bool	read_color_prefix(t_main *cub, char *path)
 {
 	bool	*chosen_fileflag;
 

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	malloc_map_i(cub_main *cub)
+void	malloc_map_i(t_main *cub)
 {
 	int		i;
 	t_map	*map;
@@ -32,7 +32,7 @@ void	malloc_map_i(cub_main *cub)
 	}
 }
 
-void	convert_map_data_c_to_i(cub_main *cub)
+void	convert_map_data_c_to_i(t_main *cub)
 {
 	int		col;
 	int		row;
@@ -56,7 +56,7 @@ void	convert_map_data_c_to_i(cub_main *cub)
 	}
 }
 
-/* void	malloc_map_i(cub_main *cub)
+/* void	malloc_map_i(t_main *cub)
 {
 	int		i;
 	t_map	*map;
@@ -79,7 +79,7 @@ void	convert_map_data_c_to_i(cub_main *cub)
 }
 
 // converts ' ' to 0 for now (in the end better if -1)
-void	convert_map_data_c_to_i(cub_main *cub)
+void	convert_map_data_c_to_i(t_main *cub)
 {
 	int		col;
 	int		row;

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-char	*read_wall_tex_path(cub_main *cub)
+char	*read_wall_tex_path(t_main *cub)
 {
 	char	path_str[PATH_MAX];
 	int		i;
@@ -43,7 +43,7 @@ int	choose_tex_path_index(char *path)
 	return (-1);
 }
 
-bool	read_tex_prefix(cub_main *cub, char *path)
+bool	read_tex_prefix(t_main *cub, char *path)
 {
 	bool	*chosen_fileflag;
 	int		tex_path_index;
@@ -72,7 +72,7 @@ bool	read_tex_prefix(cub_main *cub, char *path)
 }
 
 /* //PATH_MAX is 4096
-char	*read_wall_tex_path(cub_main *cub)
+char	*read_wall_tex_path(t_main *cub)
 {
 	char	path_str[4096];
 	int		i;
@@ -103,7 +103,7 @@ int	choose_tex_path_index(char *path)
 	return (-1);
 }
 
-bool	read_tex_prefix(cub_main *cub, char *path)
+bool	read_tex_prefix(t_main *cub, char *path)
 {
 	bool	*chosen_fileflag;
 	int		tex_path_index;

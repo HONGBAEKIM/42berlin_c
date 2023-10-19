@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	cub_main	cub;
+	t_main	cub;
 
 	check_map_command(argc, argv);
 	init_cub(argc, argv, &cub);

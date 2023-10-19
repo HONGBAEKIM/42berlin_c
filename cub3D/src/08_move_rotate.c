@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	rotate_left(cub_main *m)
+void	rotate_left(t_main *m)
 {
 	double	dir_x0;
 	double	plane_x0;
@@ -27,7 +27,7 @@ void	rotate_left(cub_main *m)
 		+ m->plane.y * cos(m->rot_speed);
 }
 
-void	rotate_right(cub_main *m)
+void	rotate_right(t_main *m)
 {
 	double	dir_x0;
 	double	plane_x0;
@@ -44,7 +44,7 @@ void	rotate_right(cub_main *m)
 
 /* // for all functions below...
 // both camera direction and camera plane must be rotated
-void	rotate_left(cub_main *m)
+void	rotate_left(t_main *m)
 {
 	double	dir_x0;
 	double	plane_x0;
@@ -59,7 +59,7 @@ void	rotate_left(cub_main *m)
 		+ m->plane.y * cos(m->rot_speed);
 }
 
-void	rotate_right(cub_main *m)
+void	rotate_right(t_main *m)
 {
 	double	dir_x0;
 	double	plane_x0;

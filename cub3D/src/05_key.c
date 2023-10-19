@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	keys_ws(mlx_key_data_t keydata, cub_main *cub)
+void	keys_ws(mlx_key_data_t keydata, t_main *cub)
 {
 	if (keydata.key == MLX_KEY_W)
 	{
@@ -30,7 +30,7 @@ void	keys_ws(mlx_key_data_t keydata, cub_main *cub)
 	}
 }
 
-void	keys_ad(mlx_key_data_t keydata, cub_main *cub)
+void	keys_ad(mlx_key_data_t keydata, t_main *cub)
 {
 	if (keydata.key == MLX_KEY_A)
 	{
@@ -48,7 +48,7 @@ void	keys_ad(mlx_key_data_t keydata, cub_main *cub)
 	}
 }
 
-void	keys_left_right(mlx_key_data_t keydata, cub_main *cub)
+void	keys_left_right(mlx_key_data_t keydata, t_main *cub)
 {
 	if (keydata.key == MLX_KEY_LEFT)
 	{
@@ -68,9 +68,9 @@ void	keys_left_right(mlx_key_data_t keydata, cub_main *cub)
 
 void	keyhook(mlx_key_data_t keydata, void *param)
 {
-	cub_main	*cub;
+	t_main	*cub;
 
-	cub = (cub_main *)param;
+	cub = (t_main *)param;
 	keys_ws(keydata, param);
 	keys_ad(keydata, param);
 	keys_left_right(keydata, param);

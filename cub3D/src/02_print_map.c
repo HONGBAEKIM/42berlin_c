@@ -68,7 +68,7 @@ void	print_map_i(t_map *map)
 	}
 }
 
-void	print_cub_file_summary(cub_main *cub)
+void	print_cub_file_summary(t_main *cub)
 {
 	printf("---------checking map----------\n");
 	printf("texture path 0: %s\n", cub->tex_paths[0]);

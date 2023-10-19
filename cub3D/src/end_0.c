@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	ft_error(char *str, cub_main *cub)
+void	ft_error(char *str, t_main *cub)
 {
 	write(2, "Error\n", 6);
 	write(2, str, (int)ft_strlen(str));
@@ -21,7 +21,7 @@ void	ft_error(char *str, cub_main *cub)
 	exit(EXIT_FAILURE);
 }
 
-void	delete_textures(cub_main *cub)
+void	delete_textures(t_main *cub)
 {
 	int	i;
 
@@ -35,9 +35,9 @@ void	delete_textures(cub_main *cub)
 
 void	closehook(void *param)
 {
-	cub_main	*cub;
+	t_main	*cub;
 
-	cub = (cub_main *)param;
+	cub = (t_main *)param;
 	mlx_terminate(cub->mlx);
 	free_cub(cub);
 	exit(EXIT_FAILURE);

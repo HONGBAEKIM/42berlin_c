@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	set_player_pos(cub_main *cub, int row, int col, bool *found)
+void	set_player_pos(t_main *cub, int row, int col, bool *found)
 {
 	if (cub->map_char == 'N' || cub->map_char == 'S'
 		|| cub->map_char == 'W' || cub->map_char == 'E')
@@ -25,7 +25,7 @@ void	set_player_pos(cub_main *cub, int row, int col, bool *found)
 	}
 }
 
-void	set_player_dir_plane_we(cub_main *cub)
+void	set_player_dir_plane_we(t_main *cub)
 {
 	if (cub->map_char == 'W')
 	{
@@ -43,7 +43,7 @@ void	set_player_dir_plane_we(cub_main *cub)
 	}
 }
 
-void	set_player_dir_plane(cub_main *cub)
+void	set_player_dir_plane(t_main *cub)
 {
 	if (cub->map_char == 'N')
 	{
@@ -62,7 +62,7 @@ void	set_player_dir_plane(cub_main *cub)
 	set_player_dir_plane_we(cub);
 }
 
-void	get_player_position(cub_main *cub)
+void	get_player_position(t_main *cub)
 {
 	int		row;
 	int		col;
@@ -87,7 +87,7 @@ void	get_player_position(cub_main *cub)
 }
 
 /* 
-void	set_player_pos(cub_main *cub, int row, int col, bool *found)
+void	set_player_pos(t_main *cub, int row, int col, bool *found)
 {
 	if (cub->map_char == 'N' || cub->map_char == 'S'
 		|| cub->map_char == 'W' || cub->map_char == 'E')
@@ -101,7 +101,7 @@ void	set_player_pos(cub_main *cub, int row, int col, bool *found)
 	}
 }
 
-void	set_player_dir_plane_we(cub_main *cub)
+void	set_player_dir_plane_we(t_main *cub)
 {
 	if (cub->map_char == 'W')
 	{
@@ -119,7 +119,7 @@ void	set_player_dir_plane_we(cub_main *cub)
 	}
 }
 
-void	set_player_dir_plane(cub_main *cub)
+void	set_player_dir_plane(t_main *cub)
 {
 	if (cub->map_char == 'N')
 	{
@@ -139,7 +139,7 @@ void	set_player_dir_plane(cub_main *cub)
 }
 
 // + 0.5 sets pos to middle of square
-void	get_player_position(cub_main *cub)
+void	get_player_position(t_main *cub)
 {
 	int		row;
 	int		col;

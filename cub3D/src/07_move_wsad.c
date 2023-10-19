@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	move_forwards(cub_main *cub)
+void	move_forwards(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x + cub->dir.x
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -22,7 +22,7 @@ void	move_forwards(cub_main *cub)
 		cub->pos.y += cub->dir.y * cub->move_speed;
 }
 
-void	move_backwards(cub_main *cub)
+void	move_backwards(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x - cub->dir.x
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -32,7 +32,7 @@ void	move_backwards(cub_main *cub)
 		cub->pos.y -= cub->dir.y * cub->move_speed;
 }
 
-void	move_left(cub_main *cub)
+void	move_left(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x + -cub->dir.y
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -42,7 +42,7 @@ void	move_left(cub_main *cub)
 		cub->pos.y += cub->dir.x * cub->move_speed;
 }
 
-void	move_right(cub_main *cub)
+void	move_right(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x + cub->dir.y
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -52,7 +52,7 @@ void	move_right(cub_main *cub)
 		cub->pos.y += -cub->dir.x * cub->move_speed;
 }
 
-void	move_player(cub_main *cub)
+void	move_player(t_main *cub)
 {
 	if (cub->key_w_pressed)
 		move_forwards(cub);
@@ -71,7 +71,7 @@ void	move_player(cub_main *cub)
 /* 
 //when the map int is 0 then move           not 1 or ' ' 
 //move forward if no wall in front of you
-void	move_forwards(cub_main *cub)
+void	move_forwards(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x + cub->dir.x
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -83,7 +83,7 @@ void	move_forwards(cub_main *cub)
 }
 
 //move backwards if no wall behind you
-void	move_backwards(cub_main *cub)
+void	move_backwards(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x - cub->dir.x
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -94,7 +94,7 @@ void	move_backwards(cub_main *cub)
 }
 
 // move left if no wall on the left side
-void	move_left(cub_main *cub)
+void	move_left(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x + -cub->dir.y
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -105,7 +105,7 @@ void	move_left(cub_main *cub)
 }
 
 // move right if no wall on the right side
-void	move_right(cub_main *cub)
+void	move_right(t_main *cub)
 {
 	if (cub->map.data_i[(int)(cub->pos.x + cub->dir.y
 			* cub->move_speed)][(int)(cub->pos.y)] == 0)
@@ -119,7 +119,7 @@ void	move_right(cub_main *cub)
 
 // if (mouse_moved)
 // 	rotate_mouse(m);
-void	move_player(cub_main *cub)
+void	move_player(t_main *cub)
 {
 	if (cub->key_w_pressed)
 		move_forwards(cub);

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	load_textures(cub_main *cub)
+void	load_textures(t_main *cub)
 {
 	int	i;
 	int	fd;
@@ -30,7 +30,7 @@ void	load_textures(cub_main *cub)
 	cub->texture_alloc = true;
 }
 
-void	read_subject_file(char **argv, cub_main *cub)
+void	read_subject_file(char **argv, t_main *cub)
 {
 	int	i;
 

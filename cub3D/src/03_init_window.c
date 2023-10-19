@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	init_window(cub_main *cub)
+void	init_window(t_main *cub)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	cub->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);

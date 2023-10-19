@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	draw_floor_ceiling(cub_main *cub, int x)
+void	draw_floor_ceiling(t_main *cub, int x)
 {
 	int	y;
 
@@ -30,7 +30,7 @@ void	draw_floor_ceiling(cub_main *cub, int x)
 	}
 }
 
-void	draw_tex3(cub_main *cub, int x, int tex_x)
+void	draw_tex3(t_main *cub, int x, int tex_x)
 {
 	double		step;
 	double		tex_pos;
@@ -56,7 +56,7 @@ void	draw_tex3(cub_main *cub, int x, int tex_x)
 	}
 }
 
-void	draw_tex2(cub_main *cub, int x)
+void	draw_tex2(t_main *cub, int x)
 {
 	double	wall_x;
 	int		tex_x;
@@ -74,7 +74,7 @@ void	draw_tex2(cub_main *cub, int x)
 	draw_tex3(cub, x, tex_x);
 }
 
-void	draw_tex(cub_main *cub, int x)
+void	draw_tex(t_main *cub, int x)
 {
 	cub->draw_start = 0;
 	cub->draw_end = 0;
@@ -90,7 +90,7 @@ void	draw_tex(cub_main *cub, int x)
 }
 
 /*
-void	draw_floor_ceiling(cub_main *cub, int x)
+void	draw_floor_ceiling(t_main *cub, int x)
 {
 	int	y;
 
@@ -108,7 +108,7 @@ void	draw_floor_ceiling(cub_main *cub, int x)
 	}
 }
 
-void	draw_tex3(cub_main *cub, int x, int tex_x)
+void	draw_tex3(t_main *cub, int x, int tex_x)
 {
 	double		step;
 	double		tex_pos;
@@ -134,7 +134,7 @@ void	draw_tex3(cub_main *cub, int x, int tex_x)
 }
 
 ///start from draw_tex2.c
-void	draw_tex2(cub_main *cub, int x)
+void	draw_tex2(t_main *cub, int x)
 {
 	double	wall_x;
 	int		tex_x;
@@ -155,7 +155,7 @@ void	draw_tex2(cub_main *cub, int x)
 // Calculate height of line to draw on screen
 // check for 'cub->draw_end < 0' protects against...
 // ...it going negative when outer wall reached
-void	draw_tex(cub_main *cub, int x)
+void	draw_tex(t_main *cub, int x)
 {
 	cub->draw_start = 0;
 	cub->draw_end = 0;

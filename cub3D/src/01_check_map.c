@@ -30,7 +30,7 @@ int	ft_sc_utils1(char **cmap, int x, int y)
 	return (0);
 }
 
-int	ft_sc_utils2(cub_main *cub, int x, int y)
+int	ft_sc_utils2(t_main *cub, int x, int y)
 {
 	return ((ft_sc_utils1(cub->map.data_c, x + 1, y)
 			+ ft_sc_utils1(cub->map.data_c, x - 1, y)
@@ -38,7 +38,7 @@ int	ft_sc_utils2(cub_main *cub, int x, int y)
 			+ ft_sc_utils1(cub->map.data_c, x, y - 1)));
 }
 
-int	ft_surround_check_utils3(cub_main *cub)
+int	ft_surround_check_utils3(t_main *cub)
 {
 	int	y;
 
@@ -59,7 +59,7 @@ int	ft_surround_check_utils3(cub_main *cub)
 	return (0);
 }
 
-int	ft_surround_check(cub_main *cub)
+int	ft_surround_check(t_main *cub)
 {
 	int	x;
 	int	y;
@@ -101,7 +101,7 @@ int	ft_sc_utils1(char **cmap, int x, int y)
 	return (0);
 }
 
-int	ft_sc_utils2(cub_main *cub, int x, int y)
+int	ft_sc_utils2(t_main *cub, int x, int y)
 {
 	return ((ft_sc_utils1(cub->map.data_c, x + 1, y)
 			+ ft_sc_utils1(cub->map.data_c, x - 1, y)
@@ -109,7 +109,7 @@ int	ft_sc_utils2(cub_main *cub, int x, int y)
 			+ ft_sc_utils1(cub->map.data_c, x, y - 1)));
 }
 
-int	ft_surround_check_utils3(cub_main *cub)
+int	ft_surround_check_utils3(t_main *cub)
 {
 	int	y = 0;
 
@@ -131,7 +131,7 @@ int	ft_surround_check_utils3(cub_main *cub)
 	return (0);
 }
 
-int	ft_surround_check(cub_main *cub)
+int	ft_surround_check(t_main *cub)
 {
 	int	x;
 	int	y;

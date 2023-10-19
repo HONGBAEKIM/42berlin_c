@@ -14,10 +14,10 @@
 
 void	ft_raycast(void *param)
 {
-	cub_main	*cub;
-	int			x;
+	t_main	*cub;
+	int		x;
 
-	cub = (cub_main *)param;
+	cub = (t_main *)param;
 	move_player(cub);
 	clear_image(cub);
 	x = 0;
@@ -44,10 +44,10 @@ void	ft_raycast(void *param)
 // length of ray from current position to next x or y-side
 void	ft_raycast(void *param)
 {
-	cub_main	*cub;
+	t_main	*cub;
 	int		x;
 
-	cub = (cub_main *)param;
+	cub = (t_main *)param;
 	move_player(cub);
 	clear_image(cub);
 	x = 0;

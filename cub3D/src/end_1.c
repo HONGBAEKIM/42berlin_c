@@ -38,7 +38,7 @@ void	free_map_i(t_map *map)
 	}
 }
 
-void	ft_tex_paths(cub_main *cub)
+void	ft_tex_paths(t_main *cub)
 {
 	int	n;
 
@@ -51,7 +51,7 @@ void	ft_tex_paths(cub_main *cub)
 	}
 }
 
-void	free_cub(cub_main *cub)
+void	free_cub(t_main *cub)
 {
 	if ((cub->fd != -1))
 		close(cub->fd);

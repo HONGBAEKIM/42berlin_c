@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	init_cub(int argc, char **argv, cub_main *cub)
+void	init_cub(int argc, char **argv, t_main *cub)
 {
 	cub->map.data_c = 0;
 	cub->map.data_i = 0;
@@ -36,7 +36,7 @@ void	init_cub(int argc, char **argv, cub_main *cub)
 	cub->key_right_pressed = 0;
 }
 
-void	init_fileflags(cub_main *cub)
+void	init_fileflags(t_main *cub)
 {
 	cub->fileflags.no = 0;
 	cub->fileflags.so = 0;
