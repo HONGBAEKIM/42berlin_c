@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -25,15 +25,15 @@ class Contact
     public:
         Contact();
         ~Contact();
-        void    SaveContact(std::string firstname,\
+        void    saveContact(std::string firstname,\
                             std::string lastname,\
                             std::string nickname,\
-                            std::string phoneNumber,\
-                            std::string darkestSecret);
-        void    PrintDetails();
-        std::string GetFirstName();
-        std::string GetLastName();
-        std::string GetNickName();
+                            std::string phone_number,\
+                            std::string darkest_secret);
+        void    printDetails();
+        std::string getFirstName();
+        std::string getLastName();
+        std::string getNickName();
 
     private:
         std::string _firstname;

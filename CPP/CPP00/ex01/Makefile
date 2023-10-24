@@ -11,17 +11,21 @@
 # **************************************************************************** #
 
 NAME = PhoneBook
-SRCS = $(shell find ./src -iname "*.cpp")
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+#SRCS = $(shell find ./src -iname "*.cpp")
+SRCS = ./src/phonebook.cpp \
+		./src/contact.cpp \
+		./src/main.cpp
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -std=c++98 -pedantic
 OBJS = $(SRCS:.cpp=.o)
 
 %.o: %.cpp
-	c++ $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	c++ $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
@@ -30,3 +34,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

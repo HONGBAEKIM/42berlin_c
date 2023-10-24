@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,14 +13,14 @@
 #include "contact.hpp"
 
 //calling when an object of the class is created
-Contact::Contact() {}
+Contact::Contact(void) {}
 
 //calling when an object of the class is destroyed
-Contact::~Contact() {}
+Contact::~Contact(void) {}
 
 
 //set
-void    Contact::SaveContact(std::string firstname,\
+void    Contact::saveContact(std::string firstname,\
                             std::string lastname,\
                             std::string nickname,\
                             std::string phoneNumber,\
@@ -35,27 +35,27 @@ void    Contact::SaveContact(std::string firstname,\
                             
 
 //private
-std::string Contact::GetFirstName(void)
+std::string Contact::getFirstName(void)
 {
-    return (this->_first_name);
+    return (this->_firstname);
 }
 
-std::string Contact::GetLastName(void)
+std::string Contact::getLastName(void)
 {
     return (this->_lastname);
 }
 
-std::string Contact::GetNickName(void)
+std::string Contact::getNickName(void)
 {
     return (this->_nickname);
 }
 
 //public
-void    Contact::PrintDetails(void)
+void    Contact::printDetails(void)
 {
-    std::cout << "first name:              " << this->_firstname;
-    std::cout << "last name:               " << this->_lastname;
-    std::cout << "nickname:                " << this->_nickname;
-    std::cout << "Phone number:            " << this->_phonenumber;
-    std::cout << "Darkest Secret:          " << this->_darkestsecret;
+    std::cout << "First name:              " << this->_firstname << std::endl;
+    std::cout << "Last name:               " << this->_lastname << std::endl;
+    std::cout << "Nickname:                " << this->_nickname << std::endl;
+    std::cout << "Phone number:            " << this->_phoneNumber << std::endl;
+    std::cout << "Darkest Secret:          " << this->_darkestSecret << std::endl;
 }

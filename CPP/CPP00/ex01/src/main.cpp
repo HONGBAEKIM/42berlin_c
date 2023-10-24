@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "phonebook.hpp"
 
-int main()
+int main(void)
 {
     std::string userInput;
     Phonebook   phonebook;
@@ -23,16 +23,16 @@ int main()
         getline(std::cin, userInput);
         //check if the end-of-file(EOF) condition has been
         //reached on the standard input stream(std::cin)
-        if (str::cin.eof())
+        if (std::cin.eof())
             break ;
         if (userInput.compare("ADD") == 0)
-            phonebook.addContat();
+            phonebook.addContact();
         else if (userInput.compare("SEARCH") == 0)
             phonebook.searchContact();
         else if (userInput.compare("EXIT") == 0)
             break ;
         else
-            str::cout << "Invalid option" << std::endl;
+            std::cout << "Invalid option" << std::endl;
     }
     return (0);
 }
