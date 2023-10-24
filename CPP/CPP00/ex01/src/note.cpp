@@ -10,29 +10,3 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-
-int main()
-{
-    std::string userInput;
-    Phonebook   phonebook;
-    
-    while (1)
-    {
-        std::cout << "Enter a comman (ADD/SEARCH/EXIT): ";
-        getline(std::cin, userInput);
-        //check if the end-of-file(EOF) condition has been
-        //reached on the standard input stream(std::cin)
-        if (str::cin.eof())
-            break ;
-        if (userInput.compare("ADD") == 0)
-            phonebook.addContat();
-        else if (userInput.compare("SEARCH") == 0)
-            phonebook.searchContact();
-        else if (userInput.compare("EXIT") == 0)
-            break ;
-        else
-            str::cout << "Invalid option" << std::endl;
-    }
-    return (0);
-}
