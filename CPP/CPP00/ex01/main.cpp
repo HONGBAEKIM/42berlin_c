@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:11:50 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/20 15:56:08 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:40:21 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ int main(void)
     
     while (1)
     {
-        std::cout << "Enter a comman (ADD/SEARCH/EXIT): ";
+        //same as 'printf("Enter a command (ADD/SEARCH/EXIT): ")'
+        std::cout << "Enter a command (ADD/SEARCH/EXIT): ";
+        //read from keyboard input which is 'std::cin'
+        //line of text will be stored at 'userInput'
         getline(std::cin, userInput);
-        //check if the end-of-file(EOF) condition has been
+         //check if the end-of-file(EOF) condition has been
         //reached on the standard input stream(std::cin)
         if (std::cin.eof())
             break ;
-        if (userInput.compare("ADD") == 0)
+        if (!userInput.compare("ADD"))
             phonebook.addContact();
-        else if (userInput.compare("SEARCH") == 0)
+        else if (!userInput.compare("SEARCH"))
             phonebook.searchContact();
-        else if (userInput.compare("EXIT") == 0)
+        else if (!userInput.compare("EXIT"))
             break ;
         else
             std::cout << "Invalid option" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:11:44 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/20 15:46:56 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:37:29 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <iomanip>
 //isalpha
 # include <cctype>
+//for std::exit
+#include <cstdlib>
 
 class Contact
 {
@@ -40,7 +42,7 @@ class Contact
         std::string _lastname;
         std::string _nickname;
         std::string _phoneNumber;
-        std::string _darkestSecrett;
+        std::string _darkestSecret;
 };
 
 #endif
