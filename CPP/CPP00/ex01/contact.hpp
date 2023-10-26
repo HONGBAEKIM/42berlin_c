@@ -6,19 +6,24 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:11:44 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/25 10:37:29 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:33:09 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
+
+# include <string>
+
 //std::cout, std::endl
 # include <iostream>
-# include <string>
+
 //std::setw
 # include <iomanip>
+
 //isalpha
 # include <cctype>
+
 //for std::exit
 #include <cstdlib>
 

@@ -6,40 +6,38 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:11:52 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/25 16:45:30 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:32:45 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-//Initialize
-Phonebook::Phonebook(void)
+// Initialize
+Phonebook::Phonebook()
 {
     _contact_index = 0;
 }
 
-//Empty
-Phonebook::~Phonebook(void)
-{
-}
+// Empty
+Phonebook::~Phonebook() {}
 
-//read a line of text from the standard input
-//and save it to data as a characters.
+// read a line of text from the standard input (from keyboard)
+// and save it to data as a characters.
 void get_data(std::string &data)
 {
-    //read a line of text from the standard input 
-    //and then immediately checks if the end-of-file (EOF) condition 
-    //has been reached on the input stream (std::cin) using the eof() function
+    // read a line of text from the standard input
+    // and then immediately checks if the end-of-file (EOF) condition
+    // has been reached on the input stream (std::cin) using the eof() function
     if (std::getline(std::cin, data).eof())
-    {   
+    {
         std::cout << std::endl;
-        //terminate the program when there's no more input to read
-        // if no, when I click ctrl+s there is 
+        // terminate the program when there's no more input to read
+        //  if no, when I click ctrl+s there is
         std::exit(0);
     }
 }
 
-//print
+// print
 void displayTable(Contact contacts[MAX_CONTACTS])
 {
     std::cout << std::endl;
@@ -48,8 +46,8 @@ void displayTable(Contact contacts[MAX_CONTACTS])
     std::cout << "--------------------------------------------" << std::endl;
     for (int i = 0; i < MAX_CONTACTS; i++)
     {
-        //if i is shorter than 10 characters, it will be added with spaces 
-        //on the left side to make it 10 characters wide
+        // if i is shorter than 10 characters, it will be added with spaces
+        // on the left side to make it 10 characters wide
         std::cout << std::setw(10) << std::right << i << "|";
         if (contacts[i].getFirstName().length() > 10)
             std::cout << contacts[i].getFirstName().substr(0, 9) << ".|";
@@ -63,14 +61,14 @@ void displayTable(Contact contacts[MAX_CONTACTS])
             std::cout << contacts[i].getNickName().substr(0, 9) << ".|";
         else
             std::cout << std::setw(10) << contacts[i].getNickName() << "|";
-        //New line same as 'printf("\n")'
+        // New line same as 'printf("\n")'
         std::cout << std::endl;
     }
 }
 
-//public
-//Get user input and store them into the Contact class
-void Phonebook::addContact(void)
+// public
+// Get user input and store them into the Contact class
+void Phonebook::addContact()
 {
     std::string firstname;
     std::string lastname;
@@ -78,78 +76,119 @@ void Phonebook::addContact(void)
     std::string phone_number;
     std::string darkest_secret;
 
-    while(1)
+    while (1)
     {
         std::cout << "Enter first name: ";
         get_data(firstname);
         if (!isalpha(firstname[0]))
         {
             std::cout << "Need to start with an alphabet" << std::endl;
-            continue ;
+            continue;
         }
         if (firstname[0])
-            break ;
+            break;
     }
 
-    while(1)
+    while (1)
     {
         std::cout << "Enter last name: ";
         get_data(lastname);
         if (!isalpha(lastname[0]))
         {
             std::cout << "Need to start with an alphabet" << std::endl;
-            continue ;
+            continue;
         }
         if (lastname[0])
-            break ;
+            break;
     }
 
-    while(1)
+    while (1)
     {
         std::cout << "Enter nickname: ";
         get_data(nickname);
         if (!isalpha(nickname[0]))
         {
             std::cout << "Need to start with an alphabet" << std::endl;
-            continue ;
+            continue;
         }
         if (nickname[0])
-            break ;
+            break;
     }
 
-    while(1)
+    while (1)
     {
         std::cout << "Enter phone number: ";
         get_data(phone_number);
         if (!isdigit(phone_number[0]))
         {
             std::cout << "Need to start with a digit" << std::endl;
-            continue ;
+            continue;
         }
         if (phone_number[0])
-            break ;
+            break;
     }
 
-    while(1)
+    while (1)
     {
         std::cout << "Enter darkest secret: ";
         get_data(darkest_secret);
-        if (darkest_secret[0])
+        if (!darkest_secret[0])
+            std::cout << "type something not just enter" << std::endl;
+        else
         {
-            if (darkest_secret[0] == ' ')
-                std::cout << "Need to start with a alphabet, digit or something" << std::endl;
+            if (darkest_secret[0] == 32)
+                std::cout << "type something not just space" << std::endl;
             else
-                break ;
+                break;
         }
     }
+    
+    // store saveContact in _contacts[_contact_index] within the array.
+    _contacts[_contact_index].saveContact(firstname,
+                                          lastname, nickname, phone_number, darkest_secret);
 
-    _contacts[_contact_index].saveContact(firstname, \
-		lastname, nickname, phone_number, darkest_secret);
+    //_contact_index is number where next info will be saved.
     _contact_index = (_contact_index + 1) % MAX_CONTACTS;
 }
 
-//search
-void    Phonebook::searchContact(void)
+// search
+void Phonebook::searchContact()
+{
+    // index is typing number while program is running.
+    std::string index;
+
+    if (_contact_index == 0)
+    {
+        std::cout << "ADD a contact" << std::endl;
+        return;
+    }
+    displayTable(_contacts);
+    while (1)
+    {
+        std::cout << "Enter search index (0-7): ";
+        // wait till input from keyboard(0-7) is detected.
+        get_data(index);
+        if (index.length() == 1 && '0' <= index[0] && index[0] <= '7')
+        {
+            // there is empty contact
+            if (_contacts[index[0] - '0'].getFirstName().empty())
+            {
+                std::cout << "Invalid index" << std::endl;
+                continue;
+            }
+            // otherwise print out the detail
+            else
+            {
+                _contacts[index[0] - '0'].printDetails();
+                break;
+            }
+        }
+        else
+            std::cout << "Invalid index" << std::endl;
+    }
+}
+
+/* void    Phonebook::searchContact()
 {
     std::string index;
 
@@ -163,9 +202,13 @@ void    Phonebook::searchContact(void)
     {
         std::cout << "Enter search index (0-7): ";
         get_data(index);
+        // std::cout << "index : " << index << std::endl;
+        // std::cout << "index[0] : " << index[0] << std::endl;
+        // std::cout << "_contact_index : " << _contact_index << std::endl;
+
         if (index.length() == 1 && '0' <= index[0] && index[0] <= '7')
         {
-            if (_contacts[index[0] - '0'].getFirstName().empty() == true)
+            if (_contacts[index[0] - '0'].getFirstName().empty())
             {
                 std::cout << "Invalid index" << std::endl;
                 continue ;
@@ -179,4 +222,4 @@ void    Phonebook::searchContact(void)
         else
             std::cout << "Invalid index" << std::endl;
     }
-}
+} */

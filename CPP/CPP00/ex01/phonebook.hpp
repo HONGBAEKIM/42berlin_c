@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:11:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/25 16:35:02 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:48:34 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@
 
 class Phonebook
 {
+    //Public are accessible from outside the class
     public:
+        //it is called when an object of the class is created.
         Phonebook();
+        //It iss called when an object of the class is destroyed 
+        //or goes out of scope.
         ~Phonebook();
         void    addContact();
         void    searchContact();
     
-    //private structure are only used for the Phonebook
+    //Private are only accessible from within the class itself.
     private:
         Contact _contacts[MAX_CONTACTS];
         int     _contact_index;
