@@ -6,7 +6,9 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:12:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/12 19:12:47 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:47:18 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Output matches perfectly whit log file (except for the timestamps)
 

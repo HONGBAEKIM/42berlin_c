@@ -6,7 +6,7 @@
 #    By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 19:12:31 by hongbaki          #+#    #+#              #
-#    Updated: 2023/10/26 14:46:50 by hongbaki         ###   ########.fr        #
+#    Updated: 2023/10/26 14:56:06 by hongbaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,6 @@ NAME = tests
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -std=c++98 -pedantic
 SRCS = $(shell find -iname "*.cpp")
-#SRCS = phonebook.cpp \
-		contact.cpp \
-		main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 %.o: %.cpp
