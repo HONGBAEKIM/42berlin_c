@@ -13,7 +13,10 @@
 NAME = tests
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -std=c++98 -pedantic
-SRCS = $(shell find -iname "*.cpp")
+SRCS = tests.cpp \
+		Account.cpp
+#SRCS = $(shell find -iname "*.cpp")
+
 OBJS = $(SRCS:.cpp=.o)
 
 %.o: %.cpp
