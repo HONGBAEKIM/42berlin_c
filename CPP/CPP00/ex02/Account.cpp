@@ -30,27 +30,40 @@
 
 void    Account::_displayTimestamp()
 {
+    //pointer to time_t, it will store the currnt time
+    //in that object
 
+    //below 2 lines are same code 'std::time_t currentTime = std::time(nullptr);'
+    //std::time_t currentTime;
+    //std::time (&currentTime);
+    
+    //Get the current time
+    std::time_t currentTime = std::time(nullptr);
+    
+    //Convert the current time to a tm(time structure) 
+    //std::localtime return a pointer to a tm(time structure)
+    std::tm* localTime = std::localtime(&currentTime);
+
+    //Print
+    std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "]";
 }
-
 
 void    Account::displayAccountsInfos()
 {
 
 }
 
-
 Account::Account( int initial_deposit )
 {
-    //std::cout << "Account" << std::endl;
-    std::cout << initial_deposit << std::endl;
+    _displayTimestamp();
+    std::cout << "initial_deposit" << initial_deposit << std::endl;
 }
-
-
 
 void    Account::makeDeposit( int deposit )
 {
-    std::cout << deposit << std::endl;
+    _displayTimestamp();
+    
+    std::cout << "deposit" << deposit << std::endl;
 
 }
 
@@ -63,12 +76,13 @@ bool    Account::makeWithdrawal( int withdrawal )
     // }
     // else
     //     return (withdrawal = false);
+    _displayTimestamp();
+    
     return (std::cout << "withdrawal" << withdrawal << std::endl);
 
 }
 
 // int    Account::checkAmount( void ) const {}
-
 void    Account::displayStatus( void ) const
 {
 
