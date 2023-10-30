@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:12:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:47:18 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:31:17 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 //for std::exit
 #include <cstdlib>
 
+//time
+# include <ctime>
+
 //Output matches perfectly whit log file (except for the timestamps)
 
 void    Account::_displayTimestamp()
@@ -34,18 +37,25 @@ void    Account::_displayTimestamp()
     //in that object
 
     //below 2 lines are same code 'std::time_t currentTime = std::time(nullptr);'
-    //std::time_t currentTime;
-    //std::time (&currentTime);
+    std::time_t currentTime;
+    std::time (&currentTime);
     
     //Get the current time
-    std::time_t currentTime = std::time(nullptr);
+    //std::time_t currentTime = std::time(nullptr);
     
     //Convert the current time to a tm(time structure) 
     //std::localtime return a pointer to a tm(time structure)
     std::tm* localTime = std::localtime(&currentTime);
 
-    //Print
-    std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "]";
+    //Define a buffer to hold the formatted time
+    char    timeBuffer[20];
+
+
+    //Format the time using strftime
+    std::strftime(timeBuffer, sizeof(timeBuffer),"%Y%m%d_%H%M%S", localTime);
+
+    //Print the formatted time
+    std::cout << "[" << timeBuffer << "]";
 }
 
 void    Account::displayAccountsInfos()
