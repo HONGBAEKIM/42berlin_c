@@ -15,6 +15,11 @@
 
 int		main( void ) {
 
+	//'std::vector' is library container that represents a dynamic array
+	//'Account::t' This is referencing a type named t within the Account class 
+	//accounts_t: This is the name you are giving to the new type alias. 
+	//You are creating an alias named accounts_t for a std::vector that stores elements of type Account::t
+	
 	typedef std::vector<Account::t>							  accounts_t;
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
