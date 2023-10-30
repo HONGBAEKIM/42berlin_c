@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:12:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/30 11:31:17 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:34:10 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,15 @@
 //time
 # include <ctime>
 
-//Output matches perfectly whit log file (except for the timestamps)
 
+int Account::_nbAccounts;
+int Account::_totalAmount;
+int Account::_totalNbDeposits;
+int Account::_totalNbWithdrawals;
+
+
+
+//Output matches perfectly whit log file (except for the timestamps)
 void    Account::_displayTimestamp()
 {
     //pointer to time_t, it will store the currnt time
@@ -50,7 +57,6 @@ void    Account::_displayTimestamp()
     //Define a buffer to hold the formatted time
     char    timeBuffer[20];
 
-
     //Format the time using strftime
     std::strftime(timeBuffer, sizeof(timeBuffer),"%Y%m%d_%H%M%S", localTime);
 
@@ -65,8 +71,32 @@ void    Account::displayAccountsInfos()
 
 Account::Account( int initial_deposit )
 {
+
+    
+    _accountIndex = Account::_nbAccounts;
+    
+    //_totalAmount = 0;
+
+    _amount = initial_deposit;
+
+    
+    
+    //_nbDeposits = 0;
+
+    //_nbWithdrawals = 0;
+    
     _displayTimestamp();
-    std::cout << "initial_deposit" << initial_deposit << std::endl;
+    
+    std::cout << " index:" << _accountIndex << ";";
+    
+    std::cout << "amount:" << _amount << ";";
+
+    std::cout << "created" << std::endl;
+
+    Account::_nbAccounts++;
+
+    //Account::_totalAmount += _amount;
+
 }
 
 void    Account::makeDeposit( int deposit )
