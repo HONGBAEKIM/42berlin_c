@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:11:50 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/26 14:32:53 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:36:39 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int main(void)
         //read from keyboard input which is 'std::cin'
         //line of text will be stored at 'userInput'
         getline(std::cin, userInput);
-         //check if the end-of-file(EOF) condition has been
-        //reached on the standard input stream(std::cin)
+        //Ctrl + d 
         if (std::cin.eof())
             break ;
         if (!userInput.compare("ADD"))
