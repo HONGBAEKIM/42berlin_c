@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:22:42 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/02 21:12:07 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:03:54 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void Harl::error( void )
 
 Harl::~Harl()
 {
-	std::cout << "Harl was died" << std::endl; 
+	std::cout << "Harl died" << std::endl; 
 }
 
 void    Harl::complain( std::string level )
