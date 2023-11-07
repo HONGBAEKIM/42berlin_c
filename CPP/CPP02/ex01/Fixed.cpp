@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:25:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/07 11:57:44 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:17:06 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ Fixed::Fixed(const int _value)
     this->value = (_value << this->bits);
 }
 
+//(1 << 8) = 2^8 = 256
+//roundf() : rounding result to the nearest integer
 Fixed::Fixed(const float _value)
 {
     //Float constructor called
@@ -54,8 +56,6 @@ void Fixed::setRawBits( int const raw )
 
 float Fixed::toFloat( void ) const
 {
-    //(1 << this->bits)
-    //is calculates a scaling factor in powers of 2
     return ((float)this->value / (1 << this->bits));
 }
 
@@ -79,7 +79,6 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
     this->value = 0;
 }
-
 
 std::ostream& operator<<(std::ostream& out, const Fixed& _fixed)
 {
