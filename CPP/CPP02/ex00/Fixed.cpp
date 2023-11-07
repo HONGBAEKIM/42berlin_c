@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:25:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/06 16:20:16 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:58:08 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@ int Fixed::getRawBits(void) const
     return (value);
 }
 
-//Why setRaubits is here?
 void Fixed::setRawBits(int const raw)
 {
     std::cout << "setRawBits member function called" << std::endl;
     value = raw;
 }
-
 
 Fixed& Fixed::operator=(const Fixed &_fixed)
 {
@@ -60,7 +58,6 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
     value = 0;
 }
-
 
 /* 
 
@@ -108,11 +105,6 @@ getRawBits member function called
 Destructor called 
   
 */
-
-
-
-
-
 
 /* 
 
