@@ -1,32 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 10:02:16 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/09 11:50:58 by hongbaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main( void ) 
 {
-    /*
-	ClapTrap b("Eren");
-	ClapTrap c("Colossal titan");
-	b.attack("Colossal titan");
-	c.takeDamage(4);
-	b.beRepaired(3);
-	b.attack("Colossal titan");
-	c.takeDamage(6);
-	b.attack("Colossal titan");
-	c.takeDamage(10);
-	return (0);
-	*/
-
-	ScavTrap a("Nezuko");
-	ScavTrap b( a);
-	ScavTrap c("Scary-demon");
-	a.attack("scary-demon");
-	c.takeDamage(20);
-	c.attack("Nezuko");
-	a.takeDamage(20);
-	a.beRepaired(11);
-	a.guardGate();
-	a.attack("scary-demon");
-	c.takeDamage(10000);
-	c.attack("Nezuko");
+	ScavTrap aaa("aaa");
+	std::cout << '\n';
+	ScavTrap bbb( aaa);
+	std::cout << '\n';
+	ScavTrap ccc("ccc");
+	std::cout << '\n';
+	aaa.attack("ccc");
+	std::cout << '\n';
+	ccc.takeDamage(20);
+	std::cout << '\n';
+	ccc.attack("aaa");
+	std::cout << '\n';
+	aaa.takeDamage(20);
+	std::cout << '\n';
+	aaa.beRepaired(100);
+	std::cout << '\n';
+	aaa.guardGate();
+	std::cout << '\n';
+	aaa.attack("ccc");
+	std::cout << '\n';
+	ccc.takeDamage(1000);
+	std::cout << '\n';
+	ccc.attack("aaa");
+	std::cout << '\n';
 	return (0);
 }

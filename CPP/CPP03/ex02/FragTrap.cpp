@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 10:02:30 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/09 11:58:45 by hongbaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
@@ -54,5 +65,5 @@ FragTrap::FragTrap(std::string name)
 
 void FragTrap::highFivesGuys(void)
 {
-    std::cout << "FragTrap_highFivesGuys" << this->_name << '\n';
+    std::cout << this->_name << " : FragTrap_highFivesGuys"  << '\n';
 }

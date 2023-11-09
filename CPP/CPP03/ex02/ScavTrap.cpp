@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 10:02:21 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/09 11:45:30 by hongbaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
@@ -28,7 +39,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &_ScavTrap)
         this->_hitPoints = _ScavTrap._hitPoints;
         this->_energyPoints = _ScavTrap._energyPoints;
         this->_attackDamage = _ScavTrap._attackDamage;
-        std::cout << "ScanTrap_A duplicate of " \
+        std::cout << "ScanTrap_duplicate of " \
             << this->_name << " has been created" << '\n';
     }
     //return a reference to the current object
@@ -54,19 +65,25 @@ ScavTrap::ScavTrap(std::string name)
 void ScavTrap::attack(const std::string& target)
 {
     if (this->_hitPoints < 1)
-        std::cout << "ScavTrap_ " << this->_name << " can not attack cus Hit points = 0" << '\n';
+    {
+        std::cout << "ScavTrap_ " << this->_name << " can not attack cus Hit points < 1" << '\n';
+        return ;
+    }
     if (this->_energyPoints < 1)
-        std::cout << "ScavTrap_ " << this->_name << " can not attack cus Energy points = 0" << '\n';
+    {
+        std::cout << "ScavTrap_ " << this->_name << " can not attack cus Energy points < 1" << '\n';
+        return ;
+    }
     this->_energyPoints--;
-    //ScavTrap <name> attacks <target>, causing <damage> points of damage!
+    //ScavTrap <name> attacks <target>
     std::cout << "ScavTrap " << this->_name << " attacks " << target \
-                << ", causing " << this->_attackDamage << " points of damage!" << '\n';
+              <<  ", causing " << this->_attackDamage << " points of damage" << '\n';
     std::cout << this->_name << "'s hit points= " << this->_hitPoints << '\n';
     std::cout << this->_name << "'s energy points= " << this->_energyPoints << '\n';
     std::cout << this->_name << "'s attact damage= " << this->_attackDamage << '\n';
-    std::cout << '\n';
 }
 
+//ScavTrap will also have its own special capacity
 void ScavTrap::guardGate(void)
 {
     std::cout << this->_name << " is now in gate keeper mode." << '\n';

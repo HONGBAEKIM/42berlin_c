@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 10:01:55 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/09 10:42:46 by hongbaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
@@ -53,9 +64,15 @@ std::string	ClapTrap::getName(void) const
 void ClapTrap::attack(const std::string& target)
 {
     if (this->_hitPoints < 1)
-        std::cout << "Can not attack cus Hit points = 0" << '\n';
+    {
+        std::cout << this->_name << " can not attack cus Hit points < 1" << '\n';
+        return ;
+    }
     if (this->_energyPoints < 1)
-        std::cout << "Can not attack cus Energy points = 0" << '\n';
+    {
+        std::cout << this->_name << " can not attack cus Energy points < 1" << '\n';
+        return ;
+    }
     this->_energyPoints--;
     //ClapTrap <name> attacks <target>, causing <damage> points of damage!
     std::cout << "ClapTrap " << this->_name << " attacks " << target \
@@ -68,12 +85,18 @@ void ClapTrap::attack(const std::string& target)
 void ClapTrap::takeDamage(unsigned int amount)
 {
     if (this->_hitPoints < 1)
-        std::cout << "Can not take damage cus Hit points = 0" << '\n';
+    {
+        std::cout << this->_name << " can not take damage cus Hit points < 1" << '\n';
+        return ;
+    }
     if (this->_energyPoints < 1)
-        std::cout << "Can not take damage cus Energy points = 0" << '\n';
+    {
+        std::cout << this->_name << " can not take damage cus Energy points < 1" << '\n';
+        return ;
+    }
     this->_hitPoints = this->_hitPoints - amount;
-    //ClapTrap <name> attacks <target>, causing <damage> points of damage!
-    std::cout << "ClapTrap " << this->_name << " take damage " \
+    //ClapTrap <name> takes damage, causing <amount> points of damage!
+    std::cout << "ClapTrap " << this->_name << " takes damage " \
                 << ", causing " << amount << " points of damage!" << '\n';
     std::cout << this->_name << "'s hit points= " << this->_hitPoints << '\n';
     std::cout << this->_name << "'s energy points= " << this->_energyPoints << '\n';
@@ -83,12 +106,18 @@ void ClapTrap::takeDamage(unsigned int amount)
 void ClapTrap::beRepaired(unsigned int amount)
 {
     if (this->_hitPoints < 1)
-        std::cout << "Can not repair cus Hit points = 0" << '\n';
+    {
+        std::cout << this->_name << " can not repair cus Hit points < 1" << '\n';
+        return ;
+    }
     if (this->_energyPoints < 1)
-        std::cout << "Can not repair cus Energy points = 0" << '\n';
+    {
+        std::cout << this->_name << " can not repair cus Energy points < 1" << '\n';
+        return ;
+    }
     this->_hitPoints = this->_hitPoints + amount;
     this->_energyPoints--;
-    //ClapTrap <name> attacks <target>, causing <damage> points of damage!
+    //ClapTrap <name> is repairing and got <amount> points back!
     std::cout << "ClapTrap " << this->_name << " is repairing and got " \
                 << amount << " points back!" << '\n';
     std::cout << this->_name << "'s hit points= " << this->_hitPoints << '\n';
