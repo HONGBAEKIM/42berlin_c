@@ -10,3 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Dog.hpp"
+
+Dog::Dog(void)
+{
+    std::cout << "[Dog] Default constructor" << std::endl;
+    this->type = "Dog";
+}
+
+Dog::Dog(const Dog &_Dog)
+{
+    std::cout << "[Dog] Copy constructor" << std::endl;
+    (*this) = _Dog;
+}
+        
+Dog& Dog::operator=(const Dog &_Dog)
+{
+    std::cout << "[Dog] Assignment operator" << std::endl;
+    if (this != &_Dog)
+        this->type = _Dog.type;
+    return (*this);
+}
+
+Dog::~Dog(void)
+{
+    std::cout << "[Dog] Destructor" << std::endl;
+}
+
+void Dog::makeSound() const
+{
+    std::cout << "[" << this->type << "] ddoogg" << std::endl;
+}

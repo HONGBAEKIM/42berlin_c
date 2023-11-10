@@ -10,3 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef WRONGCAT_HPP
+# define WRONGCATCAT_HPP
+
+#include "WrongAnimal.hpp"
+ 
+class WrongCat : public WrongAnimal
+{
+    private:
+        
+    public:
+        WrongCat(void);
+        WrongCat(const WrongCat &_WrongCat);
+        WrongCat& operator=(const WrongCat &_WrongCat);
+        ~WrongCat(void);
+
+        void makeSound() const;
+};
+
+#endif

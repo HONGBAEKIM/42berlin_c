@@ -10,11 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fragtrap
+NAME = animal
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -pedantic
 
-SRCS = $(shell find -iname "*.cpp")
+#SRCS = $(shell find -iname "*.cpp")
+SRCS = Animal.cpp, cat.cpp, dog.cpp, WrongAnimal.cpp, Wrongcat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

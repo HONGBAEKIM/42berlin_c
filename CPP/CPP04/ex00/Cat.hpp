@@ -10,3 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CAT_HPP
+# define CAT_HPP
+
+#include "Animal.hpp"
+ 
+class Cat : public Animal
+{
+    private:
+        
+    public:
+        Cat(void);
+        Cat(const Cat &_Cat);
+        Cat& operator=(const Cat &_Cat);
+        ~Cat(void);
+
+        void makeSound() const;
+};
+
+#endif
