@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/13 12:59:46 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:26:11 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef CAT_HPP
+# define CAT_HPP
 
-Dog::Dog(void)
+#include "Animal.hpp"
+#include "Brain.hpp"
+ 
+class Cat : public Animal
 {
-    std::cout << "[Dog] Default constructor" << std::endl;
-    this->type = "Dog";
-}
-
-Dog::Dog(const Dog &_Dog)
-{
-    std::cout << "[Dog] Copy constructor" << std::endl;
-    (*this) = _Dog;
-}
+    private:
         
-Dog& Dog::operator=(const Dog &_Dog)
-{
-    std::cout << "[Dog] Assignment operator" << std::endl;
-    if (this != &_Dog)
-        this->type = _Dog.type;
-    return (*this);
-}
+    public:
+        Cat(void);
+        Cat(const Cat &_Cat);
+        Cat& operator=(const Cat &_Cat);
+        ~Cat(void);
 
-Dog::~Dog(void)
-{
-    std::cout << "[Dog] Destructor" << std::endl;
-}
+        void makeSound() const;
+};
 
-void Dog::makeSound() const
-{
-    std::cout << "[" << this->type << "] woof" << std::endl;
-}
+#endif

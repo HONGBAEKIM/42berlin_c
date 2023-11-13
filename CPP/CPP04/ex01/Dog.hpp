@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/13 12:59:46 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:18:32 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-Dog::Dog(void)
+#include "Animal.hpp"
+#include "Brain.hpp"
+ 
+class Dog : public Animal
 {
-    std::cout << "[Dog] Default constructor" << std::endl;
-    this->type = "Dog";
-}
+    private:
+        Brain* _Brain;
+    
+    public:
+        Dog(void);
+        Dog(const Dog &_Dog);
+        Dog& operator=(const Dog &_Dog);
+        ~Dog(void);
 
-Dog::Dog(const Dog &_Dog)
-{
-    std::cout << "[Dog] Copy constructor" << std::endl;
-    (*this) = _Dog;
-}
-        
-Dog& Dog::operator=(const Dog &_Dog)
-{
-    std::cout << "[Dog] Assignment operator" << std::endl;
-    if (this != &_Dog)
-        this->type = _Dog.type;
-    return (*this);
-}
+        void makeSound() const;
+        //const std::string& getIdea(int i) const;
+        //void setIdea(std::string idea, int i);
+        Brain* getBrain(void) const;
+};
 
-Dog::~Dog(void)
-{
-    std::cout << "[Dog] Destructor" << std::endl;
-}
-
-void Dog::makeSound() const
-{
-    std::cout << "[" << this->type << "] woof" << std::endl;
-}
+#endif

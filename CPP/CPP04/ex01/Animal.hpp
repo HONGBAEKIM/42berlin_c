@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/13 13:54:43 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:56:22 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define ANIMAL_HPP
 
 #include <iostream>
-#include <string>
 
 //we are studying virtual function in CPP04.
 //Virtual functions allow up to override methods in subclasses
@@ -50,8 +49,8 @@ class Animal
         Animal(const Animal &_Animal);
         Animal& operator=(const Animal &_Animal);
         //with virtual, derived classes are called when deleting an object.
-        virtual ~Animal(void);  
-
+        virtual ~Animal(void);
+        
         virtual void makeSound() const;
         std::string getType() const;
 };

@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/13 12:59:46 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:29:47 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-Dog::Dog(void)
-{
-    std::cout << "[Dog] Default constructor" << std::endl;
-    this->type = "Dog";
-}
+#include <iostream>
 
-Dog::Dog(const Dog &_Dog)
+class WrongAnimal
 {
-    std::cout << "[Dog] Copy constructor" << std::endl;
-    (*this) = _Dog;
-}
-        
-Dog& Dog::operator=(const Dog &_Dog)
-{
-    std::cout << "[Dog] Assignment operator" << std::endl;
-    if (this != &_Dog)
-        this->type = _Dog.type;
-    return (*this);
-}
+    protected:
+        std::string _type;
 
-Dog::~Dog(void)
-{
-    std::cout << "[Dog] Destructor" << std::endl;
-}
+    public:
+        WrongAnimal(void);
+        WrongAnimal(const WrongAnimal &_WrongAnimal);
+        WrongAnimal& operator=(const WrongAnimal &_WrongAnimal);
+        virtual ~WrongAnimal(void);
 
-void Dog::makeSound() const
-{
-    std::cout << "[" << this->type << "] woof" << std::endl;
-}
+        void makeSound() const;
+        std::string getType() const;
+};
+
+#endif
