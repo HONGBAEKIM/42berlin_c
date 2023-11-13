@@ -6,11 +6,11 @@
 #    By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 10:02:37 by hongbaki          #+#    #+#              #
-#    Updated: 2023/11/13 10:55:40 by hongbaki         ###   ########.fr        #
+#    Updated: 2023/11/13 17:08:35 by hongbaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = animal
+NAME = brain
 CC = c++
 
 # -std=c++98         : C++ language standard to use
@@ -23,8 +23,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -pedantic
 SRCS = Animal.cpp \
 		Cat.cpp \
 		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
+		Brain.cpp \
 		main.cpp
 
 OBJS = $(SRCS:.cpp=.o)

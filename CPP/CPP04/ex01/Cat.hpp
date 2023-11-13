@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/13 14:26:11 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:09:54 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 class Cat : public Animal
 {
     private:
-        
+        Brain* _Brain;
+    
     public:
         Cat(void);
         Cat(const Cat &_Cat);
@@ -27,6 +28,7 @@ class Cat : public Animal
         ~Cat(void);
 
         void makeSound() const;
+        Brain* getBrain(void) const;
 };
 
 #endif
