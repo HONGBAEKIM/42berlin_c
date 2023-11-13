@@ -94,9 +94,11 @@ int	conditions(const char *next, va_list *a, int *len)
 	return (ret);
 }
 
+
 int	ft_printf(const char *str, ...)
 {
-	va_list ap;
+	//the variable that holds the list of variable arguments.
+	va_list ap; //ap (argument pointer)
 	int	len = 0;
 	int	error = 0;
 	
