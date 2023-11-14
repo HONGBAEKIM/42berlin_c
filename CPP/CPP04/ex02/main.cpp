@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/14 10:24:06 by hongbaki         ###   ########.fr       */
+/*   Created: 2023/11/09 13:22:25 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/14 10:39:47 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-
 #include "Animal.hpp"
- 
-class Dog : public Animal
+#include "Cat.hpp"
+#include "Dog.hpp"
+
+/* int	main(void)
 {
-    //when you use protected instead of private at main class Animal
-    //derived class(cat and dog) do not need to declear private member variable
-    private:
-        
-    public:
-        Dog(void);
-        Dog(const Dog &_Dog);
-        Dog& operator=(const Dog &_Dog);
-        ~Dog(void);
+	Dog _Dog;
+	Cat _Cat;
 
-        void makeSound() const;
-};
+	_Dog.makeSound();
+	_Cat.makeSound();
+	
+	return (0);
+} */
 
-#endif
+int	main(void)
+{
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
+
+	dog->makeSound();
+	cat->makeSound();
+
+	delete dog;
+	delete cat;
+	
+	return (0);
+}

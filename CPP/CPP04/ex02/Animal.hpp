@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/14 10:25:04 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:01:41 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,24 @@ class Animal
         //with virtual, derived classes are called when deleting an object.
         virtual ~Animal(void);  
 
-        virtual void makeSound() const;
+        //Abstract class
+        //1)Pure virtual functions
+        //Added '= 0' at the end
+        //It has no implementation in the base class and must be implemented
+        //by any concrete (i.e., non-abstract) derived class.
+        
+        //2)Can not be instantiated
+        //Since abstract classes have pure virtual functions without implementations, 
+        //they cannot be instantiated on their own.
+
+        //3)Derived class implementation
+        //Any class derived from an abstract class must provide implementations 
+        //for all the pure virtual functions declared in the abstract class. 
+        //Otherwise, the derived class will also be considered abstract 
+        //and cannot be instantiated.
+        
+        //and comment out 'makeSound' function from animal.cpp
+        virtual void makeSound() const = 0;
         std::string getType() const;
 };
 

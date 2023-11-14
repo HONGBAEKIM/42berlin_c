@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/14 10:24:06 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:49:39 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
- 
-class Dog : public Animal
+#include <iostream>
+
+class WrongAnimal
 {
-    //when you use protected instead of private at main class Animal
-    //derived class(cat and dog) do not need to declear private member variable
-    private:
-        
+    protected:
+        std::string _type;
+
     public:
-        Dog(void);
-        Dog(const Dog &_Dog);
-        Dog& operator=(const Dog &_Dog);
-        ~Dog(void);
+        WrongAnimal(void);
+        WrongAnimal(const WrongAnimal &_WrongAnimal);
+        WrongAnimal& operator=(const WrongAnimal &_WrongAnimal);
+        virtual ~WrongAnimal(void);
 
         void makeSound() const;
+        std::string getType() const;
 };
 
 #endif

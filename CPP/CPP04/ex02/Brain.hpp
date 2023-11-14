@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/14 10:24:06 by hongbaki         ###   ########.fr       */
+/*   Created: 2023/11/13 16:03:24 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/14 10:05:56 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 #include "Animal.hpp"
  
-class Dog : public Animal
+class Brain
 {
-    //when you use protected instead of private at main class Animal
-    //derived class(cat and dog) do not need to declear private member variable
-    private:
-        
-    public:
-        Dog(void);
-        Dog(const Dog &_Dog);
-        Dog& operator=(const Dog &_Dog);
-        ~Dog(void);
+    protected:
+        std::string ideas[100];
 
-        void makeSound() const;
+    public:
+        Brain(void);
+        Brain(const Brain &_Brain);
+        Brain& operator=(const Brain &_Brain);
+        virtual ~Brain(void);
+
+        std::string getIdea(int n) const;
+		void setIdea(std::string idea, int n);
 };
 
 #endif
+

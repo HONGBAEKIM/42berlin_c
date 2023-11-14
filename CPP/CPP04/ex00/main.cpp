@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:22:25 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/13 13:54:36 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:45:14 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,17 @@ int main()
 
     return (0);
 }
+
+/* int	main(void)
+{
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
+
+	dog->makeSound();
+	cat->makeSound();
+
+	delete dog;
+	delete cat;
+	
+	return (0);
+} */

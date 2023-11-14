@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:22:25 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/13 17:12:49 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:50:10 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 
 int	main(void)
 {
-	//Create Dog, Cat classes
 	Animal	*animals[2];
 	
-	//Store them in the animal array
 	for (int i = 0; i < 2; i++)
 	{
 		if (i % 2 == 0)

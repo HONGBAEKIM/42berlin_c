@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:28:13 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/14 10:24:06 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:09:48 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
  
 class Dog : public Animal
 {
-    //when you use protected instead of private at main class Animal
-    //derived class(cat and dog) do not need to declear private member variable
     private:
+        Brain* _Brain;
         
     public:
         Dog(void);
@@ -28,6 +28,7 @@ class Dog : public Animal
         ~Dog(void);
 
         void makeSound() const;
+        Brain* getBrain(void) const;
 };
 
 #endif
