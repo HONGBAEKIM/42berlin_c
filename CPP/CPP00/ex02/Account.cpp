@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:12:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/10/30 16:57:57 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:31:20 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int Account::_totalNbWithdrawals = 0;
 
 //int _nbDeposits = 0;
 //int _nbWithdrawals = 0;
+
+
 
 
 

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/23 12:54:29 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/23 13:18:53 by hongbaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
@@ -29,7 +40,8 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
         
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
 {
-    _grade = src._grade;
+    if (this != &src)
+        _grade = src._grade;
     return (*this);
 }
 

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/23 12:54:36 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/11/23 12:56:49 by hongbaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <string>
 
 class Bureaucrat
 {

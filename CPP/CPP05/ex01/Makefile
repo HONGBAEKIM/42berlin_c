@@ -5,17 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/09 10:02:37 by hongbaki          #+#    #+#              #
-#    Updated: 2023/11/09 11:26:02 by hongbaki         ###   ########.fr        #
+#    Created: 2023/11/23 12:54:56 by hongbaki          #+#    #+#              #
+#    Updated: 2023/11/23 16:20:16 by hongbaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = animal
+NAME = Form
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -pedantic
 
-#SRCS = $(shell find -iname "*.cpp")
-SRCS = Animal.cpp, cat.cpp, dog.cpp, WrongAnimal.cpp, Wrongcat.cpp
+SRCS = $(shell find -iname "*.cpp")
 
 OBJS = $(SRCS:.cpp=.o)
 
