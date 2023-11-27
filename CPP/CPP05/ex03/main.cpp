@@ -6,14 +6,12 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:54:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/27 15:40:44 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:04:40 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <iomanip>
 
 static void     printTitle(std::string title)
@@ -31,111 +29,34 @@ static void     printTitle(std::string title)
         std::cout << std::setfill('=') << std::setw(size) << "" << std::endl;
 }
 
-int	main()
-{
-	//1st test
-	printTitle("Shrubbery Creation");
-	AForm		*Shrubbery = new ShrubberyCreationForm("home yo");
-	Bureaucrat	corrector("corrector", 1);
-	Bureaucrat	Lucie("Lucie", 138);
-
-	corrector.executeForm(*Shrubbery);
-	std::cout << *Shrubbery << std::endl;
-	std::cout << Lucie << std::endl;
-	corrector.signForm(*Shrubbery);
-	std::cout << *Shrubbery << std::endl;
-	std::cout << Lucie << std::endl;
-	corrector.executeForm(*Shrubbery);
-	Lucie.executeForm(*Shrubbery);
-	Lucie.upGrade();
-	std::cout << *Shrubbery << std::endl;
-	std::cout << Lucie << std::endl;
-	Lucie.executeForm(*Shrubbery);
-	delete Shrubbery;
-
-
-
-	//random number generator with current time
-	std::srand(std::time(0));
-	//2ed test
-	printTitle("Robotomy Request");
-	AForm		*robotomy = new RobotomyRequestForm("corrector");
-	Bureaucrat	Lucie2("Lucie2", 1);
-
-	Lucie2.executeForm(*robotomy);
-	Lucie2.signForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	Lucie2.executeForm(*robotomy);
-	delete robotomy;
-
-
-
-	//3rd test
-	printTitle("Presidential Pardon");
-	AForm		*presidential = new PresidentialPardonForm("corrector");
-	Bureaucrat	Lucie3("Lucie3", 6);
-
-	Lucie3.executeForm(*presidential);
-	Lucie3.signForm(*presidential);
-	Lucie3.executeForm(*presidential);
-	Lucie3.upGrade(); 
-	Lucie3.executeForm(*presidential);
-	delete presidential;
-
-	return (0);
-}
-
-/* int	main(void)
+int	main(void)
 {
 	srand(time(NULL));
 
-	printTitle("Shrubbery Creation");
-	AForm		*shrub = new ShrubberyCreationForm("home");
-	Bureaucrat	corr("Correcteur", 1);
-	Bureaucrat	me("Lucie", 140);
+	printTitle("Formular Creation");
+	Bureaucrat	pres("President", 1);
+	Intern		SadIntern;
+	AForm		*forms[4];
 
-	corr.executeForm(*shrub);
-	corr.signForm(*shrub);
-	std::cout << *shrub << std::endl;
-	std::cout << corr << std::endl;
-	corr.executeForm(*shrub);
-	me.executeForm(*shrub);
-	delete shrub;
+	forms[0] = SadIntern.makeForm("shrubbery creation", "Target1");
+	forms[1] = SadIntern.makeForm("robotomy request", "Target2");
+	forms[2] = SadIntern.makeForm("presidential pardon", "Target3");
+	forms[3] = SadIntern.makeForm("formular", "Target4");
 
+	for (int i = 0; i < 4; i++)
+	{
+		if (forms[i])
+		{
+			std::cout << std::endl << *(forms[i]);
+			pres.signForm(*(forms[i]));
+			pres.executeForm(*(forms[i]));
+		}
+	}
 
-	printTitle("Robotomy Request");
-	AForm		*robotomy = new RobotomyRequestForm("Correcteur");
-	Bureaucrat	me2("Lucie", 1);
-
-	me2.executeForm(*robotomy);
-	me2.signForm(*robotomy);
-	me2.executeForm(*robotomy);
-	me2.executeForm(*robotomy);
-	me2.executeForm(*robotomy);
-	me2.executeForm(*robotomy);
-	delete robotomy;
-	
-	
-	printTitle("Presidential Pardon");
-	AForm		*presidential = new PresidentialPardonForm("Correcteur");
-	Bureaucrat	Lucie3("Lucie", 6);
-
-	Lucie3.executeForm(*presidential);
-	Lucie3.signForm(*presidential);
-	Lucie3.executeForm(*presidential);
-	Lucie3.upGrade();
-	Lucie3.executeForm(*presidential);
-	delete presidential;
-
+	for (int i = 0; i < 4; i++)
+		delete forms[i];
 	return (0);
 }
- */
 
 
 /* static void     printTitle(std::string title)
