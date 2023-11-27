@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:54:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/23 13:15:48 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:10:59 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@
 int	main(void)
 {
 	Form 		form("formular", 10, 4);
-	Bureaucrat	ABCD("ABCD", 11);
+	Bureaucrat	AAA("AAA", 11);
 
 	std::cout << form << std::endl;
-	std::cout << ABCD << std::endl;
+	std::cout << AAA << std::endl;
 	
-	ABCD.signForm(form);
-	ABCD.upGrade();
-	ABCD.signForm(form);
+	AAA.signForm(form);
+	std::cout << std::endl;
+	std::cout << form << std::endl;
+	std::cout << AAA << std::endl;
 
-	std::cout << std::endl << form << std::endl;
+	AAA.upGrade();
+	AAA.signForm(form);
+
+	std::cout << std::endl;
+	std::cout << form << std::endl;
+	std::cout << AAA << std::endl;
 
 	return (0);
 }
