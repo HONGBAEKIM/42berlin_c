@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:44:28 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/27 16:53:29 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:25:49 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@ Intern &Intern::operator=(Intern const &_Intern)
     return (*this);
 }
 
-static const std::string  lowerStr(std::string const str)
-{
-    std::string r;
-
-    for (unsigned int i = 0; i < str.size(); i++)
-        r += tolower(str[i]);
-    return (r);
-}
 
 static AForm *newShrubbery(std::string const target)
 {
@@ -58,6 +50,14 @@ static AForm *newPresidential(std::string const target)
     return (new PresidentialPardonForm(target));
 }
 
+static const std::string  lowerStr(std::string const str)
+{
+    std::string re;
+
+    for (unsigned int i = 0; i < str.size(); i++)
+        re += tolower(str[i]);
+    return (re);
+}
 
 static int  getFormNumber(std::string const formName)
 {
@@ -77,7 +77,7 @@ static int  getFormNumber(std::string const formName)
 
 AForm* Intern::makeForm(std::string const formName, std::string const target) const
 {
-    constructorPtr funCreation[3] = {&newShrubbery, &newRobotomy, &newPresidential};
+    constructorPtr Creation[3] = {&newShrubbery, &newRobotomy, &newPresidential};
     int i;
     AForm *formPtr = NULL;
     
@@ -85,11 +85,11 @@ AForm* Intern::makeForm(std::string const formName, std::string const target) co
     std::cout << "Intern" << std::endl;
     if (i >= 0)
     {
-        formPtr = funCreation[i](target);
+        formPtr = Creation[i](target);
         std::cout << " creates " << formPtr->getName() << " formular" << std::endl;
     }
     else
-        std::cout << " cannot create " << formName << " because " << "it's unknown" << std::endl;
+        std::cout << " cannot create " << formName << " because it's unknown" << std::endl;
     return (formPtr);
 }
 

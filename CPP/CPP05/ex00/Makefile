@@ -6,7 +6,7 @@
 #    By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 12:54:56 by hongbaki          #+#    #+#              #
-#    Updated: 2023/11/23 13:20:00 by hongbaki         ###   ########.fr        #
+#    Updated: 2023/11/28 14:11:25 by hongbaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ NAME = Bureaucrat
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -pedantic
 
-#SRCS = $(shell find -iname "*.cpp")
-SRCS = Bureaucrat.cpp, main.cpp
+SRCS = $(shell find -iname "*.cpp")
 
 OBJS = $(SRCS:.cpp=.o)
 

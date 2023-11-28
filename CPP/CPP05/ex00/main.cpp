@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:54:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/23 12:54:49 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:16:03 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ int	main(void)
 	}
 	catch (std::exception &e)
 	{
-	    std::cout << "testBasic" << std::endl;
-        std::cerr << e.what() << std::endl;
+	    std::cout << "testBasic" << std::endl; //regular informational output
+		//e.what(): virtual function in the std::exceptions class
+		std::cerr << e.what() << std::endl; //error msg output
 	}
 
 	std::cout << std::endl;

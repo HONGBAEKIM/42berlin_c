@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:54:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/27 15:40:44 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:31:03 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main()
 {
 	//1st test
 	printTitle("Shrubbery Creation");
-	AForm		*Shrubbery = new ShrubberyCreationForm("home yo");
+	AForm		*Shrubbery = new ShrubberyCreationForm("home");
 	Bureaucrat	corrector("corrector", 1);
 	Bureaucrat	Lucie("Lucie", 138);
 
