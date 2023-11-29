@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:54:46 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/28 15:16:03 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:14:56 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	testBasic(void)
 {
 	Bureaucrat	ABCD("ABCD", 6);
 
+	// Using the overloaded << operator to print the Bureaucrat object
 	std::cout << ABCD << std::endl;
 	ABCD.downGrade();
 	std::cout << ABCD << std::endl;

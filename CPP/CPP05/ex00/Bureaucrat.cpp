@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:54:29 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/11/23 13:18:53 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:13:29 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
     return (*this);
 }
 
+//Overloading the << operator for the Bureaucrat class
 std::ostream &operator<<(std::ostream &o, Bureaucrat const &src)
 {
     o << src.getName() << ", grade : " << src.getGrade();
