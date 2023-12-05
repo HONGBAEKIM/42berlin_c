@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:29:18 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/12/01 13:53:15 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:59:24 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ bool isFloat(std::string const &val)
         else if (d == 3 && val[i] == 'f')
             d = 4;
     }
+    //when d = 4 is true otherwise false
     return (d == 4);
 }
 
@@ -59,13 +60,13 @@ bool isDouble(std::string const &val)
         if (d == 0 && isrealDigit(val[i]))
             d = 1;
         else if (d == 0 && !isrealDigit(val[i]))
-            return (0);
+               return (0);
         else if (d == 1 && val[i] == '.')
-            d = 2;
+               d = 2;
         else if (d == 1 && val[i] != '.' && !isrealDigit(val[i]))
-            return (0);
+               return (0);
         else if (d == 2 && isrealDigit(val[i]))
-            d = 3;
+              d = 3;
         else if ((d == 2 || d == 3) && !isrealDigit(val[i]))
             return (0);
     }

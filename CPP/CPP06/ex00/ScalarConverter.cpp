@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:27:36 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/12/01 14:23:21 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:54:02 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void ScalarConverter::printInt(int i)
     //integer to double
     double d = static_cast<double>(i);
 
-    std::cout << "char: " << (i > 127 || i < 0 ? "impassible"
+    std::cout << "char: " << (i > 127 || i < 0 ? "impossible"
             : (std::isprint(i) ? "'" + std::string(1, c) + "'" : "Non displayable"))
             << std::endl;
     std::cout << "int: " << i << std::endl;
@@ -69,7 +69,7 @@ void ScalarConverter::printChar(char c)
     float f = static_cast<float>(c);
     double d = static_cast<double>(c);
 
-    std::cout << "char: " << (c > 127 || c < 0 ? "impassible"
+    std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
             : (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
             << std::endl;
     std::cout << "int: " << i << std::endl;
@@ -96,7 +96,7 @@ void ScalarConverter::printFloat(float f)
     int i = static_cast<int>(f);
     double d = static_cast<double>(f);
 
-    std::cout << "char: " << (c > 127 || c < 0 ? "impassible"
+    std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
             : (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
             << std::endl;
     //'f' cast to an integer without causing underflow or overflow 
@@ -122,7 +122,7 @@ void ScalarConverter::printDouble(double d)
     int i = static_cast<int>(d);
     float f = static_cast<float>(d);
 
-    std::cout << "char: " << (c > 127 || c < 0 ? "impassible"
+    std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
             : (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
             << std::endl;
     if (std::numeric_limits<int>::min() <= d && d <= std::numeric_limits<int>::max())
@@ -147,6 +147,8 @@ void ScalarConverter::convert(const std::string &val)
     {
         if (std::isdigit(val[0]))
         {
+            //c_str() is called on the val object
+            //std::string val
             int d = std::atoi(val.c_str());
             ScalarConverter::printInt(d);
         }
@@ -165,7 +167,9 @@ void ScalarConverter::convert(const std::string &val)
         else if (isDouble(val))
         {
             char *endPtr;
+            //str 'val' to a double
             float d = strtod(val.c_str(), &endPtr);
+            //when the entire string was successfully converted
             if (*endPtr == '\0')
                 ScalarConverter::printDouble(d);
             else
