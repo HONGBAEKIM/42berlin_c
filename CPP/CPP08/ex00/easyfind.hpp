@@ -1,42 +1,17 @@
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 # include <iostream>
-
-// templates are used to create generic classes and functions 
-// that can work with different data types ( such as int, float and double).
-
-/* 
-Benefits of Generic Classes:
-
-Code Reusability: Write code that works for multiple data types without duplicating logic.
-Type Safety: The compiler enforces type correctness, preventing type-related errors at compile-time.
-Flexibility: Users can use the same generic class with different data types, making the code more versatile.
-Abstraction: Generic classes abstract away the details of the specific data type, promoting cleaner and more abstract code. 
-*/
-template<typename T> void swap(T &a, T &b);
-template<typename T> T const &min(T const &a, T const &b);
-template<typename T> T const &max(T const &a, T const &b);
+# include <algorithm>
+# include <vector>
+# include <deque>
+# include <list>
 
 template<typename T>
-void swap(T &a, T &b)
+typename T::iterator easyfind(T &cont, int value)
 {
-    T c = a;
-    a = b;
-    b = c;
-}
-
-template<typename T>
-T const &min(T const &a, T const &b)
-{
-    return (a < b) ? a : b;
-}
-
-template<typename T>
-T const &max(T const &a, T const &b)
-{
-    return (a > b) ? a : b;
+    return std::find(cont.begin(), cont.end(), value);
 }
 
 #endif
