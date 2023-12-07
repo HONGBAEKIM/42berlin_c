@@ -28,3 +28,7 @@ int main()
 	return 0;
 }
 
+//Create a 'Span' object with a maximum size of 5
+//[3, 6, 9, 11, 17]
+//Shortiest span is 2(the difference between 9 and 11)
+//Longiest span is 14(the difference between 3 and 17)

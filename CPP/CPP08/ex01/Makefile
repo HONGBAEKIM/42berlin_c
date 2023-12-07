@@ -10,11 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Span
+NAME = ex01
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -pedantic
 
-SRCS = $(shell find -iname "*.cpp")
+SRCS = Span.cpp\
+		main.cpp
+#SRCS = $(shell find -iname "*.cpp")
 
 OBJS = $(SRCS:.cpp=.o)
 

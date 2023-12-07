@@ -1,40 +1,67 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 14:01:38 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/12/05 14:01:41 by hongbaki         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 # include <iostream>
+# include <limits>
+# include <vector>
+# include <algorithm>
+# include <exception>
 
-template<typename T>
-//• The first parameter is the address of an array.
-//• The second one is the length of the array.
-//• The third one is a function that will be call on every element of the array.
-void iter(T *array, unsigned int const length, void (*call)(T &))
-{
-    for (unsigned int i = 0; i < length; i++)
-        call (array[i]);
-}
+//A Span typically refers to a sequence of elements between two points or indices. 
 
-template<typename T>
-void addone(T &a)
+//std::vector for a dynamic array of elements with fast random access.
+//std::multiset for a sorted collection of elements allowing duplicates.
+//std::map for associating unique keys with values in a sorted order.
+class Span
 {
-    a++;    
-}
+    private:
+        //'Span' class cannot be created using the default constructor from outside the class
+        Span();
+        
+        //Maximum size
+        unsigned const int n;
+        
+        //Vector to store integers
+        std::vector<int> vec;
+        
 
-template<typename T>
-void print(T &a)
-{
-    std::cout << a << " ";
-}
+        class OutOfRangeException: public std::exception
+        {
+            public:
+                virtual char const *what() const throw()
+                {
+                    return ("Span::exception: Size is out of range");
+                }
+        };
+
+        class NoSpanException: public std::exception
+        {
+            public:
+                virtual char const *what() const throw()
+                {
+                    return ("Span::exception: Not enough values for a span");
+                }
+        };
+
+
+    public:
+        Span(int nb);
+        ~Span();
+        Span(Span const &s);
+        Span &operator=(Span const &rhs);
+
+        //Add a single number to the Span
+        void addNumber(int nb);
+
+        //Add a range of numbers to the Span
+        void addRange(std::vector<int> v);
+
+        //Find the shortest span between elements
+        unsigned int shortestSpan();
+
+        //Find the longest span between elements
+        unsigned int longestSpan();
+};
 
 #endif
