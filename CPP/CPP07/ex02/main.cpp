@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:54:57 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/12/05 16:21:22 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:04:37 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int, char**)
     }
     //SCOPE
     {
+        //Create an array of integers with size as 'number', which is 750 
         Array<int> tmp = numbers;
         Array<int> test(tmp);
     }

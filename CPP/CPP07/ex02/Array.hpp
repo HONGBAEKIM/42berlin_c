@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:02:25 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/12/05 16:57:39 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:00:51 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@
 //and designing a class that manages an array of elements. 
 //It's a good opportunity to reinforce your understanding of C++ features 
 //and best practices.
+
+//Simple type ex
+/* int simpleInt = 42;
+char simpleChar = 'A';
+float simpleFloat = 3.14f; */
+
+//Complex Type Example
+/* 
+// Array of integers (complex type)
+int complexArray[5] = {1, 2, 3, 4, 5};
+
+// Struct representing a point in 2D space (complex type)
+struct Point {
+    int x;
+    int y;
+};
+
+Point complexStruct = {10, 20}; */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
