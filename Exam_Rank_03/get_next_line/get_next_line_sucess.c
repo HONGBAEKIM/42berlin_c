@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdio.h>
-# include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BURRER_SIZE 1000
+#  define BUFFER_SIZE 1000
 # endif
 
 char	*read_save_all(int fd, char *static_buffer);
