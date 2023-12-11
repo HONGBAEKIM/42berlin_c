@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:02:25 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/12/05 16:57:39 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:27:04 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 //It's a good opportunity to reinforce your understanding of C++ features 
 //and best practices.
 
-#ifndef ARRAY_HPP
-# define ARRAY_HPP
+#ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
 # include <iostream>
 # include <exception>
@@ -27,57 +27,32 @@
 # include <stdlib.h>
 
 template<typename T>
-class Array
+class MutantStack
 {
     private:
-        class OutOfRangeException: public std::exception
-        {
-            public:
-                virtual char const *what() const throw()
-                {
-                    return ("Array::exception: Index is out of bounds");
-                }
-        };
-        //Data Members
-        //Represents the size of the array
-        unsigned int const n;
-        //Points to a dynamically allocated array of type 'T'
-        T *array;
+    
     
     public:
-        //Default constructor that creates an empty array with size 0.
-        Array();
+        MutantStack();
+        virtual ~MutantStack();
+        MutantStack(MutantStack<T> const &arr);
+        MutantStack<T> &operator=(MutantStack<T> const &rhs);
         
-        //Destructor that deallocates the dynamically allocated memory for the array.
-        ~Array();
         
-        //Parameterized constructor that creates an array of size
-        Array(unsigned int arraysize);
         
-        //Copy constructor that performs a deep copy of another 
-        Array(Array<T> const &arr);
         
-        //Overloaded assignment operator that performs a deep copy from another Array object.
-        Array<T> &operator=(Array<T> const &rhs);
-        
-        //Overloaded subscript operator that provides access to elements with bounds checking. 
-        //If the index i is out of range, it throws an OutOfRangeException exception.
-        T &operator[](unsigned int i);
-        
-        //Returns the size of the array
-        unsigned int size() const;
 };
 
 //Data member 'n' represents the size of the array 0 which is empty array
 template<typename T>
-Array<T>::Array(): n(0)
+MutantStack<T>::MutantStack(): n(0)
 {
     //Allocates dynamic memory for an array of type T with size 0
     array = new T[0];
 }
 
 template<typename T>
-Array<T>::~Array()
+MutantStack<T>::~MutantStack()
 {
     delete[] array;
 }
@@ -85,14 +60,14 @@ Array<T>::~Array()
 //This constructor for the Array class template is the parameterized constructor, 
 //and it is used to create an array with a specified size. 
 template<typename T>
-Array<T>::Array(unsigned int arraysize): n(arraysize)
+MutantStack<T>::MutantStack(unsigned int arraysize): n(arraysize)
 {
     //Allocates dynamic memory for an array of type T with the specified size n
-    array = new T[n];
+    MutantStack = new T[n];
     for (size_t i = 0; i < n; i++)
     {
         //Initializes each element of the array to the default value of type T
-        array[i] = T();
+        MutantStack[i] = T();
     }
 }
 
@@ -101,16 +76,16 @@ Array<T>::Array(unsigned int arraysize): n(arraysize)
 //The new object has its own dynamic memory allocated,
 // and the elements are copied from the source array.
 template<typename T>
-Array<T>::Array(Array<T> const &arr) : n(arr.size())
+MutantStack<T>::MutantStack(MutantStack<T> const &arr) : n(arr.size())
 {
-    array = new T[arr.size()];
+    MutantStack = new T[arr.size()];
     for (size_t i = 0; i < n; i++)
-        array[i] = arr.array[i];
+        MutantStack[i] = arr.MutantStack[i];
 }
 
 
 template<typename T>
-Array<T> &Array<T>::operator=(Array<T> const &rhs)
+MutantStack<T> &MutantStack<T>::operator=(Array<T> const &rhs)
 {
     if (this != &rhs) //Check for self-assignment
     {
