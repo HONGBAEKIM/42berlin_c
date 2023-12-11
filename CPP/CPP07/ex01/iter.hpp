@@ -15,26 +15,30 @@
 
 # include <iostream>
 
-template<typename T>
-//• The first parameter is the address of an array.
-//• The second one is the length of the array.
-//• The third one is a function that will be call on every element of the array.
-void iter(T *array, unsigned int const length, void (*call)(T const &))
+/*
+Template Parameters:
+
+typename T: Represents the type of the array elements.
+typename Func: Represents the type of the function to be applied to each element.
+Function Parameters:
+
+T array[]: An array of type T.
+size_t size: The size of the array.
+Func function: A function of type Func that will be applied to each element.
+*/
+
+template<typename T, typename Func>
+void iter(T array[], size_t size, Func function)
 {
-    for (unsigned int i = 0; i < length; i++)
-        call (array[i]);
+    for (size_t i = 0; i < size; i++)
+        function(array[i]);
 }
 
 template<typename T>
-void addone(T &a)
-{
-    a++;    
-}
-
-template<typename T>
-void print(T const &a)
+void ft_print(const T &a)
 {
     std::cout << a << " ";
 }
 
 #endif
+
