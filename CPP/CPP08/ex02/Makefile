@@ -14,7 +14,9 @@ NAME = MutantStack
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -pedantic
 
-SRCS = $(shell find -iname "*.cpp")
+
+SRCS = main.cpp
+#SRCS = $(shell find -iname "*.cpp")
 
 OBJS = $(SRCS:.cpp=.o)
 
