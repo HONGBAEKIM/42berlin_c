@@ -1,42 +1,100 @@
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <map> //std::map
+# include <iomanip> //std::setw
+# include <ctime> //time
+# include <fstream> //read file
+# include <string> // filename.c_str()
 
-// templates are used to create generic classes and functions 
-// that can work with different data types ( such as int, float and double).
+
+/*
+How to implement code
+
+1. Parsing the bitcoin exchange database
+2. Parsing the input file
+
+3. Using a container to store Bitcoin exchange rates
+
+4. For each line in the input file, 
+   find the closest data in the Bitcoin exchange database
+
+5. Display the result of the value mutiplied by the exchnge rate
+*/
 
 /* 
-Benefits of Generic Classes:
+Reason to use 'std::map'
+'std::map' provides efficient lookup and ordering
+dates as keys
+Bitcoin exchange rates as values
 
-Code Reusability: Write code that works for multiple data types without duplicating logic.
-Type Safety: The compiler enforces type correctness, preventing type-related errors at compile-time.
-Flexibility: Users can use the same generic class with different data types, making the code more versatile.
-Abstraction: Generic classes abstract away the details of the specific data type, promoting cleaner and more abstract code. 
-*/
-template<typename T> void swap(T &a, T &b);
-template<typename T> T const &min(T const &a, T const &b);
-template<typename T> T const &max(T const &a, T const &b);
+ */
 
-template<typename T>
-void swap(T &a, T &b)
+class BitcoinExchange
 {
-    T c = a;
-    a = b;
-    b = c;
-}
+    private:
 
-template<typename T>
-T const &min(T const &a, T const &b)
-{
-    return (a < b) ? a : b;
-}
+        //struct tm is a calendar time
+        //float is value for each data and time
+        //bool(*)(const struct tm&, const struct tm&) is comparison function
+        std::map<struct tm, float, bool(*)(const struct tm&, const struct tm&)> exchange;
+        
+        //This function pointer indicates what action should be performed on each entry found in the file.
+        //A pointer to a member function of the BitcoinExchange class
+        //takes std::pair<struct tm, float>, which is <data, time and some value related with date and time>
+        void iterFile(std::string const &filename, void (BitcoinExchange::*entry_ptr)(std::pair<struct tm, float>));
 
-template<typename T>
-T const &max(T const &a, T const &b)
-{
-    return (a > b) ? a : b;
-}
+        //To process an entry obtained from parsing a data.csv file.
+        void processCsvEntry(std::pair<struct tm, float>);
+        
+        //To process an entry obtained from parsing an input.txt file.
+        void processInputEntry(std::pair<struct tm, float>);
+
+        //const std::string & line:   
+        //Represents a line of text that needs to be parsed to extract a pair.
+        //const std::string & delimiter: 
+        //Represents the delimiter used to separate the components of the pair in the input line.
+        std::pair<struct tm, float>	extractPair(std::string const & line, std::string const & delimiter) const;
+
+        //original value * closest lower data
+        float	convert(std::pair<struct tm, float>) const;
+
+    public:
+        BitcoinExchange();
+        BitcoinExchange(BitcoinExchange const & btc);
+        ~BitcoinExchange();
+        BitcoinExchange &operator=(BitcoinExchange const & rhs);
+
+        //loading data from data.csv
+        void loadCsv(const std::string& filename);
+        //loading data from input.txt
+        void loadInput(const std::string& filename);
+        //print out
+        void printResults() const;
+
+        /* 
+        error handling
+        1)parsing error
+        2)input error
+
+         */
+        class ParsingException : public std::exception
+        {
+            public:
+                virtual char const *what() const throw()
+                {
+                    return ("BitcoinExchange::exception: parsing error");
+                }
+        };
+
+
+};
+
+
+bool timeCompare(const struct tm& a, const struct tm& b);
+
+bool badDate(std::string tmp);
 
 #endif

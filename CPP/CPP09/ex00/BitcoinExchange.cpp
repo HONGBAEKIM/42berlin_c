@@ -1,42 +1,66 @@
-
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+# include "BitcoinExchange.hpp"
 
 # include <iostream>
 
-// templates are used to create generic classes and functions 
-// that can work with different data types ( such as int, float and double).
 
-/* 
-Benefits of Generic Classes:
-
-Code Reusability: Write code that works for multiple data types without duplicating logic.
-Type Safety: The compiler enforces type correctness, preventing type-related errors at compile-time.
-Flexibility: Users can use the same generic class with different data types, making the code more versatile.
-Abstraction: Generic classes abstract away the details of the specific data type, promoting cleaner and more abstract code. 
-*/
-template<typename T> void swap(T &a, T &b);
-template<typename T> T const &min(T const &a, T const &b);
-template<typename T> T const &max(T const &a, T const &b);
-
-template<typename T>
-void swap(T &a, T &b)
+BitcoinExchange::BitcoinExchange()
 {
-    T c = a;
-    a = b;
-    b = c;
+
 }
 
-template<typename T>
-T const &min(T const &a, T const &b)
+BitcoinExchange::~BitcoinExchange()
 {
-    return (a < b) ? a : b;
+    
 }
 
-template<typename T>
-T const &max(T const &a, T const &b)
+BitcoinExchange::BitcoinExchange(BitcoinExchange const & btc)
 {
-    return (a > b) ? a : b;
+    *this = btc;
 }
 
-#endif
+BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const & rhs)
+{
+    if (this != &rhs)
+        exchange = rhs.exchange;
+    return *this;
+}
+
+void BitcoinExchange::loadCsv(const std::string& filename)
+{
+
+}
+
+void BitcoinExchange::loadInput(const std::string& filename)
+{
+
+}
+
+void BitcoinExchange::printResults() const
+{
+
+}
+
+
+
+bool badDate(std::string tmp)
+{
+    std::stringstream ss;
+    //0000-XX-00
+    //month
+    ss << tmp.substr(5, 2);
+    unsigned int month;
+    //'>>' is extract value
+    ss >> month;
+    ss.clear();
+    //0000-00-XX
+    //date
+    ss << tmp.substr(8, 2);
+    unsigned int day;
+    ss >> day;
+
+    // Check if the extracted month and day are within valid ranges
+    if (month < 1 || month > 12 || day < 1 || day > 31)
+        return true;
+
+    return false;
+}
