@@ -58,6 +58,28 @@ int main()
 	//using your custom container mstack
 	std::stack<int> s(mstack);
 
+		// my own test
+	MutantStack<int> myStack = MutantStack<int>();
+	
+	for (int i = 0; i < 43; i++)
+		myStack.push(i);
+
+	std::cout << "\niterating on the MutantStack:\n";
+	for (MutantStack<int>::iterator mit = myStack.begin(); mit != myStack.end(); mit++)
+		std::cout << *mit << std::endl;
+
+	std::cout << "\nconst iterating on the MutantStack:\n";
+	for (MutantStack<int>::const_iterator mit = myStack.begin(); mit != myStack.end(); mit++)
+		std::cout << *mit << std::endl;
+
+	std::cout << "\nreverse iterating on the MutantStack:\n";
+	for (MutantStack<int>::reverse_iterator mit = myStack.rbegin(); mit != myStack.rend(); mit++)
+		std::cout << *mit << std::endl;
+
+	std::cout << "\nconst reverse iterating on the MutantStack:\n";
+	for (MutantStack<int>::const_reverse_iterator mit = myStack.rbegin(); mit != myStack.rend(); mit++)
+		std::cout << *mit << std::endl;
+
 	return 0;
 }
 

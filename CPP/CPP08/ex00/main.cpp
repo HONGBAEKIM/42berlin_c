@@ -5,16 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 15:54:57 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/12/04 16:09:20 by hongbaki         ###   ########.fr       */
+/*   Created: 2023/12/13 12:12:09 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/12/13 13:45:18 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 
-
 /*
-
 std::vector:
 
 Characteristics:
@@ -62,6 +60,9 @@ at both ends and random access is still required.
 Use std::list when you need frequent insertion/removal at any position, 
 and random access is not a primary concern.
 */
+
+//STL : Standard templete library
+//Examples of STL algorithms include std::sort, std::find, std::transform, and std::for_each.
 
 int main() 
 {
@@ -134,7 +135,7 @@ int main()
         std::cout << "found value " << *itl << std::endl;
     else
         std::cout << "not found value" << std::endl;
-    
+    std::cout << std::endl;
 
     return (0);
 }

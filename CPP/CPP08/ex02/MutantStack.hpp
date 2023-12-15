@@ -53,6 +53,7 @@ class MutantStack : public std::stack<T>
         rbegin(): Returns a reverse iterator pointing to the last element of the container.
         rend(): Returns a reverse iterator pointing to one position before the first element of the container.
         */
+        //'this->c' accesses the 'c' member of the current instance
         iterator begin() {return this->c.begin();}  
         iterator end() {return this->c.end();}
         const_iterator begin() const {return this->c.begin();}

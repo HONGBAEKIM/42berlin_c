@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/13 14:13:48 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/12/13 14:13:50 by hongbaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 
 Span::Span(int nb) : n(nb)
@@ -36,9 +48,10 @@ void Span::addNumber(int nb)
 void Span::addRange(std::vector<int> v)
 {
     //current size of 'vec' + size of the input vector 'v' > maximum size 'n'
+    //Check if adding the range would exceed the maximum size
     if (vec.size() + v.size() > n)
         throw(OutOfRangeException());
-    //'v' are inserted atr the end of the vector 'vec'
+    //Insert the range into the vector
     vec.insert(vec.end(), v.begin(), v.end());
 }
 
