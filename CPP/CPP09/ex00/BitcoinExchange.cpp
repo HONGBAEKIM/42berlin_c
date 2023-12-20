@@ -4,7 +4,9 @@ BitcoinExchange::BitcoinExchange()
 {
     //Compare two ''struct tm' objects(which represent calendar time)
     bool(*function_pt)(struct tm const &, struct tm const &) = &timeCompare;
-    //soring is determined by the 'timeCompare' function
+
+    //exchage variable is a map that stores pairs of struct tm and float values.
+    //it uses the timeCompare function to sort and compare elements
     exchange = std::map<struct tm, float, bool(*)(struct tm const &, struct tm const &)>(function_pt);
 }
 
@@ -112,6 +114,35 @@ void BitcoinExchange::processCsvEntry(std::pair<struct tm, float>)
 
 void BitcoinExchange::loadInput(const std::string& filename)
 {
+    iterFile(filename, &BitcoinExchange::processInputEntry);
+}
+
+void BitcoinExchange::processInputEntry(std::pair<struct tm, float> entry)
+{
+    if (entry.second < 0.0f)
+    {
+        std::cout << "Error: Positive integer should be >= 0," << std::endl;
+        return ;
+    }
+    if (entry.second > 1000.0f)
+    {
+        std::cout << "Error: Positive integer should be <= 1000," << std::endl;
+        return ;
+    }
+    //entry is used within the iterFile and processInputEntry functions to process 
+    //and validate data from the CSV file,
+
+    //while exchange appears to be the main data structure 
+    //where these processed data points are eventually stored and managed.
+    if (timeCompare(entry.first, (*exchange.begin()).first))
+    {
+        std::cout << "Error : date is earlier" << std::endl;
+        return ;
+    }
+
+    char date[11];
+    strftime(date, "%Y-%m-%d", &entry.first);
+    std::cout << data << " => " << entry.second << " = " << convert(entry) << std::endl;
 
 }
 
@@ -120,7 +151,16 @@ void BitcoinExchange::printResults() const
 
 }
 
-
+bool BitcoinExchange::timeCompare(const struct tm& a, const struct tm& b)
+{
+    if (a.tm_year == b.tm_year)
+    {
+        if (a.tm_mon == b.tm_mon)
+           return (a.tm_mday < b.tm_mday);
+        return (a.tm_mon < b.tm_mon);
+    }
+    return (a.tm_year < b.tm_year);
+}
 
 bool BitcoinExchange::badDate(std::string tmp)
 {

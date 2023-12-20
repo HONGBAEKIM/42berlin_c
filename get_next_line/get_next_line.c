@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:45:31 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/09/07 09:36:42 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:45:28 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,9 @@ char	*next_line(char *static_buffer)
 	printf("10.static_buffer : %s\n", static_buffer);
 	if (!nextline)
 		return (NULL);
+	//go to next line
+	//after i++;
+	//static_buffer[i] == '\n'
 	i++;
 	printf("11.i is : %d\n", i);
 	j = 0;
